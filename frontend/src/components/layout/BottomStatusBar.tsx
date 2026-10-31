@@ -38,7 +38,7 @@ export const BottomStatusBar: React.FC<BottomStatusBarProps> = ({
   const llmStatus = health?.llm_connected ? "GROQ (CONNECTED)" : "OFFLINE GROUNDED";
 
   return (
-    <footer className="h-6 bg-terminal-surface terminal-border-t px-3 flex items-center justify-between text-[10px] font-mono select-none text-slate-400 z-30">
+    <footer className="h-6 bg-terminal-surface terminal-border-t px-3 flex items-center justify-between text-[10px] select-none text-slate-400 z-30">
       {/* Left: Core Engine Status */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-1.5">

@@ -188,7 +188,7 @@ export const CytoscapeGraph: React.FC = () => {
                 label: "data(label)",
                 color: "#94a3b8",
                 "font-size": "9px",
-                "font-family": "JetBrains Mono, monospace",
+                "font-family": "Inter, -apple-system, sans-serif",
                 "text-valign": "bottom",
                 "text-margin-y": 4,
                 "text-background-color": "#080b11",
@@ -381,7 +381,7 @@ export const CytoscapeGraph: React.FC = () => {
         {/* Graph Toolbar */}
         <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-3 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-100 font-mono uppercase tracking-wider">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-100 uppercase tracking-wider">
               <Share2 className="w-3.5 h-3.5 text-sky-400" />
               <span>Ontology Relationship Explorer</span>
             </div>
@@ -421,7 +421,7 @@ export const CytoscapeGraph: React.FC = () => {
             {/* Min Lift Slider */}
             <div className="flex items-center gap-1.5 text-xs text-slate-400">
               <SlidersHorizontal className="w-3 h-3 text-slate-500" />
-              <span className="text-[11px] font-mono">Lift:</span>
+              <span className="text-[11px]">Lift:</span>
               <input
                 type="range"
                 min="1.5"
@@ -431,7 +431,7 @@ export const CytoscapeGraph: React.FC = () => {
                 onChange={(e) => setMinLift(parseFloat(e.target.value))}
                 className="w-14 accent-sky-400 cursor-pointer"
               />
-              <span className="text-slate-200 font-mono text-[11px] font-medium tabular-nums">
+              <span className="text-slate-200 text-[11px] font-medium tabular-nums">
                 {minLift.toFixed(1)}x
               </span>
             </div>
@@ -492,7 +492,7 @@ export const CytoscapeGraph: React.FC = () => {
             <div className="absolute inset-0 bg-[#080b11]/85 flex items-center justify-center z-10">
               <div className="flex flex-col items-center gap-2">
                 <span className="w-5 h-5 border-2 border-sky-400 border-t-transparent rounded-full animate-spin" />
-                <span className="text-xs text-slate-300 font-mono">Computing ontology layout...</span>
+                <span className="text-xs text-slate-300">Computing ontology layout...</span>
               </div>
             </div>
           )}
@@ -515,7 +515,7 @@ export const CytoscapeGraph: React.FC = () => {
           <div ref={containerRef} className="w-full h-full" />
 
           {/* Graph Legend Overlay */}
-          <div className="absolute bottom-3 left-3 bg-[#0c1017]/95 border border-[#1a2234] p-2.5 rounded text-[11px] space-y-1.5 z-10 font-mono shadow-sm">
+          <div className="absolute bottom-3 left-3 bg-[#0c1017]/95 border border-[#1a2234] p-2.5 rounded text-[11px] space-y-1.5 z-10 shadow-sm">
             <div className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Ontology Legend</div>
             <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px]">
               <div className="flex items-center gap-1.5">
@@ -551,7 +551,7 @@ export const CytoscapeGraph: React.FC = () => {
       <div className="w-80 bg-[#0c1017] flex flex-col h-full overflow-y-auto shrink-0 select-text border-l border-[#1a2234]">
         {/* Panel Header */}
         <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-3 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 font-mono uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 uppercase tracking-wider">
             <Info className="w-3.5 h-3.5 text-sky-400" />
             <span>Entity & Tie Inspector</span>
           </div>
@@ -561,16 +561,16 @@ export const CytoscapeGraph: React.FC = () => {
         {selectedNode ? (
           <div className="p-3.5 space-y-3">
             <div>
-              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Selected Ontology Node</div>
-              <div className="text-sm font-semibold text-slate-100 font-mono mt-0.5">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Selected Ontology Node</div>
+              <div className="text-sm font-semibold text-slate-100 mt-0.5">
                 {selectedNode.label}
               </div>
-              <div className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-mono uppercase bg-[#111622] border border-[#1a2234] text-sky-400">
+              <div className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] uppercase bg-[#111622] border border-[#1a2234] text-sky-400">
                 {selectedNode.category}
               </div>
             </div>
 
-            <div className="bg-[#111622] border border-[#1a2234] rounded p-2.5 space-y-2 text-xs font-mono">
+            <div className="bg-[#111622] border border-[#1a2234] rounded p-2.5 space-y-2 text-xs">
               <div className="flex justify-between">
                 <span className="text-slate-500">Node Type:</span>
                 <span className="text-slate-300">{selectedNode.ntype}</span>
@@ -592,7 +592,7 @@ export const CytoscapeGraph: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Provenance & Integrity</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Provenance & Integrity</div>
               <p className="text-[11px] text-slate-400 leading-relaxed">
                 Indexed in in-memory RDF knowledge graph. Verified with statistical lift measurements
                 (&ge; 1.5). Systematically grounded in audited financial disclosures.
@@ -602,13 +602,13 @@ export const CytoscapeGraph: React.FC = () => {
         ) : selectedEdge ? (
           <div className="p-3.5 space-y-3">
             <div>
-              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Selected Association Tie</div>
-              <div className="text-xs font-semibold text-sky-400 font-mono mt-1">
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Selected Association Tie</div>
+              <div className="text-xs font-semibold text-sky-400 mt-1">
                 {selectedEdge.source} ↔ {selectedEdge.target}
               </div>
             </div>
 
-            <div className="bg-[#111622] border border-[#1a2234] rounded p-2.5 space-y-2 text-xs font-mono">
+            <div className="bg-[#111622] border border-[#1a2234] rounded p-2.5 space-y-2 text-xs">
               <div className="flex justify-between">
                 <span className="text-slate-500">Predicate:</span>
                 <span className="text-slate-300">{selectedEdge.predicate}</span>
@@ -626,13 +626,13 @@ export const CytoscapeGraph: React.FC = () => {
         ) : (
           <div className="p-4 text-center text-xs text-slate-500 flex flex-col items-center justify-center flex-1">
             <Share2 className="w-8 h-8 text-slate-700 mb-2" />
-            <span className="font-mono text-[11px]">Select any node or edge to inspect attributes</span>
+            <span className="text-[11px]">Select any node or edge to inspect attributes</span>
           </div>
         )}
 
         {/* Shortest Path Finder Section */}
         <div className="mt-auto border-t border-[#1a2234] p-3 bg-[#0c1017] space-y-2 shrink-0">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 font-mono uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 uppercase tracking-wider">
             <Route className="w-3.5 h-3.5 text-sky-400" />
             <span>Dijkstra Weighted Path</span>
           </div>
@@ -642,26 +642,26 @@ export const CytoscapeGraph: React.FC = () => {
               placeholder="Source entity [e.g. Mutual Funds]"
               value={sourceNode}
               onChange={(e) => setSourceNode(e.target.value)}
-              className="w-full px-2 py-1 bg-[#111622] border border-[#1a2234] rounded text-[11px] font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
+              className="w-full px-2 py-1 bg-[#111622] border border-[#1a2234] rounded text-[11px] text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
             />
             <input
               type="text"
               placeholder="Target entity [e.g. Safe Investment]"
               value={targetNode}
               onChange={(e) => setTargetNode(e.target.value)}
-              className="w-full px-2 py-1 bg-[#111622] border border-[#1a2234] rounded text-[11px] font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
+              className="w-full px-2 py-1 bg-[#111622] border border-[#1a2234] rounded text-[11px] text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
             />
             <button
               onClick={handleFindPath}
               disabled={pathLoading || !sourceNode || !targetNode}
-              className="w-full py-1 bg-[#111622] hover:bg-slate-800 border border-[#1a2234] rounded text-[11px] font-mono font-medium text-sky-400 transition-colors disabled:opacity-50"
+              className="w-full py-1 bg-[#111622] hover:bg-slate-800 border border-[#1a2234] rounded text-[11px] font-medium text-sky-400 transition-colors disabled:opacity-50"
             >
               {pathLoading ? "Calculating Path..." : "Find Shortest Path (1/Lift)"}
             </button>
           </div>
 
           {pathResult && (
-            <div className="mt-2 p-2 bg-[#111622] border border-[#1a2234] rounded text-xs font-mono">
+            <div className="mt-2 p-2 bg-[#111622] border border-[#1a2234] rounded text-xs">
               {pathResult.found ? (
                 <div className="space-y-1">
                   <div className="text-sky-400 font-medium text-[11px]">

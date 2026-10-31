@@ -52,7 +52,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
     <div className="flex-1 flex flex-col h-full bg-terminal-bg overflow-y-auto p-3 space-y-2.5 select-text font-sans">
       {/* 1. Market & Dataset Status Strip */}
       <div className="p-2.5 px-3 bg-terminal-surface terminal-border rounded flex flex-col md:flex-row md:items-center justify-between gap-2.5">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-mono">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block" />
             <span className="text-white font-semibold tracking-tight uppercase">
@@ -74,14 +74,14 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => onNavigate("research")}
-            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-mono text-xs rounded flex items-center gap-1.5 transition-colors"
+            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs rounded flex items-center gap-1.5 transition-colors"
           >
             <Brain className="w-3.5 h-3.5 text-slate-400" />
             <span>Copilot Query</span>
           </button>
           <button
             onClick={() => onNavigate("graph")}
-            className="px-2.5 py-1 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/70 text-slate-200 font-mono text-xs rounded flex items-center gap-1.5 transition-colors"
+            className="px-2.5 py-1 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/70 text-slate-200 text-xs rounded flex items-center gap-1.5 transition-colors"
           >
             <Share2 className="w-3.5 h-3.5 text-slate-400" />
             <span>Explore Graph</span>
@@ -92,61 +92,61 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
       {/* 2. Compact Analytical KPI Panels */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
         <div className="p-2.5 bg-terminal-surface terminal-border rounded space-y-1">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider font-mono">
+          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider">
             <span>Corporate Filers</span>
             <div className="p-1 rounded bg-slate-800 border border-slate-700 text-slate-400">
               <Building2 className="w-3 h-3" />
             </div>
           </div>
-          <div className="text-xl font-bold font-mono tracking-tight text-slate-100 tabular-nums">
+          <div className="text-xl font-bold tracking-tight text-slate-100 tabular-nums">
             {corporateCount > 0 ? corporateCount : 10}
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">
+          <div className="text-[10px] text-slate-500">
             6 SEC 10-K + 4 BSE/NSE Audited
           </div>
         </div>
 
         <div className="p-2.5 bg-terminal-surface terminal-border rounded space-y-1">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider font-mono">
+          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider">
             <span>Regulatory Facts</span>
             <div className="p-1 rounded bg-slate-800 border border-slate-700 text-slate-400">
               <CheckCircle2 className="w-3 h-3" />
             </div>
           </div>
-          <div className="text-xl font-bold font-mono tracking-tight text-slate-100 tabular-nums">
+          <div className="text-xl font-bold tracking-tight text-slate-100 tabular-nums">
             134
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">
+          <div className="text-[10px] text-slate-500">
             100% Verified Provenance
           </div>
         </div>
 
         <div className="p-2.5 bg-terminal-surface terminal-border rounded space-y-1">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider font-mono">
+          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider">
             <span>Statistical Ties</span>
             <div className="p-1 rounded bg-slate-800 border border-slate-700 text-slate-400">
               <Share2 className="w-3 h-3" />
             </div>
           </div>
-          <div className="text-xl font-bold font-mono tracking-tight text-slate-100 tabular-nums">
+          <div className="text-xl font-bold tracking-tight text-slate-100 tabular-nums">
             {health?.association_edges ?? 184}
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">
+          <div className="text-[10px] text-slate-500">
             Lift &ge; 1.5 Correlation Edges
           </div>
         </div>
 
         <div className="p-2.5 bg-terminal-surface terminal-border rounded space-y-1">
-          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider font-mono">
+          <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wider">
             <span>Reasoning Engine</span>
             <div className="p-1 rounded bg-slate-800 border border-slate-700 text-slate-400">
               <Activity className="w-3 h-3" />
             </div>
           </div>
-          <div className="text-xs font-semibold font-mono text-slate-200 truncate pt-1">
+          <div className="text-xs font-semibold text-slate-200 truncate pt-1">
             {health?.llm_connected ? "Groq (Live LLM)" : "Offline Grounded"}
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">
+          <div className="text-[10px] text-slate-500">
             {health?.embedding_backend || "all-MiniLM-L6-v2"}
           </div>
         </div>
@@ -157,13 +157,13 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
         <div className="flex items-center justify-between border-b border-terminal-border/80 pb-1.5">
           <div className="flex items-center gap-2">
             <FileText className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase font-mono">
+            <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
               Verified Regulatory Filings & Financial Highlights (Official XBRL & BSE Disclosures)
             </span>
           </div>
           <button
             onClick={() => onNavigate("financials")}
-            className="text-[10px] font-mono text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
+            className="text-[10px] text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
           >
             <span>Open Financial Statement Analysis</span>
             <ArrowRight className="w-3 h-3" />
@@ -171,7 +171,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono">
+          <table className="w-full text-left text-xs">
             <thead>
               <tr className="border-b border-terminal-border text-[10px] text-slate-500 uppercase">
                 <th className="py-1 px-2 font-medium">Ticker</th>
@@ -220,12 +220,12 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
           <div className="flex items-center justify-between border-b border-terminal-border/80 pb-1.5">
             <div className="flex items-center gap-1.5">
               <Building2 className="w-3.5 h-3.5 text-slate-400" />
-              <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase font-mono">
+              <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">
                 Active Entity Focus
               </span>
             </div>
             {activeCompany && (
-              <span className="text-[10px] font-mono font-semibold text-slate-300 px-1.5 py-0.2 rounded bg-slate-800 border border-slate-700">
+              <span className="text-[10px] font-semibold text-slate-300 px-1.5 py-0.2 rounded bg-slate-800 border border-slate-700">
                 {activeCompany.ticker} &bull; {activeCompany.coverage_type === "corporate_equity" ? "CORPORATE FILER" : "SURVEY VENUE"}
               </span>
             )}
@@ -238,11 +238,11 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
                   <h2 className="text-sm font-semibold text-white tracking-tight">
                     {activeCompany.name}
                   </h2>
-                  <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                  <div className="text-[10px] text-slate-400 mt-0.5">
                     {activeCompany.sector} &bull; {activeCompany.industry}
                   </div>
                 </div>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">
                   {activeCompany.risk_level}
                 </span>
               </div>
@@ -251,7 +251,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
                 {activeCompany.description}
               </p>
 
-              <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+              <div className="pt-1 flex flex-wrap gap-2 text-xs">
                 <button
                   onClick={() => onNavigate("companies")}
                   className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-slate-200 transition-colors"
@@ -278,12 +278,12 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
 
         {/* Quick GraphRAG Queries */}
         <div className="p-3 bg-terminal-surface terminal-border rounded space-y-2">
-          <div className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase flex items-center gap-1.5 border-b border-terminal-border/80 pb-1.5 font-mono">
+          <div className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase flex items-center gap-1.5 border-b border-terminal-border/80 pb-1.5">
             <Brain className="w-3.5 h-3.5 text-slate-400" />
             <span>GraphRAG Research Inquiries</span>
           </div>
 
-          <div className="space-y-1.5 text-xs font-mono">
+          <div className="space-y-1.5 text-xs">
             <button
               onClick={() => onNavigate("research")}
               className="w-full text-left py-1.5 px-2 bg-terminal-panel hover:bg-slate-800/80 terminal-border rounded text-slate-300 hover:text-white transition-colors flex items-center justify-between group"

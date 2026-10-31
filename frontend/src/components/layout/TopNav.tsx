@@ -66,7 +66,7 @@ export const TopNav: React.FC<TopNavProps> = ({
           </div>
           <div className="flex items-center gap-1.5">
             <span className="font-semibold text-xs tracking-tight text-white">LAVALOON</span>
-            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-800/80 border border-slate-700/60 text-sky-400 font-medium">
+            <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800/80 border border-slate-700/60 text-sky-400 font-medium">
               TERMINAL
             </span>
           </div>
@@ -96,7 +96,7 @@ export const TopNav: React.FC<TopNavProps> = ({
               onFocus={() => setSearchOpen(true)}
               className="bg-transparent text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none w-full"
             />
-            <span className="text-[10px] font-mono text-slate-500 px-1 py-0.5 rounded bg-slate-800/60 border border-slate-700/40">
+            <span className="text-[10px] text-slate-500 px-1 py-0.5 rounded bg-slate-800/60 border border-slate-700/40">
               /
             </span>
           </div>
@@ -117,7 +117,7 @@ export const TopNav: React.FC<TopNavProps> = ({
                     className="w-full text-left px-3 py-1.5 hover:bg-slate-800/60 rounded-md flex items-center justify-between text-xs transition-colors"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="font-mono font-semibold text-sky-400">{c.ticker}</span>
+                      <span className="font-semibold text-sky-400">{c.ticker}</span>
                       <span className="text-slate-200">{c.name}</span>
                     </div>
                     <span className="text-[11px] text-slate-400">{c.sector}</span>
@@ -131,7 +131,7 @@ export const TopNav: React.FC<TopNavProps> = ({
         {activeCompany && (
           <div className="hidden lg:flex items-center gap-1.5 px-2 py-0.5 bg-slate-800/40 border border-slate-700/50 rounded shrink-0 text-xs">
             <span className="text-[10px] text-slate-500 uppercase">Focus:</span>
-            <span className="font-mono font-semibold text-slate-200">
+            <span className="font-semibold text-slate-200">
               {activeCompany.ticker}
             </span>
           </div>
@@ -145,20 +145,20 @@ export const TopNav: React.FC<TopNavProps> = ({
           <div className="hidden xl:flex items-center gap-2.5 text-xs text-slate-400">
             <div className="flex items-center gap-1.5" title="Dataset Records Count">
               <Database className="w-3.5 h-3.5 text-slate-400" />
-              <span className="font-mono tabular-nums text-slate-300">{health.records_count}</span>
+              <span className="tabular-nums text-slate-300">{health.records_count}</span>
               <span className="text-[10px] text-slate-500">records</span>
             </div>
             <div className="flex items-center gap-1.5" title="Graph Nodes / Edges">
               <Layers className="w-3.5 h-3.5 text-slate-400" />
-              <span className="font-mono tabular-nums text-slate-300">{health.graph_nodes}N</span>
+              <span className="tabular-nums text-slate-300">{health.graph_nodes}N</span>
               <span className="text-slate-600">/</span>
-              <span className="font-mono tabular-nums text-slate-300">{health.graph_edges}E</span>
+              <span className="tabular-nums text-slate-300">{health.graph_edges}E</span>
             </div>
           </div>
         )}
 
         {/* System Time */}
-        <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 bg-terminal-bg terminal-border rounded text-[11px] text-slate-400 font-mono tabular-nums">
+        <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 bg-terminal-bg terminal-border rounded text-[11px] text-slate-400 tabular-nums">
           <Clock className="w-3 h-3 text-slate-500" />
           <span>{timeStr || "00:00:00 UTC"}</span>
         </div>

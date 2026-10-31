@@ -65,7 +65,7 @@ export const OptionsDesk: React.FC = () => {
   return (
     <div className="flex flex-col h-full w-full bg-[#080b11] select-text text-slate-200 overflow-y-auto">
       {/* Top Desk Header */}
-      <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-4 flex items-center justify-between shrink-0 font-mono">
+      <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-4 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-100 uppercase tracking-wider">
           <Calculator className="w-3.5 h-3.5 text-sky-400" />
           <span>Quantitative Derivatives Desk</span>
@@ -78,7 +78,7 @@ export const OptionsDesk: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 p-4 space-y-3.5 max-w-6xl mx-auto w-full font-mono">
+      <div className="flex-1 p-4 space-y-3.5 max-w-6xl mx-auto w-full">
         {/* Input Parameters Form */}
         <div className="p-3 bg-[#0c1017] border border-[#1a2234] rounded space-y-2.5">
           <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">

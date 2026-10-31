@@ -44,7 +44,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, onSelectModule }
       <div className="py-2">
         <div className="px-2.5 pb-2 flex items-center justify-between">
           {!collapsed && (
-            <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase font-mono">
+            <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
               Workstation
             </span>
           )}
@@ -87,7 +87,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, onSelectModule }
                   {!collapsed && <span className="truncate">{item.label}</span>}
                 </div>
                 {!collapsed && (
-                  <span className="text-[9px] text-slate-500 font-mono px-1 py-0.2 rounded bg-slate-900 border border-slate-800 shrink-0">
+                  <span className="text-[9px] text-slate-500 px-1 py-0.2 rounded bg-slate-900 border border-slate-800 shrink-0">
                     {item.hotkey}
                   </span>
                 )}

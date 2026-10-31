@@ -81,12 +81,12 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
       {/* Top Diligence Toolbar */}
       <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-4 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-100 font-mono uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-100 uppercase tracking-wider">
             <FileCheck2 className="w-3.5 h-3.5 text-sky-400" />
             <span>Due Diligence Workstation</span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs font-mono">
+          <div className="flex items-center gap-1.5 text-xs">
             <Building2 className="w-3.5 h-3.5 text-slate-500" />
             <span className="text-[11px] text-slate-500">Target:</span>
             <select
@@ -105,7 +105,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
             </select>
           </div>
 
-          <div className="flex items-center gap-1 text-xs font-mono">
+          <div className="flex items-center gap-1 text-xs">
             <span className="text-[11px] text-slate-500">Template:</span>
             <select
               value={template}
@@ -119,7 +119,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 font-mono">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={() => generateReport(target)}
             disabled={loading}
@@ -148,7 +148,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
       {/* Main Dossier Content */}
       <div className="flex-1 p-5 max-w-5xl mx-auto w-full space-y-4">
         {loading && (
-          <div className="flex flex-col items-center justify-center p-16 space-y-2 font-mono">
+          <div className="flex flex-col items-center justify-center p-16 space-y-2">
             <span className="w-6 h-6 border-2 border-sky-400 border-t-transparent rounded-full animate-spin" />
             <div className="text-xs text-sky-400 font-semibold tracking-wider">
               ASSEMBLING INSTITUTIONAL DUE DILIGENCE DOSSIER...
@@ -162,7 +162,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
         {!loading && report && (
           <div className="space-y-4">
             {/* Dossier Header */}
-            <div className="p-3.5 bg-[#0c1017] border border-[#1a2234] rounded flex flex-col md:flex-row md:items-center justify-between gap-3 font-mono">
+            <div className="p-3.5 bg-[#0c1017] border border-[#1a2234] rounded flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div>
                 <div className="text-[10px] text-slate-500 uppercase tracking-wider">
                   INSTITUTIONAL RESEARCH REPORT // AGY-TERM-DD
@@ -183,7 +183,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
             </div>
 
             {/* Verified Facts & Limitations Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {/* Verified Facts */}
               <div className="p-3 bg-[#0c1017] border border-[#1a2234] rounded space-y-2">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-teal-400 uppercase tracking-wider">
@@ -218,7 +218,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
             </div>
 
             {/* Executive Synthesis Report */}
-            <div className="p-4 bg-[#0c1017] border border-[#1a2234] rounded font-mono space-y-2.5">
+            <div className="p-4 bg-[#0c1017] border border-[#1a2234] rounded space-y-2.5">
               <div className="flex items-center justify-between border-b border-[#1a2234] pb-2">
                 <span className="text-xs font-semibold text-sky-400 uppercase tracking-wider">
                   STRUCTURED EVALUATION SYNTHESIS
@@ -232,7 +232,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
 
             {/* Association Matrix */}
             {report.graph_associations.length > 0 && (
-              <div className="p-3 bg-[#0c1017] border border-[#1a2234] rounded font-mono space-y-2">
+              <div className="p-3 bg-[#0c1017] border border-[#1a2234] rounded space-y-2">
                 <div className="text-[10px] text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
                   <Share2 className="w-3 h-3 text-sky-400" />
                   <span>SIGNIFICANT STATISTICAL GRAPH ASSOCIATIONS (LIFT &ge; 1.5)</span>
@@ -258,7 +258,7 @@ ${report.disclaimers.map(d => `- ${d}`).join("\n")}
 
             {/* Exact Aggregate Profile */}
             {report.statistical_profile && (
-              <div className="p-3 bg-[#0c1017] border border-[#1a2234] rounded font-mono space-y-1.5">
+              <div className="p-3 bg-[#0c1017] border border-[#1a2234] rounded space-y-1.5">
                 <div className="text-[10px] text-slate-500 uppercase tracking-wider">
                   EXACT EMPIRICAL / AGGREGATE DISTRIBUTION
                 </div>

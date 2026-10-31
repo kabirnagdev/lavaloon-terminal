@@ -19,7 +19,7 @@ interface SettingsViewProps {
 
 export const SettingsView: React.FC<SettingsViewProps> = ({ health, onRefreshHealth }) => {
   return (
-    <div className="flex-1 flex flex-col h-full bg-[#080b11] overflow-y-auto p-5 max-w-4xl mx-auto w-full space-y-4 select-text font-mono text-slate-200">
+    <div className="flex-1 flex flex-col h-full bg-[#080b11] overflow-y-auto p-5 max-w-4xl mx-auto w-full space-y-4 select-text text-slate-200">
       {/* Settings Header */}
       <div className="p-3.5 bg-[#0c1017] border border-[#1a2234] rounded flex items-center justify-between">
         <div>

@@ -94,7 +94,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
     <div className="flex-1 flex flex-col h-full bg-terminal-bg overflow-y-auto p-3 space-y-2.5 font-sans select-text">
       {/* Top Controls Strip */}
       <div className="p-2.5 bg-terminal-surface terminal-border rounded flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
+        <div className="flex flex-wrap items-center gap-3 text-xs">
           <div className="flex items-center gap-1.5 font-semibold text-white uppercase tracking-wider">
             <FileSpreadsheet className="w-3.5 h-3.5 text-slate-400" />
             <span>Financial Statements & Peer Comparison</span>
@@ -136,7 +136,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
         </div>
 
         {/* Statement Category Filter Tabs */}
-        <div className="flex items-center gap-1 text-[11px] font-mono">
+        <div className="flex items-center gap-1 text-[11px]">
           <button
             onClick={() => setStatementFilter("all")}
             className={`px-2 py-0.5 rounded transition-colors ${
@@ -174,7 +174,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
 
       {/* Currency Isolation Notice */}
       {primaryDetail && compareDetail && primaryDetail.currency !== compareDetail.currency && (
-        <div className="p-2 bg-slate-900 border border-slate-800 rounded flex items-center justify-between text-[11px] font-mono text-slate-400">
+        <div className="p-2 bg-slate-900 border border-slate-800 rounded flex items-center justify-between text-[11px] text-slate-400">
           <div>
             <span className="text-slate-200 font-semibold">CURRENCY ISOLATION NOTICE:</span> {primaryDetail.ticker} reports in{" "}
             <span className="text-white font-semibold">{primaryDetail.currency}</span> ({primaryDetail.currency === "USD" ? "Billions" : "Crores"}), while{" "}
@@ -187,7 +187,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
       {/* Comparative Financial Statement Matrix */}
       <div className="bg-terminal-surface terminal-border rounded overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs font-mono">
+          <table className="w-full text-left text-xs">
             <thead>
               <tr className="bg-terminal-panel border-b border-terminal-border text-[10px] text-slate-400 uppercase tracking-wider">
                 <th className="py-2 px-3 font-semibold">Standardized Metric</th>
@@ -233,7 +233,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
         {/* Entity A Segment Breakdown */}
         {primaryDetail?.segments && Object.keys(primaryDetail.segments).length > 0 && (
-          <div className="bg-terminal-surface terminal-border rounded p-3 space-y-2 font-mono">
+          <div className="bg-terminal-surface terminal-border rounded p-3 space-y-2">
             <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
               {primaryDetail.ticker} &bull; Revenue Breakdown by Segment
             </div>
@@ -261,7 +261,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
 
         {/* Entity B Segment Breakdown */}
         {compareDetail?.segments && Object.keys(compareDetail.segments).length > 0 && (
-          <div className="bg-terminal-surface terminal-border rounded p-3 space-y-2 font-mono">
+          <div className="bg-terminal-surface terminal-border rounded p-3 space-y-2">
             <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
               {compareDetail.ticker} &bull; Revenue Breakdown by Segment
             </div>
@@ -289,7 +289,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
       </div>
 
       {/* Audit Provenance Sources */}
-      <div className="p-2.5 bg-terminal-surface terminal-border rounded flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-slate-400">
+      <div className="p-2.5 bg-terminal-surface terminal-border rounded flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-400">
         <div>
           <span className="text-slate-500 uppercase">Provenance Citations:</span> {primaryDetail?.ticker}: {primaryDetail?.source_attribution} &bull; {compareDetail?.ticker}: {compareDetail?.source_attribution}
         </div>
@@ -305,3 +305,4 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
     </div>
   );
 };
+
