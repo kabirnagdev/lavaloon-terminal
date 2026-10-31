@@ -55,6 +55,6 @@ pip install pandas numpy networkx rdflib sentence-transformers scikit-learn matp
 
 Open `Knowledge_graph_finance_RAG_2.ipynb` in Jupyter Notebook or Google Colab, configure the dataset path and `GROQ_API_KEY`, and run the notebook cells.
 
-**Author:** [Kabir Nagdev](https://github.com/kabirnagdev)
+**Authors:** [Kabir Nagdev](https://github.com/kabirnagdev), [Ayush Gupta](https://github.com/ayuzzgupta)
 
 *An experimental project in knowledge graphs, hybrid retrieval, and LLM-powered data analysis.*
