@@ -29,6 +29,9 @@ export interface CompanySummary {
   risk_level: string;
   description: string;
   coverage_type: "corporate_equity" | "survey_investment_avenue" | "benchmark_index";
+  country?: string;
+  currency?: string;
+  fiscal_year?: number;
 }
 
 export interface CompanyDetail extends CompanySummary {
@@ -36,6 +39,12 @@ export interface CompanyDetail extends CompanySummary {
   metrics: FinancialMetric[];
   market_overview: Record<string, any>;
   source_attribution: string;
+  segments?: Record<string, number>;
+  competitors?: string[];
+  suppliers?: string[];
+  risks?: string[];
+  opportunities?: string[];
+  raw_financials?: Record<string, number>;
 }
 
 export interface RelationshipNode {

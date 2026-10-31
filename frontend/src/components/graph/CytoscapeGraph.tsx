@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import cytoscape, { Core, EventObject } from "cytoscape";
+import cytoscape, { Core } from "cytoscape";
 import {
   Share2,
   ZoomIn,
@@ -13,13 +13,14 @@ import {
   Info,
   Maximize2,
   SlidersHorizontal,
+  Layers,
+  ArrowRight,
   ExternalLink
 } from "lucide-react";
 import { api } from "@/services/api";
 import { CytoscapePayload, CytoscapeNodeData, ShortestPathResponse } from "@/types";
 
 // Cytoscape Prototype Guard: Protects against internal Cytoscape race condition
-// where endBatch() or headless() is called during/after cy.destroy()
 if (typeof window !== "undefined") {
   try {
     const dummy = (cytoscape as any)({ headless: true });
@@ -62,10 +63,11 @@ export const CytoscapeGraph: React.FC = () => {
   const [minLift, setMinLift] = useState<number>(1.5);
   const [debouncedMinLift, setDebouncedMinLift] = useState<number>(1.5);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedLayout, setSelectedLayout] = useState<string>("cose");
   const [selectedNode, setSelectedNode] = useState<CytoscapeNodeData | null>(null);
   const [selectedEdge, setSelectedEdge] = useState<any | null>(null);
 
-  // Debounce slider adjustments to avoid spamming the backend & graph renderer
+  // Debounce slider adjustments
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedMinLift(minLift);
@@ -87,7 +89,7 @@ export const CytoscapeGraph: React.FC = () => {
       const data = await api.getCytoscapeGraph({
         category: selectedCategory === "all" ? undefined : selectedCategory,
         minLift: debouncedMinLift,
-        maxNodes: 120,
+        maxNodes: 140,
         search: searchQuery.trim() || undefined
       });
       setGraphData(data);
@@ -101,6 +103,62 @@ export const CytoscapeGraph: React.FC = () => {
   useEffect(() => {
     fetchGraph();
   }, [selectedCategory, debouncedMinLift]);
+
+  const applyLayout = (cyInstance: Core, layoutName: string) => {
+    if (!cyInstance) return;
+    if (layoutRef.current) {
+      try {
+        layoutRef.current.stop();
+      } catch (e) {}
+    }
+
+    let layoutConfig: any = { name: layoutName };
+    if (layoutName === "cose") {
+      layoutConfig = {
+        name: "cose",
+        animate: true,
+        animationDuration: 400,
+        idealEdgeLength: () => 80,
+        nodeOverlap: 20,
+        refresh: 20,
+        fit: true,
+        padding: 35,
+        randomize: false,
+        componentSpacing: 80,
+        nodeRepulsion: () => 350000,
+        edgeElasticity: () => 100,
+        nestingFactor: 5,
+        gravity: 80,
+        numIter: 400
+      };
+    } else if (layoutName === "concentric") {
+      layoutConfig = {
+        name: "concentric",
+        fit: true,
+        padding: 35,
+        concentric: (node: any) => node.data("degree") || 1,
+        levelWidth: () => 3
+      };
+    } else if (layoutName === "breadthfirst") {
+      layoutConfig = {
+        name: "breadthfirst",
+        directed: true,
+        fit: true,
+        padding: 35,
+        spacingFactor: 1.2
+      };
+    } else if (layoutName === "circle") {
+      layoutConfig = {
+        name: "circle",
+        fit: true,
+        padding: 35
+      };
+    }
+
+    const layout = cyInstance.layout(layoutConfig);
+    layoutRef.current = layout;
+    layout.run();
+  };
 
   // Initialize and update Cytoscape instance
   useEffect(() => {
@@ -128,50 +186,46 @@ export const CytoscapeGraph: React.FC = () => {
               style: {
                 "background-color": "data(color)",
                 label: "data(label)",
-                color: "#e2e8f0",
+                color: "#94a3b8",
                 "font-size": "9px",
                 "font-family": "JetBrains Mono, monospace",
                 "text-valign": "bottom",
                 "text-margin-y": 4,
-                "text-background-color": "#070b12",
-                "text-background-opacity": 0.8,
+                "text-background-color": "#080b11",
+                "text-background-opacity": 0.85,
                 "text-background-padding": "2px",
-                width: "mapData(degree, 1, 30, 16, 36)",
-                height: "mapData(degree, 1, 30, 16, 36)",
+                width: "mapData(degree, 1, 30, 14, 32)",
+                height: "mapData(degree, 1, 30, 14, 32)",
                 "border-width": 1.5,
-                "border-color": "#1e2c42"
+                "border-color": "#1e293b"
               }
             },
             {
               selector: "node:selected",
               style: {
-                "border-color": "#00e5ff",
-                "border-width": 3,
-                "overlay-color": "#00e5ff",
-                "overlay-opacity": 0.2,
-                "overlay-padding": 6
+                "border-color": "#38bdf8",
+                "border-width": 2.5,
+                color: "#f8fafc",
+                "text-background-color": "#0284c7"
               }
             },
             {
               selector: "edge",
               style: {
-                width: "mapData(lift, 1.5, 6.0, 1, 3.5)",
-                "line-color": "#2a3d5c",
+                width: "mapData(lift, 1.5, 5, 1, 2.5)",
+                "line-color": "#334155",
+                "target-arrow-color": "#334155",
+                "target-arrow-shape": "triangle",
                 "curve-style": "bezier",
-                opacity: 0.7,
-                label: "data(predicate)",
-                "font-size": "7px",
-                "font-family": "JetBrains Mono, monospace",
-                color: "#64748b",
-                "text-background-color": "#070b12",
-                "text-background-opacity": 0.8,
-                "text-rotation": "autorotate"
+                "arrow-scale": 0.7,
+                opacity: 0.55
               }
             },
             {
               selector: "edge:selected",
               style: {
-                "line-color": "#00e5ff",
+                "line-color": "#38bdf8",
+                "target-arrow-color": "#38bdf8",
                 width: 3,
                 opacity: 1
               }
@@ -179,93 +233,65 @@ export const CytoscapeGraph: React.FC = () => {
             {
               selector: ".highlighted",
               style: {
-                "border-color": "#00e5ff",
-                "border-width": 3,
-                "line-color": "#00e5ff",
-                width: 3.5,
-                opacity: 1
+                "background-color": "#38bdf8",
+                "line-color": "#38bdf8",
+                "target-arrow-color": "#38bdf8",
+                "border-color": "#f8fafc",
+                "border-width": 2,
+                opacity: 1,
+                "z-index": 999
               }
             },
             {
               selector: ".faded",
               style: {
-                opacity: 0.15
+                opacity: 0.12
               }
             }
           ]
         });
 
-        cy.on("tap", "node", (evt: EventObject) => {
+        cyRef.current = cy;
+
+        // Node click handler
+        cy.on("tap", "node", (evt: any) => {
           const node = evt.target;
           setSelectedNode(node.data());
           setSelectedEdge(null);
 
-          // Highlight direct neighbors
-          cy.elements().removeClass("highlighted faded");
+          // Focus neighborhood
+          cy?.elements().removeClass("highlighted faded");
           const neighborhood = node.neighborhood().add(node);
-          cy.elements().not(neighborhood).addClass("faded");
+          cy?.elements().not(neighborhood).addClass("faded");
           neighborhood.addClass("highlighted");
         });
 
-        cy.on("tap", "edge", (evt: EventObject) => {
+        // Edge click handler
+        cy.on("tap", "edge", (evt: any) => {
           const edge = evt.target;
           setSelectedEdge(edge.data());
           setSelectedNode(null);
+
+          cy?.elements().removeClass("highlighted faded");
+          const connected = edge.connectedNodes().add(edge);
+          cy?.elements().not(connected).addClass("faded");
+          connected.addClass("highlighted");
         });
 
-        cy.on("tap", (evt: EventObject) => {
+        // Background click
+        cy.on("tap", (evt: any) => {
           if (evt.target === cy) {
-            cy.elements().removeClass("highlighted faded");
+            cy?.elements().removeClass("highlighted faded");
             setSelectedNode(null);
             setSelectedEdge(null);
           }
         });
-
-        cyRef.current = cy;
       } else {
-        // Reuse existing canvas and elements pool
-        if (layoutRef.current) {
-          try {
-            layoutRef.current.stop();
-          } catch (e) {}
-          layoutRef.current = null;
-        }
-
-        cy.batch(() => {
-          cy.elements().remove();
-          cy.add(elements);
-        });
+        cy.elements().remove();
+        cy.add(elements);
       }
 
-      if (layoutRef.current) {
-        try {
-          layoutRef.current.stop();
-        } catch (e) {}
-        layoutRef.current = null;
-      }
-
-      const layout = cy.layout({
-        name: "cose",
-        animate: false,
-        idealEdgeLength: () => 90,
-        nodeOverlap: 20,
-        refresh: 20,
-        fit: true,
-        padding: 30,
-        randomize: false,
-        componentSpacing: 100,
-        nodeRepulsion: () => 400000,
-        edgeElasticity: () => 100,
-        nestingFactor: 5,
-        gravity: 80,
-        numIter: 500,
-        initialTemp: 200,
-        coolingFactor: 0.95,
-        minTemp: 1.0
-      });
-
-      layoutRef.current = layout;
-      layout.run();
+      applyLayout(cy, selectedLayout);
     } catch (err) {
       console.warn("Cytoscape init/update error:", err);
     }
@@ -297,7 +323,7 @@ export const CytoscapeGraph: React.FC = () => {
     };
   }, []);
 
-  // Graph Action Controls
+  // Controls
   const handleZoomIn = () => cyRef.current?.zoom(cyRef.current.zoom() * 1.25);
   const handleZoomOut = () => cyRef.current?.zoom(cyRef.current.zoom() * 0.8);
   const handleFit = () => cyRef.current?.fit();
@@ -308,6 +334,13 @@ export const CytoscapeGraph: React.FC = () => {
       setSelectedNode(null);
       setSelectedEdge(null);
       setPathResult(null);
+    }
+  };
+
+  const handleLayoutChange = (newLayout: string) => {
+    setSelectedLayout(newLayout);
+    if (cyRef.current) {
+      applyLayout(cyRef.current, newLayout);
     }
   };
 
@@ -342,26 +375,26 @@ export const CytoscapeGraph: React.FC = () => {
   };
 
   return (
-    <div className="flex h-full w-full bg-terminal-bg select-none">
+    <div className="flex h-full w-full bg-[#080b11] select-none text-slate-200">
       {/* Central Visual Graph Canvas */}
-      <div className="flex-1 flex flex-col h-full terminal-border-r">
+      <div className="flex-1 flex flex-col h-full border-r border-[#1a2234]">
         {/* Graph Toolbar */}
-        <div className="h-11 bg-terminal-surface terminal-border-b px-3 flex items-center justify-between">
+        <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-3 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs font-semibold text-white">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-100 font-mono uppercase tracking-wider">
               <Share2 className="w-3.5 h-3.5 text-sky-400" />
               <span>Ontology Relationship Explorer</span>
             </div>
 
             {/* Filter by Category */}
-            <div className="flex items-center gap-1.5 text-xs text-slate-400">
+            <div className="flex items-center gap-1 text-xs text-slate-400">
               <Filter className="w-3 h-3 text-slate-500" />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-slate-900 border border-slate-700/80 text-slate-200 px-2 py-0.5 rounded text-[11px] focus:outline-none focus:border-sky-500"
+                className="bg-[#111622] border border-[#1a2234] text-slate-300 px-2 py-0.5 rounded text-[11px] focus:outline-none focus:border-sky-500"
               >
-                <option value="all">All Categories</option>
+                <option value="all">All Ontology Categories</option>
                 {graphData?.categories.map((c) => (
                   <option key={c} value={c}>
                     {c}
@@ -370,10 +403,25 @@ export const CytoscapeGraph: React.FC = () => {
               </select>
             </div>
 
+            {/* Layout Selector */}
+            <div className="flex items-center gap-1 text-xs text-slate-400">
+              <Layers className="w-3 h-3 text-slate-500" />
+              <select
+                value={selectedLayout}
+                onChange={(e) => handleLayoutChange(e.target.value)}
+                className="bg-[#111622] border border-[#1a2234] text-slate-300 px-2 py-0.5 rounded text-[11px] focus:outline-none focus:border-sky-500"
+              >
+                <option value="cose">Force-Directed (CoSE)</option>
+                <option value="concentric">Concentric (Degree)</option>
+                <option value="breadthfirst">Breadth-First (Hierarchical)</option>
+                <option value="circle">Circular Topology</option>
+              </select>
+            </div>
+
             {/* Min Lift Slider */}
-            <div className="flex items-center gap-2 text-xs text-slate-400">
+            <div className="flex items-center gap-1.5 text-xs text-slate-400">
               <SlidersHorizontal className="w-3 h-3 text-slate-500" />
-              <span className="text-[11px]">Min Lift:</span>
+              <span className="text-[11px] font-mono">Lift:</span>
               <input
                 type="range"
                 min="1.5"
@@ -381,9 +429,9 @@ export const CytoscapeGraph: React.FC = () => {
                 step="0.1"
                 value={minLift}
                 onChange={(e) => setMinLift(parseFloat(e.target.value))}
-                className="w-16 accent-sky-400 cursor-pointer"
+                className="w-14 accent-sky-400 cursor-pointer"
               />
-              <span className="text-amber-400 font-mono text-[11px] font-semibold tabular-nums">
+              <span className="text-slate-200 font-mono text-[11px] font-medium tabular-nums">
                 {minLift.toFixed(1)}x
               </span>
             </div>
@@ -391,7 +439,7 @@ export const CytoscapeGraph: React.FC = () => {
 
           {/* Node Search & Canvas Controls */}
           <div className="flex items-center gap-1.5">
-            <div className="flex items-center px-2 py-0.5 bg-slate-900 border border-slate-700/80 rounded">
+            <div className="flex items-center px-2 py-0.5 bg-[#111622] border border-[#1a2234] rounded">
               <input
                 type="text"
                 placeholder="Find entity..."
@@ -405,33 +453,33 @@ export const CytoscapeGraph: React.FC = () => {
               </button>
             </div>
 
-            <div className="h-4 w-px bg-terminal-border mx-1" />
+            <div className="h-4 w-px bg-[#1a2234] mx-0.5" />
 
             <button
               onClick={handleZoomIn}
               title="Zoom In"
-              className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-sky-400 border border-slate-700/60"
+              className="p-1 hover:bg-[#111622] rounded text-slate-400 hover:text-slate-200 border border-[#1a2234]"
             >
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={handleZoomOut}
               title="Zoom Out"
-              className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-sky-400 border border-slate-700/60"
+              className="p-1 hover:bg-[#111622] rounded text-slate-400 hover:text-slate-200 border border-[#1a2234]"
             >
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={handleFit}
               title="Fit to Screen"
-              className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-sky-400 border border-slate-700/60"
+              className="p-1 hover:bg-[#111622] rounded text-slate-400 hover:text-slate-200 border border-[#1a2234]"
             >
               <Maximize2 className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={handleReset}
               title="Reset View"
-              className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-sky-400 border border-slate-700/60"
+              className="p-1 hover:bg-[#111622] rounded text-slate-400 hover:text-slate-200 border border-[#1a2234]"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -441,22 +489,22 @@ export const CytoscapeGraph: React.FC = () => {
         {/* Cytoscape Container */}
         <div className="relative flex-1 w-full bg-[#070a10]">
           {loading && (
-            <div className="absolute inset-0 bg-terminal-bg/80 flex items-center justify-center z-10">
+            <div className="absolute inset-0 bg-[#080b11]/85 flex items-center justify-center z-10">
               <div className="flex flex-col items-center gap-2">
-                <span className="w-6 h-6 border-2 border-sky-400 border-t-transparent rounded-full animate-spin" />
-                <span className="text-xs text-sky-400 font-medium">Computing graph layout...</span>
+                <span className="w-5 h-5 border-2 border-sky-400 border-t-transparent rounded-full animate-spin" />
+                <span className="text-xs text-slate-300 font-mono">Computing ontology layout...</span>
               </div>
             </div>
           )}
 
           {error && (
             <div className="absolute inset-0 flex items-center justify-center p-4">
-              <div className="bg-terminal-panel terminal-border p-4 rounded-lg max-w-md text-center shadow-lg">
-                <span className="text-red-400 text-xs font-semibold">Error Loading Graph</span>
+              <div className="bg-[#0c1017] border border-rose-900/50 p-4 rounded max-w-md text-center">
+                <span className="text-rose-400 text-xs font-semibold">Error Loading Graph</span>
                 <p className="text-xs text-slate-400 mt-1">{error}</p>
                 <button
                   onClick={fetchGraph}
-                  className="mt-3 px-3 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded text-xs text-sky-400"
+                  className="mt-3 px-3 py-1 bg-[#111622] hover:bg-slate-800 border border-[#1a2234] rounded text-xs text-sky-400"
                 >
                   Retry
                 </button>
@@ -467,32 +515,32 @@ export const CytoscapeGraph: React.FC = () => {
           <div ref={containerRef} className="w-full h-full" />
 
           {/* Graph Legend Overlay */}
-          <div className="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800/80 p-2.5 rounded-lg backdrop-blur text-[11px] space-y-1.5 z-10 shadow-lg">
-            <div className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Ontology Palette</div>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+          <div className="absolute bottom-3 left-3 bg-[#0c1017]/95 border border-[#1a2234] p-2.5 rounded text-[11px] space-y-1.5 z-10 font-mono shadow-sm">
+            <div className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Ontology Legend</div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px]">
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
-                <span className="text-slate-300">Avenue</span>
+                <span className="w-2 h-2 rounded bg-sky-400" />
+                <span className="text-slate-300">Corporate Filer</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#22c55e]" />
-                <span className="text-slate-300">Mutual Funds</span>
+                <span className="w-2 h-2 rounded bg-teal-400" />
+                <span className="text-slate-300">Business Segment</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#eab308]" />
-                <span className="text-slate-300">Equity Market</span>
+                <span className="w-2 h-2 rounded bg-slate-400" />
+                <span className="text-slate-300">Financial Metric</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#a855f7]" />
-                <span className="text-slate-300">Sovereign Bonds</span>
+                <span className="w-2 h-2 rounded bg-amber-400" />
+                <span className="text-slate-300">Risk Disclosure</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#f97316]" />
-                <span className="text-slate-300">Fixed Deposits</span>
+                <span className="w-2 h-2 rounded bg-indigo-400" />
+                <span className="text-slate-300">Survey Avenue</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#ffd700]" />
-                <span className="text-slate-300">Gold / Bullion</span>
+                <span className="w-2 h-2 rounded bg-rose-400" />
+                <span className="text-slate-300">Regulatory Filing</span>
               </div>
             </div>
           </div>
@@ -500,93 +548,93 @@ export const CytoscapeGraph: React.FC = () => {
       </div>
 
       {/* Right Contextual Intelligence Panel */}
-      <div className="w-80 bg-terminal-surface flex flex-col h-full overflow-y-auto shrink-0 select-text">
+      <div className="w-80 bg-[#0c1017] flex flex-col h-full overflow-y-auto shrink-0 select-text border-l border-[#1a2234]">
         {/* Panel Header */}
-        <div className="h-11 bg-terminal-panel terminal-border-b px-3 flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-400">
-            <Info className="w-3.5 h-3.5" />
-            <span>Contextual Intelligence</span>
+        <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-3 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 font-mono uppercase tracking-wider">
+            <Info className="w-3.5 h-3.5 text-sky-400" />
+            <span>Entity & Tie Inspector</span>
           </div>
         </div>
 
         {/* Selected Node Details */}
         {selectedNode ? (
-          <div className="p-3.5 space-y-4">
+          <div className="p-3.5 space-y-3">
             <div>
-              <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Selected Node</div>
-              <div className="text-sm font-semibold text-white mt-0.5">
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Selected Ontology Node</div>
+              <div className="text-sm font-semibold text-slate-100 font-mono mt-0.5">
                 {selectedNode.label}
               </div>
-              <div className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-slate-800 border border-slate-700 text-amber-400">
-                Category: {selectedNode.category}
+              <div className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-mono uppercase bg-[#111622] border border-[#1a2234] text-sky-400">
+                {selectedNode.category}
               </div>
             </div>
 
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-lg p-3 space-y-2 text-xs">
+            <div className="bg-[#111622] border border-[#1a2234] rounded p-2.5 space-y-2 text-xs font-mono">
               <div className="flex justify-between">
-                <span className="text-slate-400">Node Type:</span>
-                <span className="text-slate-200 font-mono">{selectedNode.ntype}</span>
+                <span className="text-slate-500">Node Type:</span>
+                <span className="text-slate-300">{selectedNode.ntype}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Association Degree:</span>
-                <span className="text-amber-400 font-mono font-semibold tabular-nums">{selectedNode.degree} Edges</span>
+                <span className="text-slate-500">Association Degree:</span>
+                <span className="text-slate-200 font-semibold tabular-nums">{selectedNode.degree} Edges</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Survey Observations:</span>
-                <span className="text-emerald-400 font-mono font-semibold tabular-nums">{selectedNode.records_count} Records</span>
+                <span className="text-slate-500">Supporting Records:</span>
+                <span className="text-slate-200 font-semibold tabular-nums">{selectedNode.records_count}</span>
               </div>
               {selectedNode.value && (
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Raw Attribute:</span>
+                  <span className="text-slate-500">Raw Attribute:</span>
                   <span className="text-slate-300">{selectedNode.value}</span>
                 </div>
               )}
             </div>
 
-            <div>
-              <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Empirical Provenance</div>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Extracted from empirical survey responses. Inter-connected by statistical lift
-                measurements (&ge; 1.5). Systematically co-occurs with linked investor objectives.
+            <div className="space-y-1">
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Provenance & Integrity</div>
+              <p className="text-[11px] text-slate-400 leading-relaxed">
+                Indexed in in-memory RDF knowledge graph. Verified with statistical lift measurements
+                (&ge; 1.5). Systematically grounded in audited financial disclosures.
               </p>
             </div>
           </div>
         ) : selectedEdge ? (
-          <div className="p-3.5 space-y-4">
+          <div className="p-3.5 space-y-3">
             <div>
-              <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Selected Association Tie</div>
-              <div className="text-xs font-semibold text-sky-400 mt-1">
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Selected Association Tie</div>
+              <div className="text-xs font-semibold text-sky-400 font-mono mt-1">
                 {selectedEdge.source} ↔ {selectedEdge.target}
               </div>
             </div>
 
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-lg p-3 space-y-2 text-xs">
+            <div className="bg-[#111622] border border-[#1a2234] rounded p-2.5 space-y-2 text-xs font-mono">
               <div className="flex justify-between">
-                <span className="text-slate-400">Predicate:</span>
-                <span className="text-slate-200 font-mono">{selectedEdge.predicate}</span>
+                <span className="text-slate-500">Predicate:</span>
+                <span className="text-slate-300">{selectedEdge.predicate}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Statistical Lift:</span>
-                <span className="text-amber-400 font-mono font-semibold tabular-nums">{selectedEdge.lift}x</span>
+                <span className="text-slate-500">Statistical Lift:</span>
+                <span className="text-sky-400 font-semibold tabular-nums">{selectedEdge.lift}x</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Co-Occurrence Count:</span>
-                <span className="text-emerald-400 font-mono font-semibold tabular-nums">{selectedEdge.count} Pairs</span>
+                <span className="text-slate-500">Co-Occurrence Count:</span>
+                <span className="text-slate-200 tabular-nums">{selectedEdge.count} Pairs</span>
               </div>
             </div>
           </div>
         ) : (
           <div className="p-4 text-center text-xs text-slate-500 flex flex-col items-center justify-center flex-1">
             <Share2 className="w-8 h-8 text-slate-700 mb-2" />
-            <span>Click any node or edge to inspect ontology attributes</span>
+            <span className="font-mono text-[11px]">Select any node or edge to inspect attributes</span>
           </div>
         )}
 
         {/* Shortest Path Finder Section */}
-        <div className="mt-auto terminal-border-t p-3 bg-slate-900/40 space-y-2">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-400">
-            <Route className="w-3.5 h-3.5" />
-            <span>Dijkstra Weighted Pathfinder</span>
+        <div className="mt-auto border-t border-[#1a2234] p-3 bg-[#0c1017] space-y-2 shrink-0">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 font-mono uppercase tracking-wider">
+            <Route className="w-3.5 h-3.5 text-sky-400" />
+            <span>Dijkstra Weighted Path</span>
           </div>
           <div className="space-y-1.5">
             <input
@@ -594,35 +642,37 @@ export const CytoscapeGraph: React.FC = () => {
               placeholder="Source entity [e.g. Mutual Funds]"
               value={sourceNode}
               onChange={(e) => setSourceNode(e.target.value)}
-              className="w-full px-2.5 py-1.5 bg-terminal-bg terminal-border rounded text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-sky-500"
+              className="w-full px-2 py-1 bg-[#111622] border border-[#1a2234] rounded text-[11px] font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
             />
             <input
               type="text"
               placeholder="Target entity [e.g. Safe Investment]"
               value={targetNode}
               onChange={(e) => setTargetNode(e.target.value)}
-              className="w-full px-2.5 py-1.5 bg-terminal-bg terminal-border rounded text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-sky-500"
+              className="w-full px-2 py-1 bg-[#111622] border border-[#1a2234] rounded text-[11px] font-mono text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
             />
             <button
               onClick={handleFindPath}
               disabled={pathLoading || !sourceNode || !targetNode}
-              className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700/80 rounded text-xs font-medium text-sky-400 transition-colors disabled:opacity-50"
+              className="w-full py-1 bg-[#111622] hover:bg-slate-800 border border-[#1a2234] rounded text-[11px] font-mono font-medium text-sky-400 transition-colors disabled:opacity-50"
             >
-              {pathLoading ? "Calculating Shortest Path..." : "Find Shortest Path (1/Lift)"}
+              {pathLoading ? "Calculating Path..." : "Find Shortest Path (1/Lift)"}
             </button>
           </div>
 
           {pathResult && (
-            <div className="mt-2 p-2.5 bg-slate-900 border border-slate-800 rounded text-xs">
+            <div className="mt-2 p-2 bg-[#111622] border border-[#1a2234] rounded text-xs font-mono">
               {pathResult.found ? (
                 <div className="space-y-1">
-                  <div className="text-emerald-400 font-medium">Path Found ({pathResult.path.length - 1} hops):</div>
-                  <div className="text-slate-300 font-mono text-[11px] leading-relaxed">
+                  <div className="text-sky-400 font-medium text-[11px]">
+                    Path Verified ({pathResult.path.length - 1} hops):
+                  </div>
+                  <div className="text-slate-300 text-[10px] leading-relaxed">
                     {pathResult.path.join(" → ")}
                   </div>
                 </div>
               ) : (
-                <div className="text-red-400">No path found within 3 hops</div>
+                <div className="text-rose-400 text-[11px]">No path found within 3 hops</div>
               )}
             </div>
           )}

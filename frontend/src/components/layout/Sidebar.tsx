@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   LayoutDashboard,
   Building2,
@@ -11,8 +11,9 @@ import {
   Calculator,
   Sliders,
   ChevronRight,
-  ShieldCheck,
-  Server
+  ChevronLeft,
+  PanelLeftClose,
+  PanelLeftOpen
 } from "lucide-react";
 
 interface SidebarProps {
@@ -32,13 +33,35 @@ const MODULES = [
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeModule, onSelectModule }) => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <aside className="w-56 bg-terminal-surface terminal-border-r flex flex-col justify-between shrink-0 select-none">
-      <div className="py-2.5">
-        <div className="px-3 pb-2 text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
-          Workstation Navigation
+    <aside
+      className={`${
+        collapsed ? "w-12" : "w-52"
+      } bg-terminal-surface terminal-border-r flex flex-col justify-between shrink-0 select-none transition-all duration-150`}
+    >
+      <div className="py-2">
+        <div className="px-2.5 pb-2 flex items-center justify-between">
+          {!collapsed && (
+            <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase font-mono">
+              Workstation
+            </span>
+          )}
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="p-1 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition-colors ml-auto"
+            title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+          >
+            {collapsed ? (
+              <PanelLeftOpen className="w-3.5 h-3.5" />
+            ) : (
+              <PanelLeftClose className="w-3.5 h-3.5" />
+            )}
+          </button>
         </div>
-        <nav className="space-y-0.5 px-2">
+
+        <nav className="space-y-0.5 px-1.5">
           {MODULES.map((item) => {
             const Icon = item.icon;
             const isActive = activeModule === item.id;
@@ -46,26 +69,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, onSelectModule }
               <button
                 key={item.id}
                 onClick={() => onSelectModule(item.id)}
-                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
+                title={collapsed ? `${item.label} (${item.hotkey})` : undefined}
+                className={`w-full flex items-center ${
+                  collapsed ? "justify-center px-1.5" : "justify-between px-2"
+                } py-1.5 rounded text-xs font-medium transition-all ${
                   isActive
-                    ? "bg-slate-800/80 text-sky-400 border border-slate-700/70 shadow-sm"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40"
+                    ? "bg-slate-800 text-slate-100 border border-slate-700/80 shadow-sm"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
                 }`}
               >
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <Icon
-                    className={`w-4 h-4 ${
+                    className={`w-3.5 h-3.5 shrink-0 ${
                       isActive ? "text-sky-400" : "text-slate-500"
                     }`}
                   />
-                  <span>{item.label}</span>
+                  {!collapsed && <span className="truncate">{item.label}</span>}
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] text-slate-500 font-mono px-1 py-0.2 rounded bg-slate-900 border border-slate-800">
+                {!collapsed && (
+                  <span className="text-[9px] text-slate-500 font-mono px-1 py-0.2 rounded bg-slate-900 border border-slate-800 shrink-0">
                     {item.hotkey}
                   </span>
-                  {isActive && <ChevronRight className="w-3 h-3 text-sky-400" />}
-                </div>
+                )}
               </button>
             );
           })}

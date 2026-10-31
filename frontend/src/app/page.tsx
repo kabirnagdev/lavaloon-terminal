@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { TopNav } from "@/components/layout/TopNav";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { BottomStatusBar } from "@/components/layout/BottomStatusBar";
 import { OverviewDashboard } from "@/components/dashboard/OverviewDashboard";
 import { CompanyExplorer } from "@/components/companies/CompanyExplorer";
+import { FinancialIntelligenceWorkspace } from "@/components/financials/FinancialIntelligenceWorkspace";
 import { CytoscapeGraph } from "@/components/graph/CytoscapeGraph";
 import { ResearchWorkspace } from "@/components/research/ResearchWorkspace";
 import { DueDiligenceView } from "@/components/diligence/DueDiligenceView";
@@ -49,7 +51,7 @@ export default function TerminalWorkstation() {
           break;
         case "F3":
           e.preventDefault();
-          setActiveModule("companies"); // Financial intel shared in explorer
+          setActiveModule("financials");
           break;
         case "F4":
           e.preventDefault();
@@ -123,9 +125,8 @@ export default function TerminalWorkstation() {
           )}
 
           {activeModule === "financials" && (
-            <CompanyExplorer
-              selectedCompanyId={selectedCompanyId}
-              onSelectCompany={setSelectedCompanyId}
+            <FinancialIntelligenceWorkspace
+              initialCompanyId={selectedCompanyId}
               onNavigateToDiligence={(targetId) => {
                 setSelectedCompanyId(targetId);
                 setActiveModule("diligence");
@@ -150,6 +151,13 @@ export default function TerminalWorkstation() {
           )}
         </main>
       </div>
+
+      {/* Institutional Bottom Status Bar */}
+      <BottomStatusBar
+        health={health}
+        activeCompany={companies.find((c) => c.id === selectedCompanyId)}
+        activeModule={activeModule}
+      />
     </div>
   );
 }
