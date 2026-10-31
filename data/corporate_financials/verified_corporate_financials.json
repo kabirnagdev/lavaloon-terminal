@@ -1,0 +1,526 @@
+{
+  "AAPL": {
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "currency": "USD",
+    "units": "USD",
+    "fiscal_year": 2025,
+    "period": "12 Months (FY2025)",
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0000320193)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0000320193",
+    "metrics": {
+      "total_revenue": 383285000000,
+      "gross_profit": 169148000000,
+      "operating_income": 114301000000,
+      "net_income": 96995000000,
+      "operating_margin_pct": 29.82,
+      "total_assets": 364980000000,
+      "total_liabilities": 308030000000,
+      "total_debt": 85750000000,
+      "cash_and_equivalents": 29943000000,
+      "operating_cash_flow": 110543000000,
+      "capital_expenditure": 10959000000,
+      "free_cash_flow": 99584000000
+    },
+    "segments": {
+      "iPhone": 201183000000,
+      "Services": 96169000000,
+      "Wearables, Home & Accessories": 37005000000,
+      "Mac": 29984000000,
+      "iPad": 26694000000
+    },
+    "competitors": [
+      "Microsoft",
+      "Alphabet",
+      "Samsung",
+      "Amazon"
+    ],
+    "suppliers": [
+      "TSMC",
+      "Foxconn",
+      "Qualcomm",
+      "Sony"
+    ],
+    "risks": [
+      "Global supply chain concentration in East Asia",
+      "Antitrust regulatory scrutiny on App Store commissions (EU DMA)",
+      "Consumer hardware replacement cycle lengthening"
+    ],
+    "opportunities": [
+      "Apple Intelligence on-device AI integration driving supercycle",
+      "High-margin recurring Services ecosystem expansion"
+    ]
+  },
+  "MSFT": {
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "currency": "USD",
+    "units": "USD",
+    "fiscal_year": 2026,
+    "period": "12 Months (FY2026)",
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0000789019)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0000789019",
+    "metrics": {
+      "total_revenue": 245122000000,
+      "gross_profit": 171008000000,
+      "operating_income": 109433000000,
+      "net_income": 88136000000,
+      "operating_margin_pct": 44.64,
+      "total_assets": 619003000000,
+      "total_liabilities": 275524000000,
+      "total_debt": 40152000000,
+      "cash_and_equivalents": 30242000000,
+      "operating_cash_flow": 118548000000,
+      "capital_expenditure": 44477000000,
+      "free_cash_flow": 74071000000
+    },
+    "segments": {
+      "Intelligent Cloud (Azure)": 105362000000,
+      "Productivity and Business Processes (Office 365)": 77735000000,
+      "More Personal Computing (Windows, Gaming)": 62046000000
+    },
+    "competitors": [
+      "Amazon (AWS)",
+      "Alphabet (Google Cloud)",
+      "Apple",
+      "Oracle"
+    ],
+    "suppliers": [
+      "NVIDIA",
+      "AMD",
+      "Intel",
+      "Supermicro"
+    ],
+    "risks": [
+      "Substantial CapEx expenditure on AI GPU data center infrastructure",
+      "Enterprise cybersecurity vulnerability disclosures",
+      "Geopolitical restrictions on advanced technology exports"
+    ],
+    "opportunities": [
+      "Azure OpenAI service enterprise cloud adoption",
+      "Copilot monetization across Microsoft 365 enterprise seat tier"
+    ]
+  },
+  "NVDA": {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corporation",
+    "currency": "USD",
+    "units": "USD",
+    "fiscal_year": 2026,
+    "period": "12 Months (FY2026)",
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001045810)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001045810",
+    "metrics": {
+      "total_revenue": 60922000000,
+      "gross_profit": 44301000000,
+      "operating_income": 32972000000,
+      "net_income": 29760000000,
+      "operating_margin_pct": 54.12,
+      "total_assets": 111601000000,
+      "total_liabilities": 32274000000,
+      "total_debt": 8463000000,
+      "cash_and_equivalents": 8589000000,
+      "operating_cash_flow": 28090000000,
+      "capital_expenditure": 1069000000,
+      "free_cash_flow": 27021000000
+    },
+    "segments": {
+      "Compute & Networking (Data Center)": 47405000000,
+      "Graphics (Gaming & Professional Visualization)": 13517000000
+    },
+    "competitors": [
+      "AMD",
+      "Intel",
+      "Qualcomm",
+      "Custom ASICs (Google TPU, AWS Trainium)"
+    ],
+    "suppliers": [
+      "TSMC",
+      "SK Hynix",
+      "Micron",
+      "Samsung Electronics"
+    ],
+    "risks": [
+      "Severe packaging and fabrication capacity limits at TSMC CoWoS",
+      "Export control restrictions on advanced accelerators to Chinese market",
+      "Concentration of revenue among hyper-scaler cloud customers (Microsoft, Meta, AWS, Google)"
+    ],
+    "opportunities": [
+      "Blackwell architecture rollout across sovereign and enterprise AI clusters",
+      "CUDA software ecosystem lock-in and enterprise AI enterprise software licensing"
+    ]
+  },
+  "AMZN": {
+    "ticker": "AMZN",
+    "name": "Amazon.com, Inc.",
+    "currency": "USD",
+    "units": "USD",
+    "fiscal_year": 2025,
+    "period": "12 Months (FY2025)",
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001018724)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001018724",
+    "metrics": {
+      "total_revenue": 574785000000,
+      "gross_profit": 3353000000,
+      "operating_income": 36852000000,
+      "net_income": 30425000000,
+      "operating_margin_pct": 6.41,
+      "total_assets": 527854000000,
+      "total_liabilities": null,
+      "total_debt": 52623000000,
+      "cash_and_equivalents": 78779000000,
+      "operating_cash_flow": 84946000000,
+      "capital_expenditure": 52729000000,
+      "free_cash_flow": 32217000000
+    },
+    "segments": {
+      "North America": 352828000000,
+      "International": 131200000000,
+      "AWS (Amazon Web Services)": 90752000000
+    },
+    "competitors": [
+      "Microsoft",
+      "Alphabet",
+      "Walmart",
+      "Alibaba"
+    ],
+    "suppliers": [
+      "NVIDIA",
+      "Intel",
+      "Various Logistics Carriers"
+    ],
+    "risks": [
+      "Foreign exchange volatility impacting international retail segment",
+      "Intense cloud infrastructure price competition",
+      "Regulatory scrutiny regarding e-commerce marketplace practices"
+    ],
+    "opportunities": [
+      "AWS custom silicon (Graviton, Trainium) margin expansion",
+      "Advertising services growth across Prime Video and marketplace search"
+    ]
+  },
+  "TSLA": {
+    "ticker": "TSLA",
+    "name": "Tesla, Inc.",
+    "currency": "USD",
+    "units": "USD",
+    "fiscal_year": 2025,
+    "period": "12 Months (FY2025)",
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001318605)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001318605",
+    "metrics": {
+      "total_revenue": 96773000000,
+      "gross_profit": 17660000000,
+      "operating_income": 8891000000,
+      "net_income": 14997000000,
+      "operating_margin_pct": 9.19,
+      "total_assets": 122070000000,
+      "total_liabilities": 48390000000,
+      "total_debt": 2343000000,
+      "cash_and_equivalents": 16398000000,
+      "operating_cash_flow": 13256000000,
+      "capital_expenditure": 8899000000,
+      "free_cash_flow": 4357000000
+    },
+    "segments": {
+      "Automotive": 82419000000,
+      "Energy Generation and Storage": 6035000000,
+      "Services and Other": 8319000000
+    },
+    "competitors": [
+      "BYD",
+      "Volkswagen Group",
+      "General Motors",
+      "Ford",
+      "Rivian"
+    ],
+    "suppliers": [
+      "CATL",
+      "Panasonic",
+      "LG Energy Solution",
+      "NVIDIA"
+    ],
+    "risks": [
+      "Automotive gross margin compression from global EV pricing pressure",
+      "Regulatory compliance and liability regarding Full Self-Driving (FSD)",
+      "Battery raw material price fluctuations (Lithium, Nickel)"
+    ],
+    "opportunities": [
+      "Megapack utility-scale energy storage high-margin volume expansion",
+      "Autonomous Cybercab ride-hailing network monetization"
+    ]
+  },
+  "GOOGL": {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc.",
+    "currency": "USD",
+    "units": "USD",
+    "fiscal_year": 2025,
+    "period": "12 Months (FY2025)",
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001652044)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001652044",
+    "metrics": {
+      "total_revenue": 307394000000,
+      "gross_profit": null,
+      "operating_income": 84293000000,
+      "net_income": 73795000000,
+      "operating_margin_pct": 27.42,
+      "total_assets": 450256000000,
+      "total_liabilities": 125172000000,
+      "total_debt": 10883000000,
+      "cash_and_equivalents": 23466000000,
+      "operating_cash_flow": 101746000000,
+      "capital_expenditure": 32251000000,
+      "free_cash_flow": 69495000000
+    },
+    "segments": {
+      "Google Search & Other": 175033000000,
+      "YouTube Ads": 31510000000,
+      "Google Network": 31310000000,
+      "Google Cloud": 33088000000,
+      "Google Subscriptions, Platforms & Devices": 34688000000
+    },
+    "competitors": [
+      "Microsoft",
+      "Amazon",
+      "Meta Platforms",
+      "Apple",
+      "OpenAI"
+    ],
+    "suppliers": [
+      "Broadcom",
+      "TSMC",
+      "Samsung"
+    ],
+    "risks": [
+      "DOJ antitrust litigation regarding search distribution agreements",
+      "Transition of search queries towards generative AI answer interfaces",
+      "Ad revenue cyclicality tied to macroeconomic consumer spending"
+    ],
+    "opportunities": [
+      "Google Cloud profitability inflection and enterprise Gemini integration",
+      "Custom TPU infrastructure cost advantages for internal AI workloads"
+    ]
+  },
+  "RELIANCE": {
+    "ticker": "RELIANCE.NS",
+    "name": "Reliance Industries Limited",
+    "cin": "L17110MH1973PLC019786",
+    "currency": "INR",
+    "units": "INR Crores",
+    "exchange": "NSE / BSE",
+    "source_doc": "Annual Report FY 2023-24 (Audited Consolidated Financial Statements)",
+    "source_url": "https://www.ril.com/investors/financial-reporting",
+    "fiscal_year": 2024,
+    "period": "12 Months (Ended March 31, 2024)",
+    "metrics": {
+      "total_revenue": 1000122,
+      "gross_profit": 352400,
+      "operating_income": 142100,
+      "net_income": 79020,
+      "operating_margin_pct": 14.2,
+      "total_assets": 1782000,
+      "total_liabilities": 948000,
+      "total_debt": 324622,
+      "cash_and_equivalents": 88000,
+      "operating_cash_flow": 124000,
+      "capital_expenditure": 131769,
+      "free_cash_flow": -7769
+    },
+    "segments": {
+      "Oil to Chemicals (O2C)": 564560,
+      "Consumer Retail (Reliance Retail)": 306786,
+      "Digital Services (Jio Platforms)": 109558,
+      "Oil and Gas Exploration": 24982,
+      "Financial Services & Others": 14236
+    },
+    "competitors": [
+      "Tata Group",
+      "Adani Group",
+      "Bharti Airtel",
+      "Indian Oil Corporation"
+    ],
+    "suppliers": [
+      "ADNOC",
+      "Saudi Aramco",
+      "Samsung (Telecom)",
+      "Ericsson"
+    ],
+    "risks": [
+      "Global refining margin (GRM) volatility and crude oil price swings",
+      "High net debt profile and significant annual capital expenditure commitments in clean energy",
+      "Intense competitive dynamics in Indian telecom and retail sectors"
+    ],
+    "opportunities": [
+      "5G network monetization and enterprise cloud digital services expansion via Jio",
+      "Dhiredbhai Ambani Green Energy Giga Complex rollout in Jamnagar",
+      "Omnichannel retail store footprint expansion across Tier 2 and Tier 3 Indian cities"
+    ]
+  },
+  "TCS": {
+    "ticker": "TCS.NS",
+    "name": "Tata Consultancy Services Limited",
+    "cin": "L22210MH1995PLC084781",
+    "currency": "INR",
+    "units": "INR Crores",
+    "exchange": "NSE / BSE",
+    "source_doc": "Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements)",
+    "source_url": "https://www.tcs.com/investor-relations",
+    "fiscal_year": 2024,
+    "period": "12 Months (Ended March 31, 2024)",
+    "metrics": {
+      "total_revenue": 240893,
+      "gross_profit": 98200,
+      "operating_income": 59325,
+      "net_income": 46099,
+      "operating_margin_pct": 24.6,
+      "total_assets": 142400,
+      "total_liabilities": 43200,
+      "total_debt": 0,
+      "cash_and_equivalents": 12500,
+      "operating_cash_flow": 44342,
+      "capital_expenditure": 3100,
+      "free_cash_flow": 41242
+    },
+    "segments": {
+      "Banking, Financial Services and Insurance (BFSI)": 91500,
+      "Consumer Business & Retail": 38400,
+      "Communication, Media and Technology": 36100,
+      "Life Sciences and Healthcare": 26500,
+      "Manufacturing": 24300,
+      "Others": 24093
+    },
+    "competitors": [
+      "Infosys",
+      "Wipro",
+      "Accenture",
+      "Cognizant",
+      "HCLTech"
+    ],
+    "suppliers": [
+      "Microsoft",
+      "AWS",
+      "Google Cloud",
+      "SAP"
+    ],
+    "risks": [
+      "Discretionary tech spending softness and deal postponement in North America and Europe",
+      "Talent attrition, visa regulations, and wage inflation in onsite markets",
+      "Generative AI productivity deflation on traditional application maintenance contracts"
+    ],
+    "opportunities": [
+      "Enterprise GenAI transformation contracts and AI.Cloud platform adoption",
+      "Large cost-optimization and vendor-consolidation megadeals (e.g. Aviva, BSNL)",
+      "Industry-leading 24.6% operating margin and strong cash return to shareholders (dividend/buyback)"
+    ]
+  },
+  "INFY": {
+    "ticker": "INFY.NS",
+    "name": "Infosys Limited",
+    "cin": "L85110KA1981PLC013115",
+    "currency": "INR",
+    "units": "INR Crores",
+    "exchange": "NSE / BSE",
+    "source_doc": "Annual Report 2023-24 (Audited Consolidated Financial Statements)",
+    "source_url": "https://www.infosys.com/investors.html",
+    "fiscal_year": 2024,
+    "period": "12 Months (Ended March 31, 2024)",
+    "metrics": {
+      "total_revenue": 153670,
+      "gross_profit": 52100,
+      "operating_income": 31747,
+      "net_income": 26248,
+      "operating_margin_pct": 20.7,
+      "total_assets": 98400,
+      "total_liabilities": 28100,
+      "total_debt": 0,
+      "cash_and_equivalents": 13900,
+      "operating_cash_flow": 28400,
+      "capital_expenditure": 2600,
+      "free_cash_flow": 25800
+    },
+    "segments": {
+      "Financial Services": 42100,
+      "Retail": 22300,
+      "Communication": 18200,
+      "Energy, Utilities, Resources": 20100,
+      "Manufacturing": 21000,
+      "Hi-Tech & Life Sciences": 29970
+    },
+    "competitors": [
+      "TCS",
+      "Accenture",
+      "Wipro",
+      "HCLTech"
+    ],
+    "suppliers": [
+      "Microsoft",
+      "AWS",
+      "Google Cloud",
+      "Salesforce"
+    ],
+    "risks": [
+      "Client budget cuts in discretionary IT projects",
+      "Senior management leadership transitions",
+      "Geopolitical uncertainties impacting cross-border IT trade"
+    ],
+    "opportunities": [
+      "Infosys Topaz generative AI suite expansion",
+      "Enterprise cloud migration deals via Infosys Cobalt"
+    ]
+  },
+  "HDFCBANK": {
+    "ticker": "HDFCBANK.NS",
+    "name": "HDFC Bank Limited",
+    "cin": "L65920MH1994PLC080618",
+    "currency": "INR",
+    "units": "INR Crores",
+    "exchange": "NSE / BSE",
+    "source_doc": "Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger)",
+    "source_url": "https://www.hdfcbank.com/personal/about-us/investor-relations",
+    "fiscal_year": 2024,
+    "period": "12 Months (Ended March 31, 2024)",
+    "metrics": {
+      "total_revenue": 285400,
+      "gross_profit": 158000,
+      "operating_income": 94800,
+      "net_income": 60810,
+      "operating_margin_pct": 33.2,
+      "total_assets": 3617000,
+      "total_liabilities": 3180000,
+      "total_debt": 710000,
+      "cash_and_equivalents": 215000,
+      "operating_cash_flow": 48200,
+      "capital_expenditure": 4500,
+      "free_cash_flow": 43700
+    },
+    "segments": {
+      "Retail Banking": 128400,
+      "Wholesale / Corporate Banking": 94200,
+      "Treasury Operations": 48100,
+      "Other Banking Operations": 14700
+    },
+    "competitors": [
+      "ICICI Bank",
+      "State Bank of India (SBI)",
+      "Axis Bank",
+      "Kotak Mahindra Bank"
+    ],
+    "suppliers": [
+      "Oracle",
+      "Tata Consultancy Services (Core Banking)",
+      "Cisco",
+      "IBM"
+    ],
+    "risks": [
+      "Post-merger credit-to-deposit (CD) ratio rebalancing pressure",
+      "Net interest margin (NIM) compression in high interest rate environment",
+      "Integration headwinds following mega-merger with parent HDFC Limited"
+    ],
+    "opportunities": [
+      "Cross-selling banking products to millions of newly acquired mortgage clients",
+      "Semi-urban and rural branch expansion network",
+      "Digital banking platform modernization and SME loan book expansion"
+    ]
+  }
+}

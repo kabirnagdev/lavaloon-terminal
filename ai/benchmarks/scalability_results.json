@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-10-30 22:14:19",
+  "benchmarks": {
+    "1000": {
+      "record_count": 1000,
+      "validation": {
+        "time_ms": 3.45,
+        "throughput_records_per_sec": 289446.1,
+        "is_valid": true
+      },
+      "graph": {
+        "bipartite_nodes": 1023,
+        "bipartite_edges": 6000,
+        "build_time_ms": 11.69,
+        "mean_traversal_ms": 0.0461
+      },
+      "vector_retrieval": {
+        "numpy_exact": {
+          "build_time_ms": 0.4,
+          "mean_query_latency_ms": 0.041,
+          "qps": 24385.3
+        },
+        "faiss_flat_exact": {
+          "build_time_ms": 1.0,
+          "mean_query_latency_ms": 0.1319,
+          "qps": 7578.7
+        },
+        "faiss_hnsw_ann": {
+          "build_time_ms": 8.83,
+          "mean_query_latency_ms": 0.0468,
+          "qps": 21345.5
+        }
+      },
+      "memory_usage_mb": 141.67
+    },
+    "10000": {
+      "record_count": 10000,
+      "validation": {
+        "time_ms": 5.25,
+        "throughput_records_per_sec": 1904625.9,
+        "is_valid": true
+      },
+      "graph": {
+        "bipartite_nodes": 10023,
+        "bipartite_edges": 60000,
+        "build_time_ms": 115.88,
+        "mean_traversal_ms": 0.3853
+      },
+      "vector_retrieval": {
+        "numpy_exact": {
+          "build_time_ms": 4.8,
+          "mean_query_latency_ms": 0.2541,
+          "qps": 3935.9
+        },
+        "faiss_flat_exact": {
+          "build_time_ms": 14.36,
+          "mean_query_latency_ms": 0.2479,
+          "qps": 4033.4
+        },
+        "faiss_hnsw_ann": {
+          "build_time_ms": 307.96,
+          "mean_query_latency_ms": 0.1071,
+          "qps": 9339.3
+        }
+      },
+      "memory_usage_mb": 256.33
+    },
+    "100000": {
+      "record_count": 100000,
+      "validation": {
+        "time_ms": 34.58,
+        "throughput_records_per_sec": 2891458.3,
+        "is_valid": true
+      },
+      "graph": {
+        "bipartite_nodes": 100023,
+        "bipartite_edges": 600000,
+        "build_time_ms": 1291.85,
+        "mean_traversal_ms": 3.3983
+      },
+      "vector_retrieval": {
+        "numpy_exact": {
+          "build_time_ms": 47.82,
+          "mean_query_latency_ms": 2.2162,
+          "qps": 451.2
+        },
+        "faiss_flat_exact": {
+          "build_time_ms": 98.76,
+          "mean_query_latency_ms": 2.4512,
+          "qps": 408.0
+        },
+        "faiss_hnsw_ann": {
+          "build_time_ms": 5512.38,
+          "mean_query_latency_ms": 0.416,
+          "qps": 2403.9
+        }
+      },
+      "memory_usage_mb": 364.55
+    }
+  }
+}
