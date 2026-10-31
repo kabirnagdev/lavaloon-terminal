@@ -71,27 +71,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, onSelectModule }
           })}
         </nav>
       </div>
-
-      {/* Terminal System Status Footer */}
-      <div className="p-3 bg-terminal-bg terminal-border-t">
-        <div className="text-[11px] text-slate-400 space-y-1.5">
-          <div className="flex justify-between items-center">
-            <span className="text-slate-500 text-[10px] uppercase">Engine:</span>
-            <span className="text-emerald-400 font-medium flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-              Operational
-            </span>
-          </div>
-          <div className="flex justify-between items-center text-[10px]">
-            <span className="text-slate-500 uppercase">Ontology:</span>
-            <span className="text-slate-300 font-mono">NetworkX / RDF</span>
-          </div>
-          <div className="flex justify-between items-center text-[10px]">
-            <span className="text-slate-500 uppercase">Rate Quota:</span>
-            <span className="text-amber-400/90 font-mono">6.5K TPM</span>
-          </div>
-        </div>
-      </div>
     </aside>
   );
 };

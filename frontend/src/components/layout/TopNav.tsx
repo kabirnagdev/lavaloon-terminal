@@ -131,7 +131,7 @@ export const TopNav: React.FC<TopNavProps> = ({
         {activeCompany && (
           <div className="hidden lg:flex items-center gap-1.5 px-2 py-0.5 bg-slate-800/40 border border-slate-700/50 rounded shrink-0 text-xs">
             <span className="text-[10px] text-slate-500 uppercase">Focus:</span>
-            <span className="font-mono font-semibold text-amber-400">
+            <span className="font-mono font-semibold text-slate-200">
               {activeCompany.ticker}
             </span>
           </div>
@@ -139,29 +139,23 @@ export const TopNav: React.FC<TopNavProps> = ({
       </div>
 
       {/* Right Telemetry & Health */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2.5">
         {/* Knowledge Graph Telemetry */}
         {health && (
-          <div className="hidden xl:flex items-center gap-3 text-xs text-slate-400">
+          <div className="hidden xl:flex items-center gap-2.5 text-xs text-slate-400">
             <div className="flex items-center gap-1.5" title="Dataset Records Count">
-              <Database className="w-3.5 h-3.5 text-sky-400/80" />
+              <Database className="w-3.5 h-3.5 text-slate-400" />
               <span className="font-mono tabular-nums text-slate-300">{health.records_count}</span>
               <span className="text-[10px] text-slate-500">records</span>
             </div>
             <div className="flex items-center gap-1.5" title="Graph Nodes / Edges">
-              <Layers className="w-3.5 h-3.5 text-amber-400/80" />
+              <Layers className="w-3.5 h-3.5 text-slate-400" />
               <span className="font-mono tabular-nums text-slate-300">{health.graph_nodes}N</span>
               <span className="text-slate-600">/</span>
               <span className="font-mono tabular-nums text-slate-300">{health.graph_edges}E</span>
             </div>
           </div>
         )}
-
-        {/* Live Indicator */}
-        <div className="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded text-[11px]">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 live-pulse" />
-          <span className="text-emerald-400 font-medium">Live Feed</span>
-        </div>
 
         {/* System Time */}
         <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 bg-terminal-bg terminal-border rounded text-[11px] text-slate-400 font-mono tabular-nums">
