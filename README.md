@@ -10,7 +10,7 @@ An institutional-grade financial intelligence workstation combining a **Bloomber
 
 ---
 
-## 🏛️ Platform Architecture
+## Platform Architecture
 
 ```
 finance-intelligence-terminal/
@@ -47,7 +47,7 @@ finance-intelligence-terminal/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: Docker Compose (Recommended)
 
@@ -83,7 +83,7 @@ Access the workstation at `http://localhost:3000`.
 
 ---
 
-## 🧪 Running Automated Tests
+## Running Automated Tests
 
 Run the complete test suite verifying all API endpoints, Pydantic validation, GraphRAG retrieval, Dijkstra pathfinding, and Black-Scholes formulas:
 
@@ -103,7 +103,7 @@ python3 ai/benchmarks/scalability_test.py
 
 ---
 
-## 🔍 Key Capabilities
+## Key Capabilities
 
 1. **Palantir Ontology Graph**:
    - High-performance Cytoscape.js canvas visualizing ontology entities and statistical lift ties.
