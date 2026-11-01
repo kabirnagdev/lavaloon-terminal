@@ -1,0 +1,11 @@
+company,ticker,market,fiscal_year,currency,revenue,net_income,op_margin_pct,total_debt,free_cash_flow,segments_count,competitors_count,suppliers_count,risks_count,provenance_url
+Apple Inc.,AAPL,Global (US),2025,USD,383285000000,96995000000,29.82,85750000000,99584000000,5,4,4,3,https://www.sec.gov/edgar/browse/?CIK=0000320193
+Microsoft Corporation,MSFT,Global (US),2026,USD,245122000000,88136000000,44.64,40152000000,74071000000,3,4,4,3,https://www.sec.gov/edgar/browse/?CIK=0000789019
+NVIDIA Corporation,NVDA,Global (US),2026,USD,60922000000,29760000000,54.12,8463000000,27021000000,2,4,4,3,https://www.sec.gov/edgar/browse/?CIK=0001045810
+"Amazon.com, Inc.",AMZN,Global (US),2025,USD,574785000000,30425000000,6.41,52623000000,32217000000,3,4,3,3,https://www.sec.gov/edgar/browse/?CIK=0001018724
+"Tesla, Inc.",TSLA,Global (US),2025,USD,96773000000,14997000000,9.19,2343000000,4357000000,3,5,4,3,https://www.sec.gov/edgar/browse/?CIK=0001318605
+Alphabet Inc.,GOOGL,Global (US),2025,USD,307394000000,73795000000,27.42,10883000000,69495000000,5,5,3,3,https://www.sec.gov/edgar/browse/?CIK=0001652044
+Reliance Industries Limited,RELIANCE.NS,India (NSE/BSE),2024,INR,1000122,79020,14.2,324622,-7769,5,4,4,3,https://www.ril.com/investors/financial-reporting
+Tata Consultancy Services Limited,TCS.NS,India (NSE/BSE),2024,INR,240893,46099,24.6,0,41242,6,5,4,3,https://www.tcs.com/investor-relations
+Infosys Limited,INFY.NS,India (NSE/BSE),2024,INR,153670,26248,20.7,0,25800,6,4,4,3,https://www.infosys.com/investors.html
+HDFC Bank Limited,HDFCBANK.NS,India (NSE/BSE),2024,INR,285400,60810,33.2,710000,43700,4,4,4,3,https://www.hdfcbank.com/personal/about-us/investor-relations

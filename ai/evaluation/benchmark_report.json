@@ -1,0 +1,144 @@
+{
+  "benchmark_timestamp": "2026-10-30 14:53:41 UTC",
+  "dataset_size_records": 40,
+  "total_queries_evaluated": 7,
+  "mean_latency_ms": 183.27,
+  "metrics": {
+    "mean_precision_at_3": 0.5,
+    "mean_recall_at_3": 0.5,
+    "mean_reciprocal_rank_mrr": 0.7,
+    "entity_linking_accuracy": 1.0,
+    "unsupported_claim_rate_target": 0.0
+  },
+  "query_details": [
+    {
+      "id": "rel_01",
+      "category": "relevant_domain",
+      "query": "What kind of investors prefer Mutual Funds and why?",
+      "latency_ms": 208.64,
+      "linked_seeds": [
+        "Avenue: Mutual Fund",
+        "Mutual_Funds: 2",
+        "Mutual_Funds: 1",
+        "Mutual_Funds: 3",
+        "Reason_Mutual: Better Returns",
+        "Equity_Market: 3"
+      ],
+      "triples_count": 16,
+      "evidence_confidence": "high",
+      "precision_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "mrr": 1.0,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 1.0
+    },
+    {
+      "id": "rel_02",
+      "category": "relevant_domain",
+      "query": "What reasons do investors give for allocating to Government Bonds?",
+      "latency_ms": 213.23,
+      "linked_seeds": [
+        "Reason_Bonds: Tax Incentives",
+        "Government_Bonds: 5",
+        "Government_Bonds: 3",
+        "Government_Bonds: 1",
+        "Avenue: Mutual Fund",
+        "Mutual_Funds: 3"
+      ],
+      "triples_count": 16,
+      "evidence_confidence": "high",
+      "precision_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "mrr": 1.0,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 1.0
+    },
+    {
+      "id": "multi_01",
+      "category": "multihop_relationship",
+      "query": "How are safe investment objectives linked to Fixed Deposits and PPF?",
+      "latency_ms": 135.8,
+      "linked_seeds": [
+        "Avenue: Fixed Deposits",
+        "Reason_Bonds: Safe Investment",
+        "Reason_FD: Fixed Returns",
+        "Fixed_Deposits: 3",
+        "Fixed_Deposits: 2",
+        "Fixed_Deposits: 1"
+      ],
+      "triples_count": 16,
+      "evidence_confidence": "high",
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0,
+      "mrr": 0.25,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 1.0
+    },
+    {
+      "id": "stat_01",
+      "category": "statistical_aggregation",
+      "query": "How many respondents in the survey are male and what is their most popular avenue?",
+      "latency_ms": 30.34,
+      "linked_seeds": [
+        "gender: Male",
+        "gender: Female"
+      ],
+      "triples_count": 16,
+      "evidence_confidence": "high",
+      "precision_at_3": 0.5,
+      "recall_at_3": 0.5,
+      "mrr": 1.0,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 1.0
+    },
+    {
+      "id": "ambig_01",
+      "category": "ambiguous_query",
+      "query": "Better returns and safe capital",
+      "latency_ms": 523.99,
+      "linked_seeds": [
+        "Purpose: Returns",
+        "Factor: Returns",
+        "Objective: Capital Appreciation",
+        "Reason_Bonds: Safe Investment",
+        "Reason_Equity: Capital Appreciation",
+        "Reason_Bonds: Assured Returns"
+      ],
+      "triples_count": 16,
+      "evidence_confidence": "high",
+      "precision_at_3": 0.0,
+      "recall_at_3": 0.0,
+      "mrr": 0.25,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 1.0
+    },
+    {
+      "id": "unrel_01",
+      "category": "unrelated_insufficient_evidence",
+      "query": "What is the orbital trajectory and velocity of the Hubble Space Telescope?",
+      "latency_ms": 151.62,
+      "linked_seeds": [],
+      "triples_count": 0,
+      "evidence_confidence": "insufficient",
+      "precision_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "mrr": 1.0,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 0.4
+    },
+    {
+      "id": "unrel_02",
+      "category": "unrelated_insufficient_evidence",
+      "query": "Explain quantum entanglement in superconducting transmon qubits.",
+      "latency_ms": 19.3,
+      "linked_seeds": [],
+      "triples_count": 0,
+      "evidence_confidence": "insufficient",
+      "precision_at_3": 1.0,
+      "recall_at_3": 1.0,
+      "mrr": 1.0,
+      "entity_linking_accuracy": 1.0,
+      "context_relevance": 0.4
+    }
+  ]
+}

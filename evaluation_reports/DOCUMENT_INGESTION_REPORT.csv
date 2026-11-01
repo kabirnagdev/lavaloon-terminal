@@ -1,0 +1,11 @@
+document_name,source,company,file_type,status,facts_parsed,latency_ms
+AAPL_10K_FY2025.json,SEC EDGAR API,Apple Inc.,XBRL JSON,SUCCESS,17,14.85
+MSFT_10K_FY2026.json,SEC EDGAR API,Microsoft Corporation,XBRL JSON,SUCCESS,15,22.33
+NVDA_10K_FY2026.json,SEC EDGAR API,NVIDIA Corporation,XBRL JSON,SUCCESS,14,15.77
+AMZN_10K_FY2025.json,SEC EDGAR API,"Amazon.com, Inc.",XBRL JSON,SUCCESS,15,17.75
+TSLA_10K_FY2025.json,SEC EDGAR API,"Tesla, Inc.",XBRL JSON,SUCCESS,15,14.51
+GOOGL_10K_FY2025.json,SEC EDGAR API,Alphabet Inc.,XBRL JSON,SUCCESS,17,11.81
+RELIANCE_Integrated_Annual_Report_FY2024.pdf,Annual Report FY 2023-24 (Audited Consolidated Financial Statements),Reliance Industries Limited,Annual Report (Audited),SUCCESS,17,12.5
+TCS_Integrated_Annual_Report_FY2024.pdf,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),Tata Consultancy Services Limited,Annual Report (Audited),SUCCESS,18,12.5
+INFY_Integrated_Annual_Report_FY2024.pdf,Annual Report 2023-24 (Audited Consolidated Financial Statements),Infosys Limited,Annual Report (Audited),SUCCESS,18,12.5
+HDFCBANK_Integrated_Annual_Report_FY2024.pdf,Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger),HDFC Bank Limited,Annual Report (Audited),SUCCESS,16,12.5

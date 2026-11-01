@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --terminal-bg: #0a0d14;
+    --terminal-surface: #0f1420;
+    --terminal-panel: #151b2a;
+    --terminal-border: #212a3e;
+    --terminal-cyan: #38bdf8;
+  }
+
+  body {
+    background-color: #0a0d14;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* High legibility numbers */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Institutional custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0d14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #212a3e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3954;
+}
+
+/* Micro-borders and subtle surfaces */
+.terminal-border {
+  border: 1px solid #212a3e;
+}
+
+.terminal-border-t {
+  border-top: 1px solid #212a3e;
+}
+
+.terminal-border-b {
+  border-bottom: 1px solid #212a3e;
+}
+
+.terminal-border-r {
+  border-right: 1px solid #212a3e;
+}
+
+.terminal-border-l {
+  border-left: 1px solid #212a3e;
+}

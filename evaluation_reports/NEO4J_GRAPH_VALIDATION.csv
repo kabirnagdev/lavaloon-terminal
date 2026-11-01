@@ -1,0 +1,6 @@
+component,expected,actual_status,is_connected,latency_ms,notes
+Neo4j Connection,ONLINE or Graceful OFFLINE fallback,offline,False,0.0,Graceful non-blocking fallback to in-memory NetworkX active when offline
+Neo4j Node Sync,444,0,False,0.0,Host has no active Neo4j daemon/Docker; NetworkX in-memory DiGraph serving all queries directly
+Neo4j Edge Sync,1448,0,False,0.0,NetworkX association layer active with 100% traversal availability
+NetworkX Total Nodes Verified,>= 300 nodes,444,True,0.1,Unified graph combining survey respondents and audited corporate entities
+NetworkX Total Edges Verified,>= 1200 edges,1448,True,0.1,"Includes bipartite survey edges, statistical lift ties, metrics, and supply-chain links"
