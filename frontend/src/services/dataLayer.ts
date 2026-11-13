@@ -49,7 +49,7 @@ export interface CleanSegmentRecord {
   source_row: number;
 }
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 const API_V1 = `${API_BASE}/api/v1`;
 
 // In-memory cache for fast, synchronous, and offline rendering

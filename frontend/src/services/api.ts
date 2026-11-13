@@ -11,7 +11,7 @@ import {
   OptionsChainItem
 } from "@/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 const API_V1 = `${API_BASE}/api/v1`;
 
 import { getSeries, getCleanCompanies, getCleanSegments, DataSeriesPoint, CleanCompanySummary, CleanSegmentRecord } from "./dataLayer";
