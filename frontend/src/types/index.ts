@@ -116,7 +116,9 @@ export interface ResearchQueryResponse {
   records: string[];
   statistics: string;
   latency_ms: number;
-  grounding_confidence: "high" | "moderate" | "exploratory";
+  grounding_confidence: "high" | "moderate" | "exploratory" | "insufficient";
+  linked_entities?: any[];
+  records_detail?: any[];
 }
 
 export interface DiligenceResponse {

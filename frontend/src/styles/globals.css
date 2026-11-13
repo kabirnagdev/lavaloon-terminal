@@ -27,7 +27,7 @@
   }
 }
 
-/* Institutional custom scrollbars */
+/* Terminal custom scrollbars */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

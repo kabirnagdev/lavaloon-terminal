@@ -57,12 +57,18 @@ def build_kg(
             if G.nodes[a]["col"] != G.nodes[b]["col"]:
                 pair_cnt[(a, b)] += 1
 
-    min_co = max(3, int(0.05 * N))
+    min_co = max(2, int(0.01 * N))
     cands = []
     for (a, b), co in pair_cnt.items():
         lift = co * N / (node_cnt[a] * node_cnt[b])
         if co >= min_co and lift >= min_lift:
             cands.append((lift * np.log1p(co), a, b, co, lift))
+    if not cands:
+        # Fallback if min_lift is too strict for smaller or sparse datasets
+        for (a, b), co in pair_cnt.items():
+            lift = co * N / (node_cnt[a] * node_cnt[b])
+            if co >= min_co and lift >= 1.0:
+                cands.append((lift * np.log1p(co), a, b, co, lift))
     cands.sort(reverse=True)
 
     A = nx.Graph()  # entity-only association layer used for hop expansion

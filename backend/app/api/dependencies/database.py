@@ -30,10 +30,12 @@ class AppGraphState:
         self.diligence_pipeline: Optional[DueDiligencePipeline] = None
         self.neo4j_adapter: Optional[Neo4jAdapter] = None
         self.active_backend: str = "NETWORKX"
+        self.active_dataset_name: str = "Finance_data.csv"
 
     def initialize(self):
         logger.info("Initializing Financial Intelligence Knowledge Graph...")
         self.df = load_financial_data(settings.DATA_CSV_PATH)
+        self.active_dataset_name = os.path.basename(settings.DATA_CSV_PATH)
         self.G, self.A, self.ent_cols, self.prop_cols = build_kg(self.df)
         logger.info(f"Graph constructed: {self.G.number_of_nodes()} nodes, {self.G.number_of_edges()} edges")
 
@@ -63,6 +65,56 @@ class AppGraphState:
         else:
             self.neo4j_adapter = Neo4jAdapter()
             self.active_backend = "NETWORKX"
+
+    def load_dataset(self, file_path: str) -> dict:
+        """Load an arbitrary uploaded or local CSV/Excel dataset into the active Knowledge Graph."""
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File not found: {file_path}")
+            
+        ext = os.path.splitext(file_path)[1].lower()
+        if ext == ".csv":
+            try:
+                df = pd.read_csv(file_path, encoding="utf-8")
+            except UnicodeDecodeError:
+                df = pd.read_csv(file_path, encoding="latin1")
+        elif ext in [".xlsx", ".xls"]:
+            df = pd.read_excel(file_path)
+        else:
+            raise ValueError(f"Unsupported format: {ext}")
+
+        self.df = df
+        self.active_dataset_name = os.path.basename(file_path)
+        self.G, self.A, self.ent_cols, self.prop_cols = build_kg(self.df)
+        logger.info(f"Active Knowledge Graph switched to {self.active_dataset_name}: {self.G.number_of_nodes()} nodes, {self.G.number_of_edges()} edges")
+        
+        # Refresh retriever & copilot with new data
+        if self.embedder is None:
+            self.embedder = get_embedding_engine(settings.EMBED_MODEL)
+        if self.llm_client is None:
+            self.llm_client = get_groq_client(settings.GROQ_API_KEY)
+            
+        self.retriever = HybridGraphRetriever(
+            self.df, self.G, self.A, self.embedder, self.llm_client
+        )
+        self.copilot = ResearchCopilot(self.retriever, self.llm_client)
+        self.diligence_pipeline = DueDiligencePipeline(self.retriever, self.llm_client)
+        
+        return {
+            "active_dataset": self.active_dataset_name,
+            "total_records": len(self.df),
+            "nodes": self.G.number_of_nodes(),
+            "edges": self.G.number_of_edges(),
+            "entity_columns": self.ent_cols
+        }
+
+    def reset_to_default(self) -> dict:
+        """Reset Knowledge Graph back to canonical financial dataset."""
+        self.initialize()
+        return {
+            "active_dataset": self.active_dataset_name,
+            "nodes": self.G.number_of_nodes(),
+            "edges": self.G.number_of_edges()
+        }
 
 state = AppGraphState()
 

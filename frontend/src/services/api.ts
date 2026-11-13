@@ -14,7 +14,16 @@ import {
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const API_V1 = `${API_BASE}/api/v1`;
 
+import { getSeries, getCleanCompanies, getCleanSegments, DataSeriesPoint, CleanCompanySummary, CleanSegmentRecord } from "./dataLayer";
+
+export { getSeries, getCleanCompanies, getCleanSegments };
+export type { DataSeriesPoint, CleanCompanySummary, CleanSegmentRecord };
+
 export const api = {
+  getSeries,
+  getCleanCompanies,
+  getCleanSegments,
+
   async getHealth(): Promise<HealthStatus> {
     const res = await fetch(`${API_V1}/health`, { cache: "no-store" });
     if (!res.ok) throw new Error("Health check failed");
@@ -135,6 +144,76 @@ export const api = {
       body: JSON.stringify(params)
     });
     if (!res.ok) throw new Error("Options chain calculation failed");
+    return res.json();
+  },
+
+  async getAvailableDatasets(): Promise<{ name: string; path: string; folder: string; size_kb: number; extension: string }[]> {
+    const res = await fetch(`${API_V1}/ingestion/available-datasets`, { cache: "no-store" });
+    if (!res.ok) return [];
+    return res.json();
+  },
+
+  async inspectLocalDataset(path: string): Promise<any> {
+    const formData = new FormData();
+    formData.append("path", path);
+    const res = await fetch(`${API_V1}/ingestion/inspect-local`, {
+      method: "POST",
+      body: formData
+    });
+    if (!res.ok) throw new Error("Failed to inspect dataset");
+    return res.json();
+  },
+
+  async uploadDataset(file: File): Promise<any> {
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch(`${API_V1}/ingestion/upload`, {
+      method: "POST",
+      body: formData
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: "Upload failed" }));
+      throw new Error(err.detail || "Dataset upload failed");
+    }
+    return res.json();
+  },
+
+  async ingestRawContext(params: { title?: string; content: string }): Promise<any> {
+    const res = await fetch(`${API_V1}/ingestion/raw-context`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(params)
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: "Failed to ingest context" }));
+      throw new Error(err.detail || "Failed to ingest context");
+    }
+    return res.json();
+  },
+
+  async activateDatasetGraph(filepath: string): Promise<any> {
+    const formData = new FormData();
+    formData.append("filepath", filepath);
+    const res = await fetch(`${API_V1}/ingestion/activate-graph`, {
+      method: "POST",
+      body: formData
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: "Failed to activate graph" }));
+      throw new Error(err.detail || "Failed to activate dataset graph");
+    }
+    return res.json();
+  },
+
+  async getActiveDataset(): Promise<any> {
+    const res = await fetch(`${API_V1}/ingestion/active-dataset`, { cache: "no-store" });
+    if (!res.ok) return { active_dataset: "Finance_data.csv", is_default: true, total_nodes: 0, total_edges: 0 };
+    return res.json();
+  },
+
+  async resetGraph(): Promise<any> {
+    const res = await fetch(`${API_V1}/ingestion/reset-graph`, { method: "POST" });
+    if (!res.ok) throw new Error("Failed to reset graph");
     return res.json();
   }
 };

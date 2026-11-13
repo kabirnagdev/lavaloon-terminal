@@ -4,7 +4,7 @@ import glob
 import pandas as pd
 from typing import Tuple, List, Optional
 
-MAX_ENTITY_VALUES = 25
+MAX_ENTITY_VALUES = 60
 
 def slug(v: any) -> str:
     """Sanitize string or value into a clean alphanumeric slug."""

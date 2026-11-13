@@ -10,8 +10,7 @@ import { FinancialIntelligenceWorkspace } from "@/components/financials/Financia
 import { CytoscapeGraph } from "@/components/graph/CytoscapeGraph";
 import { ResearchWorkspace } from "@/components/research/ResearchWorkspace";
 import { DueDiligenceView } from "@/components/diligence/DueDiligenceView";
-import { OptionsDesk } from "@/components/quant/OptionsDesk";
-import { SettingsView } from "@/components/settings/SettingsView";
+import { DataIngestionModal } from "@/components/ingestion/DataIngestionModal";
 import { api } from "@/services/api";
 import { HealthStatus, CompanySummary } from "@/types";
 
@@ -19,7 +18,8 @@ export default function TerminalWorkstation() {
   const [activeModule, setActiveModule] = useState<string>("overview");
   const [health, setHealth] = useState<HealthStatus | null>(null);
   const [companies, setCompanies] = useState<CompanySummary[]>([]);
-  const [selectedCompanyId, setSelectedCompanyId] = useState<string>("mutual-funds");
+  const [selectedCompanyId, setSelectedCompanyId] = useState<string>("aapl");
+  const [isIngestionOpen, setIsIngestionOpen] = useState(false);
 
   const refreshHealth = () => {
     api.getHealth()
@@ -33,55 +33,16 @@ export default function TerminalWorkstation() {
       .then((data) => {
         setCompanies(data);
         if (data.length > 0) {
-          setSelectedCompanyId(data[0].id);
+          const found = data.find((c) => c.ticker === "AAPL") || data[0];
+          setSelectedCompanyId(found.id);
         }
       })
       .catch((err) => console.warn("API companies fetch:", err.message));
-
-    // Keyboard Hotkey shortcuts (F1 - F8)
-    const handleKeyDown = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case "F1":
-          e.preventDefault();
-          setActiveModule("overview");
-          break;
-        case "F2":
-          e.preventDefault();
-          setActiveModule("companies");
-          break;
-        case "F3":
-          e.preventDefault();
-          setActiveModule("financials");
-          break;
-        case "F4":
-          e.preventDefault();
-          setActiveModule("graph");
-          break;
-        case "F5":
-          e.preventDefault();
-          setActiveModule("research");
-          break;
-        case "F6":
-          e.preventDefault();
-          setActiveModule("diligence");
-          break;
-        case "F7":
-          e.preventDefault();
-          setActiveModule("quant");
-          break;
-        case "F8":
-          e.preventDefault();
-          setActiveModule("settings");
-          break;
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-terminal-bg font-sans">
-      {/* Institutional Top Navigation Bar */}
+      {/* Top Navigation */}
       <TopNav
         health={health}
         companies={companies}
@@ -91,6 +52,7 @@ export default function TerminalWorkstation() {
           setActiveModule("companies");
         }}
         activeModule={activeModule}
+        onOpenIngestion={() => setIsIngestionOpen(true)}
       />
 
       {/* Main Terminal Body */}
@@ -110,6 +72,7 @@ export default function TerminalWorkstation() {
               onSelectCompany={setSelectedCompanyId}
               onNavigate={(mod) => setActiveModule(mod)}
               health={health}
+              onOpenIngestion={() => setIsIngestionOpen(true)}
             />
           )}
 
@@ -143,22 +106,23 @@ export default function TerminalWorkstation() {
           {activeModule === "diligence" && (
             <DueDiligenceView initialTargetId={selectedCompanyId} />
           )}
-
-          {activeModule === "quant" && <OptionsDesk />}
-
-          {activeModule === "settings" && (
-            <SettingsView health={health} onRefreshHealth={refreshHealth} />
-          )}
         </main>
       </div>
 
-      {/* Institutional Bottom Status Bar */}
+      {/* Bottom Status Bar */}
       <BottomStatusBar
         health={health}
         activeCompany={companies.find((c) => c.id === selectedCompanyId)}
         activeModule={activeModule}
       />
+
+      {/* Data Ingestion Modal */}
+      <DataIngestionModal
+        isOpen={isIngestionOpen}
+        onClose={() => setIsIngestionOpen(false)}
+        onNavigateToCopilot={() => setActiveModule("research")}
+        onNavigateToGraph={() => setActiveModule("graph")}
+      />
     </div>
   );
 }
-

@@ -152,11 +152,102 @@ ENTITY_CATALOG: Dict[str, Dict[str, Any]] = {
     }
 }
 
-# Auto-populate 10 authentic corporate filers from verified_corporate_financials.json
+# Auto-populate 10 authentic corporate filers from data layer
 def _populate_corporate_entities():
-    data_file = "data/corporate_financials/verified_corporate_financials.json"
+    clean_file = "data/clean/financials_clean.json"
+    raw_file = "data/raw/verified_corporate_financials.json"
+    legacy_file = "data/corporate_financials/verified_corporate_financials.json"
+    
+    data_file = clean_file if os.path.exists(clean_file) else (raw_file if os.path.exists(raw_file) else legacy_file)
     if not os.path.exists(data_file):
         return
+
+    try:
+        from backend.app.data_layer.data_service import data_service
+        data_service.reload()
+        clean_companies = data_service.get_companies()
+        if clean_companies:
+            for comp in clean_companies:
+                ticker = comp["ticker"]
+                cid = ticker.lower()
+                curr = comp["currency"]
+                latest_period = comp.get("periods", ["FY2024"])[-1]
+                
+                # Fetch all latest metrics from get_series
+                series_rev = data_service.get_series(ticker, "total_revenue")
+                latest_rev = series_rev[-1]["value"] if series_rev else None
+                
+                doc_source = comp.get("source_doc", "SEC Form 10-K / BSE Annual Filing")
+                
+                def _fmt_val(val: Optional[float], is_pct: bool = False) -> str:
+                    if val is None:
+                        return "N/A"
+                    if is_pct:
+                        return f"{val:.2f}%"
+                    if curr == "USD":
+                        return f"${val / 1e9:.2f}B"
+                    return f"₹{val:,.0f} Cr"
+
+                metric_labels = [
+                    ("total_revenue", "Total Revenue", False, "positive"),
+                    ("gross_profit", "Gross Profit", False, "positive"),
+                    ("operating_income", "Operating Income", False, "positive"),
+                    ("net_income", "Net Income", False, "positive"),
+                    ("operating_margin_pct", "Operating Margin", True, "positive"),
+                    ("operating_cash_flow", "Operating Cash Flow", False, "positive"),
+                    ("capital_expenditure", "Capital Expenditure", False, "neutral"),
+                    ("free_cash_flow", "Free Cash Flow", False, "positive"),
+                    ("total_assets", "Total Assets", False, "positive"),
+                    ("total_debt", "Total Debt", False, "neutral"),
+                    ("cash_and_equivalents", "Cash & Equivalents", False, "positive")
+                ]
+
+                metrics_list = []
+                for m_key, label, is_pct, status in metric_labels:
+                    pts = data_service.get_series(ticker, m_key)
+                    if pts:
+                        latest_pt = pts[-1]
+                        metrics_list.append({
+                            "name": label,
+                            "value": _fmt_val(latest_pt["value"], is_pct),
+                            "period": latest_pt["period"],
+                            "reporting_date": latest_pt["period"].replace("FY", ""),
+                            "source": latest_pt.get("source_file", doc_source),
+                            "is_audited": True,
+                            "status": status
+                        })
+
+                # Segments
+                segs = data_service.get_segments(ticker)
+                seg_dict = {s["segment"]: s["value"] for s in segs}
+
+                ENTITY_CATALOG[cid] = {
+                    "ticker": ticker,
+                    "name": comp["name"],
+                    "sector": comp["sector"],
+                    "industry": comp["industry"],
+                    "risk_level": comp["risk_level"],
+                    "country": comp["country"],
+                    "currency": curr,
+                    "fiscal_year": int(latest_period.replace("FY", "")) if "FY" in latest_period else 2024,
+                    "coverage_type": "corporate_equity",
+                    "description": comp["description"],
+                    "period": f"{latest_period} Audited Financials",
+                    "metrics": metrics_list,
+                    "market_overview": {
+                        "source_url": comp.get("source_url", ""),
+                        "currency": curr,
+                        "units": comp.get("unit", curr),
+                        "primary_competitors": comp.get("competitors", []),
+                        "critical_suppliers": comp.get("suppliers", []),
+                        "key_disclosed_risks": comp.get("risks", [])[:3]
+                    },
+                    "source_attribution": doc_source,
+                    "segments": seg_dict
+                }
+            return
+    except Exception as e:
+        print(f"Warning: data_layer loading in company_service fell back: {e}")
 
     try:
         with open(data_file, "r") as f:

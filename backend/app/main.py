@@ -12,7 +12,9 @@ from backend.app.api.routes import (
     graph,
     research,
     diligence,
-    quant
+    quant,
+    ingestion,
+    data
 )
 
 @asynccontextmanager
@@ -26,7 +28,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="Institutional-grade Financial Intelligence, Knowledge Graph, and Due Diligence Terminal API.",
+    description="Financial Intelligence, Multi-Statement Comparisons, and Regulatory Filings Data Layer API.",
     lifespan=lifespan
 )
 
@@ -47,6 +49,8 @@ app.include_router(graph.router, prefix=api_v1)
 app.include_router(research.router, prefix=api_v1)
 app.include_router(diligence.router, prefix=api_v1)
 app.include_router(quant.router, prefix=api_v1)
+app.include_router(ingestion.router, prefix=api_v1)
+app.include_router(data.router, prefix=api_v1)
 
 @app.get("/")
 def root():

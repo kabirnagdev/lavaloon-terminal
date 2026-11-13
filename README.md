@@ -1,123 +1,122 @@
-# Financial Intelligence & Due Diligence Terminal
+# Lavaloon Terminal
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python: 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
-[![Next.js: 14](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
-[![FastAPI: 0.110+](https://img.shields.io/badge/FastAPI-0.110+-teal.svg)](https://fastapi.tiangolo.com/)
-[![Tests: 30 Passed](https://img.shields.io/badge/Tests-30%20Passed-green.svg)](backend/tests/)
-
-An institutional-grade financial intelligence workstation combining a **Bloomberg Terminal-inspired research interface**, **Palantir-inspired knowledge graph ontology**, **hybrid GraphRAG retrieval**, and **quantitative derivatives analytics**.
+A clean, data-first financial workstation for analyzing company fundamentals, comparing financial statements, and conducting grounded research on regulatory filings.
 
 ---
 
-## Platform Architecture
+## 1. What It Does
 
+Lavaloon Terminal provides 5 core workstations:
+1. **Dashboard**: Cross-sectional performance overview, verified filings table, and time-series trends.
+2. **Company**: Detailed corporate dossiers, revenue history, business segment breakdowns, and balance sheet metrics.
+3. **Financials & Compare**: Side-by-side statement comparison with currency isolation and stated FX conversion (`1 USD = 84.50 INR`).
+4. **Ask the Data**: Natural-language question answering grounded in raw filings with exact row citations and missing-data refusal.
+5. **Report Export**: Assembles audited diligence memos with one-click Markdown (`.md`) and PDF export.
+
+Every chart, table, and number in the application is strictly driven by the **Data Layer** through `getSeries(company, metric, periodRange)`. No numbers are typed into UI components.
+
+---
+
+## 2. Data Sources & Architecture
+
+All data flows strictly from raw filings to clean normalized JSON:
 ```
-finance-intelligence-terminal/
-├── frontend/                     # Next.js 14, React, TypeScript, Tailwind, Cytoscape.js
-│   ├── src/app/                  # Terminal workstation application shell
-│   ├── src/components/           # Cytoscape graph, Copilot, Diligence, Options desk
-│   ├── src/services/             # Typed API client
-│   └── src/types/                # Pydantic-mirrored TypeScript interfaces
-│
-├── backend/                      # Production FastAPI service
-│   ├── app/api/routes/           # Health, Companies, Graph, Research, Diligence, Quant
-│   ├── app/core/                 # Config, security, logging
-│   ├── app/services/             # Orchestration & business logic
-│   └── tests/                    # Automated pytest suite (30 unit & integration tests)
-│
-├── ai/                           # Modular AI & GraphRAG engine
-│   ├── ingestion/                # CSV loader, Pydantic schema validator, entity slugifiers
-│   ├── graph/                    # Knowledge Graph builder, lift calculation, Dijkstra pathfinder
-│   ├── retrieval/                # Hybrid retriever: FAISS HNSW + multi-hop graph BFS with hop decay
-│   ├── reasoning/                # Groq client, prompt engineering, offline synthesis fallback
-│   ├── quant/                    # Black-Scholes pricing, analytical Greeks, Newton-Raphson IV
-│   ├── evaluation/               # Precision@K, Recall@K, MRR, Context Relevance benchmark runner
-│   ├── benchmarks/               # Scalability benchmarks (1K, 10K, 100K synthetic records)
-│   └── adapters/                 # In-memory NetworkX + enterprise Neo4j adapter
-│
-├── data/                         # Persistent CSV data (Finance_data.csv)
-├── notebooks/                    # Preserved original research notebooks
-├── docs/                         # ARCHITECTURE.md, API.md, ENGINEERING_BASELINE.md,
-│                                 # GRAPHRAG_EVALUATION.md, PERFORMANCE_BENCHMARKS.md, NEO4J_SETUP.md
-├── infrastructure/               # Dockerfiles and deployment configs
-├── pytest.ini                    # Pytest configuration
-└── docker-compose.yml
+data/
+├── raw/
+│   ├── company_financials.csv              <-- Master editable raw CSV (396 rows)
+│   ├── company_segments.csv                <-- Segment revenue breakdown (42 rows)
+│   ├── verified_corporate_financials.json  <-- SEC & BSE filings metadata
+│   └── sec_edgar/                          <-- Raw SEC Form 10-K filings
+└── clean/
+    ├── financials_clean.json               <-- Canonical normalized records
+    ├── segments_clean.json                 <-- Segment breakdowns
+    └── companies_clean.json                <-- Clean company metadata
 ```
 
----
-
-## Quick Start
-
-### Option 1: Docker Compose (Recommended)
-
-1. Clone the repository and configure `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Start the services:
-   ```bash
-   docker-compose up --build -d
-   ```
-3. Open `http://localhost:3000` in your browser. API docs are at `http://localhost:8000/docs`.
+- **US Corporations**: Apple (AAPL), Microsoft (MSFT), NVIDIA (NVDA), Amazon (AMZN), Tesla (TSLA), Alphabet (GOOGL) — sourced directly from **SEC Form 10-K** filings.
+- **Indian Corporations**: Reliance Industries (RELIANCE), TCS (TCS), Infosys (INFY), HDFC Bank (HDFCBANK) — sourced from **BSE Audited Financial Reports**.
 
 ---
 
-### Option 2: Local Manual Setup
+## 3. How to Refresh Data
 
-#### 1. Backend Service
+Editing any number in the raw CSV immediately propagates across the entire terminal:
+
+1. **Edit raw data**:
+   Open `data/raw/company_financials.csv` and modify any value.
+2. **Run the Loader**:
+   ```bash
+   python3 scripts/load_data.py
+   ```
+3. **Run the Validator**:
+   ```bash
+   python3 scripts/validate_data.py
+   ```
+   Checks for duplicates, missing periods, mixed units, negative revenues, and accounting totals mismatches.
+4. **Verify Propagation**:
+   ```bash
+   python3 scripts/verify_chart_points.py
+   ```
+
+---
+
+## 4. Running the Application
+
+### Backend (FastAPI)
 ```bash
-# From repository root
-python3 -m venv venv && source venv/bin/activate
-pip install -r backend/requirements.txt
-python3 -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+python3 -m uvicorn backend.app.main:app --host 0.0.0.0 --port 8000
 ```
 
-#### 2. Frontend Application
+### Frontend (Next.js)
 ```bash
 cd frontend
-npm install
-npm run dev
+npm run start
 ```
-Access the workstation at `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Test Suite
+```bash
+pytest tests/
+```
+Runs 25 automated tests covering metrics formulas, data loader, accounting validator, Black-Scholes benchmark cases, and 10 grounded test questions.
 
 ---
 
-## Running Automated Tests
+## 5. 5-Minute Demo Script
 
-Run the complete test suite verifying all API endpoints, Pydantic validation, GraphRAG retrieval, Dijkstra pathfinding, and Black-Scholes formulas:
-
-```bash
-# Run all 30 automated tests
-pytest -v
-```
-
-### Running GraphRAG Benchmark & Scalability Tests
-```bash
-# Run GraphRAG evaluation (Precision, Recall, MRR, Accuracy)
-python3 ai/evaluation/runner.py
-
-# Run Scalability benchmarks across 1K, 10K, and 100K records
-python3 ai/benchmarks/scalability_test.py
-```
+1. **Verify Live Data (Dashboard)**:
+   - Open `http://localhost:3000`.
+   - Point out the 3 revenue and margin charts (Apple, NVIDIA, Microsoft).
+   - Show the Audited Filings Master Table. Notice all numbers are right-aligned tabular figures with source citations.
+2. **Change CSV Value & Prove Live Propagation**:
+   - Open `data/raw/company_financials.csv` in terminal or editor.
+   - Edit Apple FY2025 revenue (e.g. change to `425000000000`).
+   - Run `python3 scripts/load_data.py`.
+   - Refresh the dashboard: the chart and table immediately reflect `$425.00B` without touching any UI code!
+   - Restore the audited figure (`416161000000`) and rerun loader.
+3. **Inspect Segments & Fundamentals (Company)**:
+   - Click "Company" in the sidebar. Select **Apple Inc.**
+   - Show the Business Segment Revenue Split (iPhone, Services, Wearables, Mac, iPad).
+   - Point out that segment totals reconcile with reported total revenue.
+4. **Compare Across Currencies (Financials & Compare)**:
+   - Click "Financials & Compare". Select **AAPL** vs **RELIANCE**.
+   - Show the Currency selector:
+     - `Native`: AAPL in USD, RELIANCE in INR Crores.
+     - `USD Normal`: Reliance normalized to USD at stated rate `1 USD = 84.50 INR`.
+     - `INR Normal`: Apple normalized to INR Crores at stated rate.
+5. **Ask the Data (Grounded QA)**:
+   - Click "Ask the data".
+   - Click the suggested question: *"What was Apple's total revenue and net income in FY2025?"*
+   - Show the answer with row-level provenance (`source_file`, `source_row`, `period`).
+   - Ask an unanswerable question (e.g. *"What is Ferrari's quarterly dividend?"*): notice the refusal *"Not available in provided data."* (Zero hallucination).
+6. **Export Diligence Memo (Report Export)**:
+   - Click "Report Export".
+   - Click "Markdown" to download `Report_AAPL_FY2025.md` or "Print / PDF" to print.
 
 ---
 
-## Key Capabilities
+## 6. Known Limits
 
-1. **Palantir Ontology Graph**:
-   - High-performance Cytoscape.js canvas visualizing ontology entities and statistical lift ties.
-   - Dynamic filtering by column category, minimum lift slider, and real-time weighted Dijkstra pathfinder ($distance = 1 / lift$).
-2. **GraphRAG Research Copilot**:
-   - Hybrid semantic retrieval combining FAISS HNSW vector similarity with directed multi-hop BFS graph traversal.
-   - Calibrated entity linking with confidence scores and interrogative stopword filtering.
-   - Out-of-domain query detection ("insufficient evidence") to eliminate hallucinations.
-3. **Institutional Due Diligence Matrix**:
-   - Multi-pillar scoring (Governance, Market Position, Financial Health, ESG, Regulatory Compliance).
-   - Automated Red-Flag and Bull/Bear risk synthesis.
-4. **Quantitative Options Desk**:
-   - Real-time Black-Scholes-Merton European option valuation and analytical Greeks ($\Delta, \Gamma, \Theta, \nu, \rho$).
-   - Newton-Raphson solver for Implied Volatility and dynamic options strike chain modeling.
-5. **Dual Graph Engine & Scalability**:
-   - Default zero-dependency NetworkX in-memory graph with seamless fallback.
-   - Enterprise Neo4j adapter for clustered graph persistence and APOC indexing.
+1. **Historical Period Depth**: Detailed multi-statement historical breakdowns cover FY2022 to FY2025/FY2026. Prior fiscal years require populating older 10-K filings into `data/raw/`.
+2. **Static FX Rate**: Currency conversion defaults to a benchmark rate of `1 USD = 84.50 INR`. Real-time FX feeds can be plugged into `normalize_currency()`.
+3. **Scope of Coverage**: Currently configured for 10 premier US and Indian blue-chips. Additional companies can be added by appending rows to `data/raw/company_financials.csv`.

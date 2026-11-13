@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { HealthStatus, CompanySummary } from "@/types";
-import { ShieldCheck, Database, Cpu, Activity, Clock } from "lucide-react";
 
 interface BottomStatusBarProps {
   health: HealthStatus | null;
@@ -34,55 +33,35 @@ export const BottomStatusBar: React.FC<BottomStatusBarProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  const graphEngineLabel = health?.neo4j_connected ? "NEO4J" : "NETWORKX/RDF";
-  const llmStatus = health?.llm_connected ? "GROQ (CONNECTED)" : "OFFLINE GROUNDED";
-
   return (
-    <footer className="h-6 bg-terminal-surface terminal-border-t px-3 flex items-center justify-between text-[10px] select-none text-slate-400 z-30">
-      {/* Left: Core Engine Status */}
+    <footer className="h-6 bg-terminal-surface terminal-border-t px-3 flex items-center justify-between text-[10px] select-none text-slate-400 font-sans z-30">
+      {/* Left */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block" />
-          <span className="text-slate-300 font-semibold">CORE:ONLINE</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+          <span className="text-slate-300 font-medium">DATA LAYER: ACTIVE</span>
         </div>
         <span className="text-slate-600">|</span>
         <div>
-          <span className="text-slate-500">GRAPH:</span>{" "}
-          <span className="text-slate-300">
-            {graphEngineLabel} ({health?.graph_nodes ?? 147}N / {health?.graph_edges ?? 1144}E)
-          </span>
-        </div>
-        <span className="text-slate-600 hidden md:inline">|</span>
-        <div className="hidden md:block">
-          <span className="text-slate-500">EMBED:</span>{" "}
-          <span className="text-slate-300">{health?.embedding_backend || "all-MiniLM-L6-v2"}</span>
+          <span className="text-slate-500">CANONICAL RECORDS:</span>{" "}
+          <span className="text-slate-200 font-mono">396 Verified Series</span>
         </div>
       </div>
 
-      {/* Center: Ingestion & Focus Telemetry */}
-      <div className="hidden lg:flex items-center gap-3">
-        <div>
-          <span className="text-slate-500">REGULATORY:</span>{" "}
-          <span className="text-slate-300">SEC EDGAR / BSE AUDITED (134 FACTS)</span>
-        </div>
+      {/* Center */}
+      <div className="hidden md:flex items-center gap-3 font-mono">
         {activeCompany && (
-          <>
-            <span className="text-slate-600">|</span>
-            <div>
-              <span className="text-slate-500">FOCUS:</span>{" "}
-              <span className="text-slate-200 font-semibold">{activeCompany.ticker}</span>{" "}
-              <span className="text-slate-500">({activeCompany.coverage_type === "corporate_equity" ? "CORPORATE" : "SURVEY"})</span>
-            </div>
-          </>
+          <div>
+            <span className="text-slate-500">SELECTED:</span>{" "}
+            <span className="text-slate-200 font-semibold">{activeCompany.ticker}</span>{" "}
+            <span className="text-slate-500">({activeCompany.name})</span>
+          </div>
         )}
       </div>
 
-      {/* Right: LLM & System Time */}
-      <div className="flex items-center gap-3">
-        <div>
-          <span className="text-slate-500">LLM:</span>{" "}
-          <span className="text-slate-300">{llmStatus}</span>
-        </div>
+      {/* Right */}
+      <div className="flex items-center gap-3 font-mono">
+        <span className="text-slate-500">SOURCES: SEC 10-K / BSE</span>
         <span className="text-slate-600">|</span>
         <div className="text-slate-300 tabular-nums">
           {timeStr || "00:00:00 UTC"}

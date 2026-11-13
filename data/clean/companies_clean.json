@@ -1,0 +1,516 @@
+{
+  "AAPL": {
+    "id": "aapl",
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "currency": "USD",
+    "unit": "USD",
+    "coverage_type": "corporate_equity",
+    "country": "United States",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024",
+      "FY2025"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Technology",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for AAPL.",
+    "competitors": [
+      "Microsoft",
+      "Alphabet",
+      "Samsung",
+      "Amazon"
+    ],
+    "suppliers": [
+      "TSMC",
+      "Foxconn",
+      "Qualcomm",
+      "Sony"
+    ],
+    "risks": [
+      "Global supply chain concentration in East Asia",
+      "Antitrust regulatory scrutiny on App Store commissions (EU DMA)",
+      "Consumer hardware replacement cycle lengthening"
+    ],
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0000320193)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0000320193"
+  },
+  "AMZN": {
+    "id": "amzn",
+    "ticker": "AMZN",
+    "name": "Amazon.com, Inc.",
+    "currency": "USD",
+    "unit": "USD",
+    "coverage_type": "corporate_equity",
+    "country": "United States",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Technology",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for AMZN.",
+    "competitors": [
+      "Microsoft",
+      "Alphabet",
+      "Walmart",
+      "Alibaba"
+    ],
+    "suppliers": [
+      "NVIDIA",
+      "Intel",
+      "Various Logistics Carriers"
+    ],
+    "risks": [
+      "Foreign exchange volatility impacting international retail segment",
+      "Intense cloud infrastructure price competition",
+      "Regulatory scrutiny regarding e-commerce marketplace practices"
+    ],
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001018724)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001018724"
+  },
+  "GOOGL": {
+    "id": "googl",
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc.",
+    "currency": "USD",
+    "unit": "USD",
+    "coverage_type": "corporate_equity",
+    "country": "United States",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Technology",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for GOOGL.",
+    "competitors": [
+      "Microsoft",
+      "Amazon",
+      "Meta Platforms",
+      "Apple",
+      "OpenAI"
+    ],
+    "suppliers": [
+      "Broadcom",
+      "TSMC",
+      "Samsung"
+    ],
+    "risks": [
+      "DOJ antitrust litigation regarding search distribution agreements",
+      "Transition of search queries towards generative AI answer interfaces",
+      "Ad revenue cyclicality tied to macroeconomic consumer spending"
+    ],
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001652044)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001652044"
+  },
+  "HDFCBANK": {
+    "id": "hdfcbank",
+    "ticker": "HDFCBANK",
+    "name": "HDFC Bank Limited",
+    "currency": "INR",
+    "unit": "INR Crores",
+    "coverage_type": "corporate_equity",
+    "country": "India",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Diversified",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for HDFCBANK.",
+    "competitors": [
+      "ICICI Bank",
+      "State Bank of India (SBI)",
+      "Axis Bank",
+      "Kotak Mahindra Bank"
+    ],
+    "suppliers": [
+      "Oracle",
+      "Tata Consultancy Services (Core Banking)",
+      "Cisco",
+      "IBM"
+    ],
+    "risks": [
+      "Post-merger credit-to-deposit (CD) ratio rebalancing pressure",
+      "Net interest margin (NIM) compression in high interest rate environment",
+      "Integration headwinds following mega-merger with parent HDFC Limited"
+    ],
+    "source_doc": "Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger)",
+    "source_url": "https://www.hdfcbank.com/personal/about-us/investor-relations"
+  },
+  "INFY": {
+    "id": "infy",
+    "ticker": "INFY",
+    "name": "Infosys Limited",
+    "currency": "INR",
+    "unit": "INR Crores",
+    "coverage_type": "corporate_equity",
+    "country": "India",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Diversified",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for INFY.",
+    "competitors": [
+      "TCS",
+      "Accenture",
+      "Wipro",
+      "HCLTech"
+    ],
+    "suppliers": [
+      "Microsoft",
+      "AWS",
+      "Google Cloud",
+      "Salesforce"
+    ],
+    "risks": [
+      "Client budget cuts in discretionary IT projects",
+      "Senior management leadership transitions",
+      "Geopolitical uncertainties impacting cross-border IT trade"
+    ],
+    "source_doc": "Annual Report 2023-24 (Audited Consolidated Financial Statements)",
+    "source_url": "https://www.infosys.com/investors.html"
+  },
+  "MSFT": {
+    "id": "msft",
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "currency": "USD",
+    "unit": "USD",
+    "coverage_type": "corporate_equity",
+    "country": "United States",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024",
+      "FY2025"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Technology",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for MSFT.",
+    "competitors": [
+      "Amazon (AWS)",
+      "Alphabet (Google Cloud)",
+      "Apple",
+      "Oracle"
+    ],
+    "suppliers": [
+      "NVIDIA",
+      "AMD",
+      "Intel",
+      "Supermicro"
+    ],
+    "risks": [
+      "Substantial CapEx expenditure on AI GPU data center infrastructure",
+      "Enterprise cybersecurity vulnerability disclosures",
+      "Geopolitical restrictions on advanced technology exports"
+    ],
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0000789019)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0000789019"
+  },
+  "NVDA": {
+    "id": "nvda",
+    "ticker": "NVDA",
+    "name": "NVIDIA Corporation",
+    "currency": "USD",
+    "unit": "USD",
+    "coverage_type": "corporate_equity",
+    "country": "United States",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024",
+      "FY2025"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Technology",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for NVDA.",
+    "competitors": [
+      "AMD",
+      "Intel",
+      "Qualcomm",
+      "Custom ASICs (Google TPU, AWS Trainium)"
+    ],
+    "suppliers": [
+      "TSMC",
+      "SK Hynix",
+      "Micron",
+      "Samsung Electronics"
+    ],
+    "risks": [
+      "Severe packaging and fabrication capacity limits at TSMC CoWoS",
+      "Export control restrictions on advanced accelerators to Chinese market",
+      "Concentration of revenue among hyper-scaler cloud customers (Microsoft, Meta, AWS, Google)"
+    ],
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001045810)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001045810"
+  },
+  "RELIANCE": {
+    "id": "reliance",
+    "ticker": "RELIANCE",
+    "name": "Reliance Industries Limited",
+    "currency": "INR",
+    "unit": "INR Crores",
+    "coverage_type": "corporate_equity",
+    "country": "India",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Diversified",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for RELIANCE.",
+    "competitors": [
+      "Tata Group",
+      "Adani Group",
+      "Bharti Airtel",
+      "Indian Oil Corporation"
+    ],
+    "suppliers": [
+      "ADNOC",
+      "Saudi Aramco",
+      "Samsung (Telecom)",
+      "Ericsson"
+    ],
+    "risks": [
+      "Global refining margin (GRM) volatility and crude oil price swings",
+      "High net debt profile and significant annual capital expenditure commitments in clean energy",
+      "Intense competitive dynamics in Indian telecom and retail sectors"
+    ],
+    "source_doc": "Annual Report FY 2023-24 (Audited Consolidated Financial Statements)",
+    "source_url": "https://www.ril.com/investors/financial-reporting"
+  },
+  "TCS": {
+    "id": "tcs",
+    "ticker": "TCS",
+    "name": "Tata Consultancy Services Limited",
+    "currency": "INR",
+    "unit": "INR Crores",
+    "coverage_type": "corporate_equity",
+    "country": "India",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Diversified",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for TCS.",
+    "competitors": [
+      "Infosys",
+      "Wipro",
+      "Accenture",
+      "Cognizant",
+      "HCLTech"
+    ],
+    "suppliers": [
+      "Microsoft",
+      "AWS",
+      "Google Cloud",
+      "SAP"
+    ],
+    "risks": [
+      "Discretionary tech spending softness and deal postponement in North America and Europe",
+      "Talent attrition, visa regulations, and wage inflation in onsite markets",
+      "Generative AI productivity deflation on traditional application maintenance contracts"
+    ],
+    "source_doc": "Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements)",
+    "source_url": "https://www.tcs.com/investor-relations"
+  },
+  "TSLA": {
+    "id": "tsla",
+    "ticker": "TSLA",
+    "name": "Tesla, Inc.",
+    "currency": "USD",
+    "unit": "USD",
+    "coverage_type": "corporate_equity",
+    "country": "United States",
+    "periods": [
+      "FY2022",
+      "FY2023",
+      "FY2024"
+    ],
+    "available_metrics": [
+      "capital_expenditure",
+      "cash_and_equivalents",
+      "free_cash_flow",
+      "gross_profit",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "operating_margin_pct",
+      "total_assets",
+      "total_debt",
+      "total_liabilities",
+      "total_revenue"
+    ],
+    "sector": "Technology",
+    "industry": "Corporate Enterprise",
+    "risk_level": "Medium",
+    "description": "Audited regulatory reporting entity for TSLA.",
+    "competitors": [
+      "BYD",
+      "Volkswagen Group",
+      "General Motors",
+      "Ford",
+      "Rivian"
+    ],
+    "suppliers": [
+      "CATL",
+      "Panasonic",
+      "LG Energy Solution",
+      "NVIDIA"
+    ],
+    "risks": [
+      "Automotive gross margin compression from global EV pricing pressure",
+      "Regulatory compliance and liability regarding Full Self-Driving (FSD)",
+      "Battery raw material price fluctuations (Lithium, Nickel)"
+    ],
+    "source_doc": "SEC Form 10-K Annual Report (CIK 0001318605)",
+    "source_url": "https://www.sec.gov/edgar/browse/?CIK=0001318605"
+  }
+}

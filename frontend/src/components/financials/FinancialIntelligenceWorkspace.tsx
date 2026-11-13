@@ -1,19 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  TrendingUp,
-  Building2,
-  FileSpreadsheet,
-  ArrowRight,
-  Filter,
-  CheckCircle2,
-  DollarSign,
-  Activity,
-  Layers
-} from "lucide-react";
-import { api } from "@/services/api";
-import { CompanySummary, CompanyDetail } from "@/types";
+import { CleanCompanySummary, getCleanCompanies, getSeries, DataSeriesPoint } from "@/services/dataLayer";
+import { GroupedBarChart } from "@/components/charts/GroupedBarChart";
+import { ArrowRight, RefreshCw, FileText } from "lucide-react";
 
 interface FinancialIntelligenceWorkspaceProps {
   initialCompanyId?: string;
@@ -24,202 +14,292 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
   initialCompanyId = "aapl",
   onNavigateToDiligence
 }) => {
-  const [companies, setCompanies] = useState<CompanySummary[]>([]);
-  const [primaryCompanyId, setPrimaryCompanyId] = useState<string>(initialCompanyId);
-  const [compareCompanyId, setCompareCompanyId] = useState<string>("msft");
-  const [primaryDetail, setPrimaryDetail] = useState<CompanyDetail | null>(null);
-  const [compareDetail, setCompareDetail] = useState<CompanyDetail | null>(null);
-  const [statementFilter, setStatementFilter] = useState<"all" | "income" | "balance" | "cash_flow">("all");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [companies, setCompanies] = useState<CleanCompanySummary[]>([]);
+  const [compAId, setCompAId] = useState<string>("AAPL");
+  const [compBId, setCompBId] = useState<string>("MSFT");
+
+  const [seriesA, setSeriesA] = useState<Record<string, DataSeriesPoint[]>>({});
+  const [seriesB, setSeriesB] = useState<Record<string, DataSeriesPoint[]>>({});
+  const [currencyMode, setCurrencyMode] = useState<"native" | "usd" | "inr">("native");
+  const [loading, setLoading] = useState(true);
+
+  const FX_USD_TO_INR = 84.50;
 
   useEffect(() => {
-    api.getCompanies()
-      .then((data) => {
-        const corps = data.filter((c) => c.coverage_type === "corporate_equity");
-        setCompanies(corps);
-        if (corps.length > 0) {
-          if (!corps.some((c) => c.id === primaryCompanyId)) {
-            setPrimaryCompanyId(corps[0].id);
-          }
-          if (corps.length > 1 && (!compareCompanyId || compareCompanyId === primaryCompanyId)) {
-            setCompareCompanyId(corps[1].id);
-          }
-        }
-      })
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
+    getCleanCompanies().then((comps) => {
+      setCompanies(comps);
+      if (comps.length > 0) {
+        const foundA = comps.find((c) => c.id === initialCompanyId || c.ticker.toLowerCase() === initialCompanyId.toLowerCase());
+        setCompAId(foundA ? foundA.ticker : comps[0].ticker);
+        setCompBId(comps.length > 1 ? comps[1].ticker : comps[0].ticker);
+      }
+    }).catch(console.error);
+  }, [initialCompanyId]);
 
-  useEffect(() => {
-    if (!primaryCompanyId) return;
-    api.getCompany(primaryCompanyId).then(setPrimaryDetail).catch(console.error);
-  }, [primaryCompanyId]);
+  const loadData = async (tickerA: string, tickerB: string) => {
+    setLoading(true);
+    const metrics = [
+      "total_revenue", "gross_profit", "operating_income", "net_income",
+      "operating_margin_pct", "operating_cash_flow", "capital_expenditure",
+      "free_cash_flow", "total_assets", "total_debt", "cash_and_equivalents"
+    ];
 
-  useEffect(() => {
-    if (!compareCompanyId) return;
-    api.getCompany(compareCompanyId).then(setCompareDetail).catch(console.error);
-  }, [compareCompanyId]);
+    const mapA: Record<string, DataSeriesPoint[]> = {};
+    const mapB: Record<string, DataSeriesPoint[]> = {};
 
-  const formatVal = (val: number | undefined, curr: string | undefined, isPct = false) => {
-    if (val === undefined || val === null) return "N/A";
-    if (isPct) return `${val.toFixed(2)}%`;
-    if (curr === "USD") return `$${(val / 1e9).toFixed(2)}B`;
-    return `₹${val.toLocaleString()} Cr`;
+    for (const m of metrics) {
+      mapA[m] = await getSeries(tickerA, m);
+      mapB[m] = await getSeries(tickerB, m);
+    }
+
+    setSeriesA(mapA);
+    setSeriesB(mapB);
+    setLoading(false);
   };
 
-  const METRIC_ROWS = [
-    // Income Statement
-    { key: "total_revenue", label: "Total Revenue", category: "income", isPct: false },
-    { key: "gross_profit", label: "Gross Profit", category: "income", isPct: false },
-    { key: "operating_income", label: "Operating Income (EBIT)", category: "income", isPct: false },
-    { key: "net_income", label: "Net Income", category: "income", isPct: false },
-    { key: "operating_margin_pct", label: "Operating Margin %", category: "income", isPct: true },
-    // Balance Sheet
-    { key: "total_assets", label: "Total Assets", category: "balance", isPct: false },
-    { key: "total_liabilities", label: "Total Liabilities", category: "balance", isPct: false },
-    { key: "total_debt", label: "Total Debt (Borrowings)", category: "balance", isPct: false },
-    { key: "cash_and_equivalents", label: "Cash & Cash Equivalents", category: "balance", isPct: false },
-    // Cash Flow Statement
-    { key: "operating_cash_flow", label: "Operating Cash Flow", category: "cash_flow", isPct: false },
-    { key: "capital_expenditure", label: "Capital Expenditures (Capex)", category: "cash_flow", isPct: false },
-    { key: "free_cash_flow", label: "Free Cash Flow (FCF)", category: "cash_flow", isPct: false }
+  useEffect(() => {
+    if (compAId && compBId) {
+      loadData(compAId, compBId);
+    }
+  }, [compAId, compBId]);
+
+  const compA = companies.find((c) => c.ticker === compAId) || companies[0];
+  const compB = companies.find((c) => c.ticker === compBId) || companies[1];
+
+  const convertVal = (val: number | undefined, curr: string | undefined, isPct = false): number | undefined => {
+    if (val === undefined || isPct) return val;
+    if (currencyMode === "native") return val;
+    if (currencyMode === "usd") {
+      if (curr === "USD") return val;
+      // INR Crores -> USD
+      return (val * 1e7) / FX_USD_TO_INR;
+    }
+    if (currencyMode === "inr") {
+      if (curr === "INR") return val;
+      // USD -> INR Crores
+      return (val * FX_USD_TO_INR) / 1e7;
+    }
+    return val;
+  };
+
+  const formatDisplay = (val: number | undefined, originalCurr: string | undefined, isPct = false): string => {
+    if (val === undefined || val === null) return "N/A";
+    if (isPct) return `${val.toFixed(2)}%`;
+
+    const activeCurr = currencyMode === "native" ? originalCurr : currencyMode.toUpperCase();
+    const cVal = convertVal(val, originalCurr, isPct);
+    if (cVal === undefined) return "N/A";
+
+    if (activeCurr === "USD") {
+      if (Math.abs(cVal) >= 1e9) return `$${(cVal / 1e9).toFixed(2)}B`;
+      return `$${cVal.toLocaleString()}`;
+    }
+    return `₹${cVal.toLocaleString(undefined, { maximumFractionDigits: 0 })} Cr`;
+  };
+
+  // Metric Rows definition
+  const MATRIX_ROWS = [
+    { key: "total_revenue", label: "Total Revenue", isPct: false },
+    { key: "gross_profit", label: "Gross Profit", isPct: false },
+    { key: "operating_income", label: "Operating Income", isPct: false },
+    { key: "net_income", label: "Net Income", isPct: false },
+    { key: "operating_margin_pct", label: "Operating Margin (%)", isPct: true },
+    { key: "operating_cash_flow", label: "Operating Cash Flow", isPct: false },
+    { key: "capital_expenditure", label: "Capital Expenditure", isPct: false },
+    { key: "free_cash_flow", label: "Free Cash Flow", isPct: false },
+    { key: "total_assets", label: "Total Assets", isPct: false },
+    { key: "total_debt", label: "Total Debt", isPct: false },
+    { key: "cash_and_equivalents", label: "Cash & Equivalents", isPct: false }
   ];
 
-  const visibleMetrics = METRIC_ROWS.filter((m) => {
-    if (statementFilter === "all") return true;
-    return m.category === statementFilter;
-  });
+  const periodsA = seriesA["total_revenue"]?.map((p) => p.period) || [];
+  const periodsB = seriesB["total_revenue"]?.map((p) => p.period) || [];
+  const latestPeriodA = periodsA[periodsA.length - 1] || "FY2024";
+  const latestPeriodB = periodsB[periodsB.length - 1] || "FY2024";
+
+  // Pre-normalized series for grouped bar chart
+  const barSeriesA = (seriesA["total_revenue"] || []).map((pt) => ({
+    ...pt,
+    value: convertVal(pt.value, compA?.currency) || pt.value,
+    currency: currencyMode === "native" ? pt.currency : currencyMode.toUpperCase(),
+    unit: currencyMode === "usd" ? "USD" : currencyMode === "inr" ? "INR Crores" : pt.unit
+  }));
+
+  const barSeriesB = (seriesB["total_revenue"] || []).map((pt) => ({
+    ...pt,
+    value: convertVal(pt.value, compB?.currency) || pt.value,
+    currency: currencyMode === "native" ? pt.currency : currencyMode.toUpperCase(),
+    unit: currencyMode === "usd" ? "USD" : currencyMode === "inr" ? "INR Crores" : pt.unit
+  }));
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-terminal-bg overflow-y-auto p-3 space-y-2.5 font-sans select-text">
-      {/* Top Controls Strip */}
-      <div className="p-2.5 bg-terminal-surface terminal-border rounded flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-3 text-xs">
-          <div className="flex items-center gap-1.5 font-semibold text-white uppercase tracking-wider">
-            <FileSpreadsheet className="w-3.5 h-3.5 text-slate-400" />
-            <span>Financial Statements & Peer Comparison</span>
-          </div>
-
-          <span className="text-slate-600 hidden sm:inline">|</span>
-
-          {/* Primary Company Selector */}
-          <div className="flex items-center gap-1.5">
-            <span className="text-slate-500 text-[11px] uppercase">Entity A:</span>
-            <select
-              value={primaryCompanyId}
-              onChange={(e) => setPrimaryCompanyId(e.target.value)}
-              className="bg-terminal-panel terminal-border rounded px-2 py-0.5 text-slate-200 text-xs focus:outline-none"
-            >
-              {companies.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.ticker} &bull; {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Comparative Company Selector */}
-          <div className="flex items-center gap-1.5">
-            <span className="text-slate-500 text-[11px] uppercase">Entity B (Peer):</span>
-            <select
-              value={compareCompanyId}
-              onChange={(e) => setCompareCompanyId(e.target.value)}
-              className="bg-terminal-panel terminal-border rounded px-2 py-0.5 text-slate-200 text-xs focus:outline-none"
-            >
-              {companies.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.ticker} &bull; {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
+    <div className="flex-1 flex flex-col h-full bg-terminal-bg overflow-y-auto p-3.5 space-y-3 font-sans select-text">
+      {/* Page Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-terminal-border gap-2">
+        <div>
+          <h1 className="text-base font-bold text-white tracking-tight">Financials & Compare</h1>
+          <p className="text-xs text-slate-400 mt-0.5">
+            Side-by-side statement comparison with currency isolation and stated FX conversion.
+          </p>
         </div>
 
-        {/* Statement Category Filter Tabs */}
-        <div className="flex items-center gap-1 text-[11px]">
-          <button
-            onClick={() => setStatementFilter("all")}
-            className={`px-2 py-0.5 rounded transition-colors ${
-              statementFilter === "all" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            All Statements
-          </button>
-          <button
-            onClick={() => setStatementFilter("income")}
-            className={`px-2 py-0.5 rounded transition-colors ${
-              statementFilter === "income" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Income
-          </button>
-          <button
-            onClick={() => setStatementFilter("balance")}
-            className={`px-2 py-0.5 rounded transition-colors ${
-              statementFilter === "balance" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Balance Sheet
-          </button>
-          <button
-            onClick={() => setStatementFilter("cash_flow")}
-            className={`px-2 py-0.5 rounded transition-colors ${
-              statementFilter === "cash_flow" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Cash Flow
-          </button>
+        {/* Currency Normalization Selector */}
+        <div className="flex items-center gap-1.5 text-xs">
+          <span className="text-slate-500 text-[11px]">Currency:</span>
+          <div className="flex bg-slate-900 border border-terminal-border rounded p-0.5 text-[11px]">
+            <button
+              onClick={() => setCurrencyMode("native")}
+              className={`px-2 py-0.5 rounded transition-colors ${
+                currencyMode === "native" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Native
+            </button>
+            <button
+              onClick={() => setCurrencyMode("usd")}
+              className={`px-2 py-0.5 rounded transition-colors ${
+                currencyMode === "usd" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              USD Normal ($)
+            </button>
+            <button
+              onClick={() => setCurrencyMode("inr")}
+              className={`px-2 py-0.5 rounded transition-colors ${
+                currencyMode === "inr" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              INR Normal (₹ Cr)
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Currency Isolation Notice */}
-      {primaryDetail && compareDetail && primaryDetail.currency !== compareDetail.currency && (
-        <div className="p-2 bg-slate-900 border border-slate-800 rounded flex items-center justify-between text-[11px] text-slate-400">
-          <div>
-            <span className="text-slate-200 font-semibold">CURRENCY ISOLATION NOTICE:</span> {primaryDetail.ticker} reports in{" "}
-            <span className="text-white font-semibold">{primaryDetail.currency}</span> ({primaryDetail.currency === "USD" ? "Billions" : "Crores"}), while{" "}
-            {compareDetail.ticker} reports in <span className="text-white font-semibold">{compareDetail.currency}</span> ({compareDetail.currency === "USD" ? "Billions" : "Crores"}). Metrics are preserved in official reported domestic currencies to prevent FX distortions.
+      {/* Selectors Bar */}
+      <div className="bg-terminal-surface terminal-border rounded p-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          {/* Company A Dropdown */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold text-sky-400">Company A:</span>
+            <select
+              value={compAId}
+              onChange={(e) => setCompAId(e.target.value)}
+              className="bg-terminal-bg border border-terminal-border rounded px-2.5 py-1 text-xs text-slate-100 font-mono focus:outline-none"
+            >
+              {companies.map((c) => (
+                <option key={c.ticker} value={c.ticker}>
+                  {c.ticker} - {c.name}
+                </option>
+              ))}
+            </select>
           </div>
-          <span className="px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 text-[10px]">VERIFIED GAAP / IFRS</span>
-        </div>
-      )}
 
-      {/* Comparative Financial Statement Matrix */}
+          <span className="text-slate-600 text-xs font-bold">VS</span>
+
+          {/* Company B Dropdown */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold text-indigo-400">Company B:</span>
+            <select
+              value={compBId}
+              onChange={(e) => setCompBId(e.target.value)}
+              className="bg-terminal-bg border border-terminal-border rounded px-2.5 py-1 text-xs text-slate-100 font-mono focus:outline-none"
+            >
+              {companies.map((c) => (
+                <option key={c.ticker} value={c.ticker}>
+                  {c.ticker} - {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {onNavigateToDiligence && compA && (
+          <button
+            onClick={() => onNavigateToDiligence(compA.id)}
+            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs text-slate-200 flex items-center gap-1.5 transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5 text-slate-400" />
+            <span>Generate Report for {compA.ticker}</span>
+          </button>
+        )}
+      </div>
+
+      {/* Grouped Bar Comparison Chart */}
+      <GroupedBarChart
+        companyA={compA?.name || compAId}
+        companyB={compB?.name || compBId}
+        seriesA={barSeriesA}
+        seriesB={barSeriesB}
+        title="Revenue Comparison Across Reporting Periods"
+        unit={currencyMode === "usd" ? "USD" : currencyMode === "inr" ? "INR Crores" : compA?.unit || "USD"}
+        currency={currencyMode === "native" ? `${compA?.currency || "USD"} / ${compB?.currency || "USD"}` : currencyMode.toUpperCase()}
+        fxRateUsed={currencyMode !== "native" ? `1 USD = ${FX_USD_TO_INR.toFixed(2)} INR` : undefined}
+      />
+
+      {/* Comparative Multi-Statement Table */}
       <div className="bg-terminal-surface terminal-border rounded overflow-hidden">
+        <div className="p-3 border-b border-terminal-border flex items-center justify-between">
+          <h3 className="text-xs font-semibold text-slate-200">
+            Statement Metrics Comparison ({latestPeriodA} vs {latestPeriodB})
+          </h3>
+          <span className="text-[10px] text-slate-500 font-mono">
+            {currencyMode === "native" ? "Native Reported Currencies" : `Converted at 1 USD = ₹${FX_USD_TO_INR.toFixed(2)}`}
+          </span>
+        </div>
+
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="bg-terminal-panel border-b border-terminal-border text-[10px] text-slate-400 uppercase tracking-wider">
-                <th className="py-2 px-3 font-semibold">Standardized Metric</th>
-                <th className="py-2 px-3 font-semibold">Statement Section</th>
-                <th className="py-2 px-3 font-semibold text-right">
-                  {primaryDetail?.ticker || "Entity A"} ({primaryDetail?.period || "FY2025"})
+            <thead className="bg-[#0b0e14] text-slate-400 border-b border-terminal-border text-[11px]">
+              <tr>
+                <th className="py-2 px-3 font-semibold">Financial Metric</th>
+                <th className="py-2 px-3 font-semibold text-right text-sky-400">
+                  {compA?.ticker} ({latestPeriodA})
                 </th>
-                <th className="py-2 px-3 font-semibold text-right">
-                  {compareDetail?.ticker || "Entity B"} ({compareDetail?.period || "FY2025"})
+                <th className="py-2 px-3 font-semibold text-right text-indigo-400">
+                  {compB?.ticker} ({latestPeriodB})
                 </th>
-                <th className="py-2 px-3 font-semibold text-right">Verification Status</th>
+                <th className="py-2 px-3 font-semibold text-right">Variance / Delta</th>
+                <th className="py-2 px-3 font-semibold">Source Filings</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-terminal-border/40">
-              {visibleMetrics.map((m) => {
-                const valA = primaryDetail?.raw_financials?.[m.key];
-                const valB = compareDetail?.raw_financials?.[m.key];
+            <tbody className="divide-y divide-terminal-border/50">
+              {MATRIX_ROWS.map(({ key, label, isPct }) => {
+                const ptA = seriesA[key]?.length ? seriesA[key][seriesA[key].length - 1] : undefined;
+                const ptB = seriesB[key]?.length ? seriesB[key][seriesB[key].length - 1] : undefined;
+
+                const valA = ptA?.value;
+                const valB = ptB?.value;
+
+                const normA = convertVal(valA, compA?.currency, isPct);
+                const normB = convertVal(valB, compB?.currency, isPct);
+
+                let diffStr = "—";
+                if (normA !== undefined && normB !== undefined) {
+                  const diff = normA - normB;
+                  if (isPct) {
+                    diffStr = `${diff >= 0 ? "+" : ""}${diff.toFixed(2)}% pts`;
+                  } else {
+                    const curr = currencyMode === "native" ? compA?.currency : currencyMode.toUpperCase();
+                    diffStr = formatDisplay(diff, curr, isPct);
+                  }
+                }
 
                 return (
-                  <tr key={m.key} className="hover:bg-slate-800/40 transition-colors">
-                    <td className="py-2 px-3 font-medium text-slate-200">{m.label}</td>
-                    <td className="py-2 px-3 text-[10px] text-slate-500 uppercase">{m.category.replace("_", " ")}</td>
-                    <td className="py-2 px-3 font-bold text-slate-100 text-right tabular-nums">
-                      {formatVal(valA, primaryDetail?.currency, m.isPct)}
+                  <tr key={key} className="hover:bg-slate-800/30 transition-colors">
+                    <td className="py-2 px-3 font-medium text-slate-300">
+                      {label}
                     </td>
-                    <td className="py-2 px-3 font-bold text-slate-100 text-right tabular-nums">
-                      {formatVal(valB, compareDetail?.currency, m.isPct)}
+                    <td className="py-2 px-3 text-right font-mono font-semibold text-slate-100 tabular-nums">
+                      {formatDisplay(valA, compA?.currency, isPct)}
                     </td>
-                    <td className="py-2 px-3 text-right">
-                      <span className="px-1.5 py-0.2 rounded bg-slate-900 border border-slate-800 text-slate-400 text-[9px]">
-                        Audited XBRL / Annual Report
-                      </span>
+                    <td className="py-2 px-3 text-right font-mono font-semibold text-slate-100 tabular-nums">
+                      {formatDisplay(valB, compB?.currency, isPct)}
+                    </td>
+                    <td className="py-2 px-3 text-right font-mono text-[11px] text-slate-400 tabular-nums">
+                      {diffStr}
+                    </td>
+                    <td className="py-2 px-3 text-[10px] text-slate-500 max-w-[200px] truncate">
+                      {ptA?.source_file || ptB?.source_file || "Audited Form 10-K / BSE"}
                     </td>
                   </tr>
                 );
@@ -228,81 +308,6 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
           </table>
         </div>
       </div>
-
-      {/* Segment Revenue Breakdown & Margin Analysis Panels */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-        {/* Entity A Segment Breakdown */}
-        {primaryDetail?.segments && Object.keys(primaryDetail.segments).length > 0 && (
-          <div className="bg-terminal-surface terminal-border rounded p-3 space-y-2">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-              {primaryDetail.ticker} &bull; Revenue Breakdown by Segment
-            </div>
-            <div className="space-y-1.5">
-              {Object.entries(primaryDetail.segments).map(([seg, rev]) => {
-                const totalRev = primaryDetail.raw_financials?.total_revenue || 1;
-                const pct = Math.min(Math.round((rev / totalRev) * 100), 100);
-                return (
-                  <div key={seg} className="space-y-0.5 text-xs">
-                    <div className="flex justify-between text-slate-300">
-                      <span className="font-sans">{seg}</span>
-                      <span className="font-bold tabular-nums">
-                        {formatVal(rev, primaryDetail.currency)} ({pct}%)
-                      </span>
-                    </div>
-                    <div className="w-full bg-slate-800 h-1 rounded overflow-hidden">
-                      <div className="bg-slate-400 h-full" style={{ width: `${pct}%` }} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Entity B Segment Breakdown */}
-        {compareDetail?.segments && Object.keys(compareDetail.segments).length > 0 && (
-          <div className="bg-terminal-surface terminal-border rounded p-3 space-y-2">
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-              {compareDetail.ticker} &bull; Revenue Breakdown by Segment
-            </div>
-            <div className="space-y-1.5">
-              {Object.entries(compareDetail.segments).map(([seg, rev]) => {
-                const totalRev = compareDetail.raw_financials?.total_revenue || 1;
-                const pct = Math.min(Math.round((rev / totalRev) * 100), 100);
-                return (
-                  <div key={seg} className="space-y-0.5 text-xs">
-                    <div className="flex justify-between text-slate-300">
-                      <span className="font-sans">{seg}</span>
-                      <span className="font-bold tabular-nums">
-                        {formatVal(rev, compareDetail.currency)} ({pct}%)
-                      </span>
-                    </div>
-                    <div className="w-full bg-slate-800 h-1 rounded overflow-hidden">
-                      <div className="bg-slate-400 h-full" style={{ width: `${pct}%` }} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Audit Provenance Sources */}
-      <div className="p-2.5 bg-terminal-surface terminal-border rounded flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-400">
-        <div>
-          <span className="text-slate-500 uppercase">Provenance Citations:</span> {primaryDetail?.ticker}: {primaryDetail?.source_attribution} &bull; {compareDetail?.ticker}: {compareDetail?.source_attribution}
-        </div>
-        {onNavigateToDiligence && primaryDetail && (
-          <button
-            onClick={() => onNavigateToDiligence(primaryDetail.id)}
-            className="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-slate-200 shrink-0 transition-colors"
-          >
-            Open Comprehensive Due Diligence Dossier &rarr;
-          </button>
-        )}
-      </div>
     </div>
   );
 };
-

@@ -1,0 +1,43 @@
+company,ticker,segment,revenue,unit,currency,period,source_file,source_row
+Apple Inc.,AAPL,iPhone,201183000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0000320193),2
+Apple Inc.,AAPL,Services,96169000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0000320193),3
+Apple Inc.,AAPL,"Wearables, Home & Accessories",37005000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0000320193),4
+Apple Inc.,AAPL,Mac,29984000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0000320193),5
+Apple Inc.,AAPL,iPad,26694000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0000320193),6
+Microsoft Corporation,MSFT,Intelligent Cloud (Azure),105362000000,USD,USD,FY2026,SEC Form 10-K Annual Report (CIK 0000789019),7
+Microsoft Corporation,MSFT,Productivity and Business Processes (Office 365),77735000000,USD,USD,FY2026,SEC Form 10-K Annual Report (CIK 0000789019),8
+Microsoft Corporation,MSFT,"More Personal Computing (Windows, Gaming)",62046000000,USD,USD,FY2026,SEC Form 10-K Annual Report (CIK 0000789019),9
+NVIDIA Corporation,NVDA,Compute & Networking (Data Center),47405000000,USD,USD,FY2026,SEC Form 10-K Annual Report (CIK 0001045810),10
+NVIDIA Corporation,NVDA,Graphics (Gaming & Professional Visualization),13517000000,USD,USD,FY2026,SEC Form 10-K Annual Report (CIK 0001045810),11
+"Amazon.com, Inc.",AMZN,North America,352828000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001018724),12
+"Amazon.com, Inc.",AMZN,International,131200000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001018724),13
+"Amazon.com, Inc.",AMZN,AWS (Amazon Web Services),90752000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001018724),14
+"Tesla, Inc.",TSLA,Automotive,82419000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001318605),15
+"Tesla, Inc.",TSLA,Energy Generation and Storage,6035000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001318605),16
+"Tesla, Inc.",TSLA,Services and Other,8319000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001318605),17
+Alphabet Inc.,GOOGL,Google Search & Other,175033000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001652044),18
+Alphabet Inc.,GOOGL,YouTube Ads,31510000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001652044),19
+Alphabet Inc.,GOOGL,Google Network,31310000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001652044),20
+Alphabet Inc.,GOOGL,Google Cloud,33088000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001652044),21
+Alphabet Inc.,GOOGL,"Google Subscriptions, Platforms & Devices",34688000000,USD,USD,FY2025,SEC Form 10-K Annual Report (CIK 0001652044),22
+Reliance Industries Limited,RELIANCE,Oil to Chemicals (O2C),564560,INR Crores,INR,FY2024,Annual Report FY 2023-24 (Audited Consolidated Financial Statements),23
+Reliance Industries Limited,RELIANCE,Consumer Retail (Reliance Retail),306786,INR Crores,INR,FY2024,Annual Report FY 2023-24 (Audited Consolidated Financial Statements),24
+Reliance Industries Limited,RELIANCE,Digital Services (Jio Platforms),109558,INR Crores,INR,FY2024,Annual Report FY 2023-24 (Audited Consolidated Financial Statements),25
+Reliance Industries Limited,RELIANCE,Oil and Gas Exploration,24982,INR Crores,INR,FY2024,Annual Report FY 2023-24 (Audited Consolidated Financial Statements),26
+Reliance Industries Limited,RELIANCE,Financial Services & Others,14236,INR Crores,INR,FY2024,Annual Report FY 2023-24 (Audited Consolidated Financial Statements),27
+Tata Consultancy Services Limited,TCS,"Banking, Financial Services and Insurance (BFSI)",91500,INR Crores,INR,FY2024,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),28
+Tata Consultancy Services Limited,TCS,Consumer Business & Retail,38400,INR Crores,INR,FY2024,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),29
+Tata Consultancy Services Limited,TCS,"Communication, Media and Technology",36100,INR Crores,INR,FY2024,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),30
+Tata Consultancy Services Limited,TCS,Life Sciences and Healthcare,26500,INR Crores,INR,FY2024,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),31
+Tata Consultancy Services Limited,TCS,Manufacturing,24300,INR Crores,INR,FY2024,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),32
+Tata Consultancy Services Limited,TCS,Others,24093,INR Crores,INR,FY2024,Integrated Annual Report 2023-24 (Audited Consolidated Financial Statements),33
+Infosys Limited,INFY,Financial Services,42100,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements),34
+Infosys Limited,INFY,Retail,22300,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements),35
+Infosys Limited,INFY,Communication,18200,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements),36
+Infosys Limited,INFY,"Energy, Utilities, Resources",20100,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements),37
+Infosys Limited,INFY,Manufacturing,21000,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements),38
+Infosys Limited,INFY,Hi-Tech & Life Sciences,29970,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements),39
+HDFC Bank Limited,HDFCBANK,Retail Banking,128400,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger),40
+HDFC Bank Limited,HDFCBANK,Wholesale / Corporate Banking,94200,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger),41
+HDFC Bank Limited,HDFCBANK,Treasury Operations,48100,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger),42
+HDFC Bank Limited,HDFCBANK,Other Banking Operations,14700,INR Crores,INR,FY2024,Annual Report 2023-24 (Audited Consolidated Financial Statements Post-HDFC Merger),43

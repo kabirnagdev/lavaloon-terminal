@@ -1,0 +1,397 @@
+company,ticker,metric,value,unit,currency,period,source_file,source_row
+Apple Inc.,AAPL,total_revenue,394328000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),2
+Apple Inc.,AAPL,gross_profit,170782000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),3
+Apple Inc.,AAPL,operating_income,119437000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),4
+Apple Inc.,AAPL,net_income,99803000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),5
+Apple Inc.,AAPL,operating_margin_pct,30.29,%,USD,FY2022,SEC Form 10-K (CIK 0000320193),6
+Apple Inc.,AAPL,total_assets,352755000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),7
+Apple Inc.,AAPL,total_liabilities,302083000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),8
+Apple Inc.,AAPL,total_debt,98959000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),9
+Apple Inc.,AAPL,cash_and_equivalents,23646000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),10
+Apple Inc.,AAPL,operating_cash_flow,122151000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),11
+Apple Inc.,AAPL,capital_expenditure,10708000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),12
+Apple Inc.,AAPL,free_cash_flow,111443000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000320193),13
+Apple Inc.,AAPL,total_revenue,383285000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),14
+Apple Inc.,AAPL,gross_profit,169148000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),15
+Apple Inc.,AAPL,operating_income,114301000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),16
+Apple Inc.,AAPL,net_income,96995000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),17
+Apple Inc.,AAPL,operating_margin_pct,29.82,%,USD,FY2023,SEC Form 10-K (CIK 0000320193),18
+Apple Inc.,AAPL,total_assets,352583000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),19
+Apple Inc.,AAPL,total_liabilities,290437000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),20
+Apple Inc.,AAPL,total_debt,95281000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),21
+Apple Inc.,AAPL,cash_and_equivalents,29965000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),22
+Apple Inc.,AAPL,operating_cash_flow,110543000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),23
+Apple Inc.,AAPL,capital_expenditure,10959000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),24
+Apple Inc.,AAPL,free_cash_flow,99584000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000320193),25
+Apple Inc.,AAPL,total_revenue,391035000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),26
+Apple Inc.,AAPL,gross_profit,180683000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),27
+Apple Inc.,AAPL,operating_income,123216000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),28
+Apple Inc.,AAPL,net_income,93736000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),29
+Apple Inc.,AAPL,operating_margin_pct,31.51,%,USD,FY2024,SEC Form 10-K (CIK 0000320193),30
+Apple Inc.,AAPL,total_assets,364980000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),31
+Apple Inc.,AAPL,total_liabilities,308030000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),32
+Apple Inc.,AAPL,total_debt,85750000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),33
+Apple Inc.,AAPL,cash_and_equivalents,29943000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),34
+Apple Inc.,AAPL,operating_cash_flow,118254000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),35
+Apple Inc.,AAPL,capital_expenditure,9447000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),36
+Apple Inc.,AAPL,free_cash_flow,108807000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000320193),37
+Apple Inc.,AAPL,total_revenue,416161000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),38
+Apple Inc.,AAPL,gross_profit,195201000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),39
+Apple Inc.,AAPL,operating_income,133050000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),40
+Apple Inc.,AAPL,net_income,112010000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),41
+Apple Inc.,AAPL,operating_margin_pct,31.97,%,USD,FY2025,SEC Form 10-K (CIK 0000320193),42
+Apple Inc.,AAPL,total_assets,359241000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),43
+Apple Inc.,AAPL,total_liabilities,288300000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),44
+Apple Inc.,AAPL,total_debt,78328000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),45
+Apple Inc.,AAPL,cash_and_equivalents,35934000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),46
+Apple Inc.,AAPL,operating_cash_flow,125400000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),47
+Apple Inc.,AAPL,capital_expenditure,12715000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),48
+Apple Inc.,AAPL,free_cash_flow,112685000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000320193),49
+Microsoft Corporation,MSFT,total_revenue,198270000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),50
+Microsoft Corporation,MSFT,gross_profit,135620000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),51
+Microsoft Corporation,MSFT,operating_income,83383000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),52
+Microsoft Corporation,MSFT,net_income,72738000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),53
+Microsoft Corporation,MSFT,operating_margin_pct,42.06,%,USD,FY2022,SEC Form 10-K (CIK 0000789019),54
+Microsoft Corporation,MSFT,total_assets,364840000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),55
+Microsoft Corporation,MSFT,total_liabilities,198298000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),56
+Microsoft Corporation,MSFT,total_debt,47032000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),57
+Microsoft Corporation,MSFT,cash_and_equivalents,13931000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),58
+Microsoft Corporation,MSFT,operating_cash_flow,89035000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),59
+Microsoft Corporation,MSFT,capital_expenditure,23886000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),60
+Microsoft Corporation,MSFT,free_cash_flow,65149000000,USD,USD,FY2022,SEC Form 10-K (CIK 0000789019),61
+Microsoft Corporation,MSFT,total_revenue,211915000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),62
+Microsoft Corporation,MSFT,gross_profit,146052000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),63
+Microsoft Corporation,MSFT,operating_income,88523000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),64
+Microsoft Corporation,MSFT,net_income,72361000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),65
+Microsoft Corporation,MSFT,operating_margin_pct,41.77,%,USD,FY2023,SEC Form 10-K (CIK 0000789019),66
+Microsoft Corporation,MSFT,total_assets,411976000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),67
+Microsoft Corporation,MSFT,total_liabilities,205753000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),68
+Microsoft Corporation,MSFT,total_debt,47204000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),69
+Microsoft Corporation,MSFT,cash_and_equivalents,34704000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),70
+Microsoft Corporation,MSFT,operating_cash_flow,87582000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),71
+Microsoft Corporation,MSFT,capital_expenditure,28107000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),72
+Microsoft Corporation,MSFT,free_cash_flow,59475000000,USD,USD,FY2023,SEC Form 10-K (CIK 0000789019),73
+Microsoft Corporation,MSFT,total_revenue,245122000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),74
+Microsoft Corporation,MSFT,gross_profit,171008000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),75
+Microsoft Corporation,MSFT,operating_income,109433000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),76
+Microsoft Corporation,MSFT,net_income,88136000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),77
+Microsoft Corporation,MSFT,operating_margin_pct,44.64,%,USD,FY2024,SEC Form 10-K (CIK 0000789019),78
+Microsoft Corporation,MSFT,total_assets,512163000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),79
+Microsoft Corporation,MSFT,total_liabilities,243686000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),80
+Microsoft Corporation,MSFT,total_debt,40152000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),81
+Microsoft Corporation,MSFT,cash_and_equivalents,18296000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),82
+Microsoft Corporation,MSFT,operating_cash_flow,118548000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),83
+Microsoft Corporation,MSFT,capital_expenditure,44477000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),84
+Microsoft Corporation,MSFT,free_cash_flow,74071000000,USD,USD,FY2024,SEC Form 10-K (CIK 0000789019),85
+Microsoft Corporation,MSFT,total_revenue,281724000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),86
+Microsoft Corporation,MSFT,gross_profit,193893000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),87
+Microsoft Corporation,MSFT,operating_income,128528000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),88
+Microsoft Corporation,MSFT,net_income,101832000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),89
+Microsoft Corporation,MSFT,operating_margin_pct,45.62,%,USD,FY2025,SEC Form 10-K (CIK 0000789019),90
+Microsoft Corporation,MSFT,total_assets,619003000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),91
+Microsoft Corporation,MSFT,total_liabilities,275524000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),92
+Microsoft Corporation,MSFT,total_debt,42000000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),93
+Microsoft Corporation,MSFT,cash_and_equivalents,30242000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),94
+Microsoft Corporation,MSFT,operating_cash_flow,136000000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),95
+Microsoft Corporation,MSFT,capital_expenditure,52000000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),96
+Microsoft Corporation,MSFT,free_cash_flow,84000000000,USD,USD,FY2025,SEC Form 10-K (CIK 0000789019),97
+NVIDIA Corporation,NVDA,total_revenue,26914000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),98
+NVIDIA Corporation,NVDA,gross_profit,17475000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),99
+NVIDIA Corporation,NVDA,operating_income,10041000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),100
+NVIDIA Corporation,NVDA,net_income,9752000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),101
+NVIDIA Corporation,NVDA,operating_margin_pct,37.31,%,USD,FY2022,SEC Form 10-K (CIK 0001045810),102
+NVIDIA Corporation,NVDA,total_assets,44187000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),103
+NVIDIA Corporation,NVDA,total_liabilities,17579000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),104
+NVIDIA Corporation,NVDA,total_debt,10946000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),105
+NVIDIA Corporation,NVDA,cash_and_equivalents,1990000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),106
+NVIDIA Corporation,NVDA,operating_cash_flow,9108000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),107
+NVIDIA Corporation,NVDA,capital_expenditure,976000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),108
+NVIDIA Corporation,NVDA,free_cash_flow,8132000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001045810),109
+NVIDIA Corporation,NVDA,total_revenue,26974000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),110
+NVIDIA Corporation,NVDA,gross_profit,15356000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),111
+NVIDIA Corporation,NVDA,operating_income,4224000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),112
+NVIDIA Corporation,NVDA,net_income,4368000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),113
+NVIDIA Corporation,NVDA,operating_margin_pct,15.66,%,USD,FY2023,SEC Form 10-K (CIK 0001045810),114
+NVIDIA Corporation,NVDA,total_assets,41182000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),115
+NVIDIA Corporation,NVDA,total_liabilities,19081000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),116
+NVIDIA Corporation,NVDA,total_debt,11046000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),117
+NVIDIA Corporation,NVDA,cash_and_equivalents,3389000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),118
+NVIDIA Corporation,NVDA,operating_cash_flow,5641000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),119
+NVIDIA Corporation,NVDA,capital_expenditure,1833000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),120
+NVIDIA Corporation,NVDA,free_cash_flow,3808000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001045810),121
+NVIDIA Corporation,NVDA,total_revenue,60922000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),122
+NVIDIA Corporation,NVDA,gross_profit,44301000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),123
+NVIDIA Corporation,NVDA,operating_income,32972000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),124
+NVIDIA Corporation,NVDA,net_income,29760000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),125
+NVIDIA Corporation,NVDA,operating_margin_pct,54.12,%,USD,FY2024,SEC Form 10-K (CIK 0001045810),126
+NVIDIA Corporation,NVDA,total_assets,65728000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),127
+NVIDIA Corporation,NVDA,total_liabilities,22750000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),128
+NVIDIA Corporation,NVDA,total_debt,8463000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),129
+NVIDIA Corporation,NVDA,cash_and_equivalents,7280000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),130
+NVIDIA Corporation,NVDA,operating_cash_flow,28090000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),131
+NVIDIA Corporation,NVDA,capital_expenditure,1069000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),132
+NVIDIA Corporation,NVDA,free_cash_flow,27021000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001045810),133
+NVIDIA Corporation,NVDA,total_revenue,126049000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),134
+NVIDIA Corporation,NVDA,gross_profit,97858000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),135
+NVIDIA Corporation,NVDA,operating_income,81453000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),136
+NVIDIA Corporation,NVDA,net_income,72880000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),137
+NVIDIA Corporation,NVDA,operating_margin_pct,64.62,%,USD,FY2025,SEC Form 10-K (CIK 0001045810),138
+NVIDIA Corporation,NVDA,total_assets,111601000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),139
+NVIDIA Corporation,NVDA,total_liabilities,31200000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),140
+NVIDIA Corporation,NVDA,total_debt,8463000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),141
+NVIDIA Corporation,NVDA,cash_and_equivalents,12500000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),142
+NVIDIA Corporation,NVDA,operating_cash_flow,65000000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),143
+NVIDIA Corporation,NVDA,capital_expenditure,3500000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),144
+NVIDIA Corporation,NVDA,free_cash_flow,61500000000,USD,USD,FY2025,SEC Form 10-K (CIK 0001045810),145
+"Amazon.com, Inc.",AMZN,total_revenue,513983000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),146
+"Amazon.com, Inc.",AMZN,gross_profit,225152000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),147
+"Amazon.com, Inc.",AMZN,operating_income,12248000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),148
+"Amazon.com, Inc.",AMZN,net_income,-2722000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),149
+"Amazon.com, Inc.",AMZN,operating_margin_pct,2.38,%,USD,FY2022,SEC Form 10-K (CIK 0001018724),150
+"Amazon.com, Inc.",AMZN,total_assets,462675000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),151
+"Amazon.com, Inc.",AMZN,total_liabilities,316632000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),152
+"Amazon.com, Inc.",AMZN,total_debt,67150000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),153
+"Amazon.com, Inc.",AMZN,cash_and_equivalents,53888000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),154
+"Amazon.com, Inc.",AMZN,operating_cash_flow,46752000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),155
+"Amazon.com, Inc.",AMZN,capital_expenditure,63645000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),156
+"Amazon.com, Inc.",AMZN,free_cash_flow,-16893000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001018724),157
+"Amazon.com, Inc.",AMZN,total_revenue,574785000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),158
+"Amazon.com, Inc.",AMZN,gross_profit,270046000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),159
+"Amazon.com, Inc.",AMZN,operating_income,36852000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),160
+"Amazon.com, Inc.",AMZN,net_income,30425000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),161
+"Amazon.com, Inc.",AMZN,operating_margin_pct,6.41,%,USD,FY2023,SEC Form 10-K (CIK 0001018724),162
+"Amazon.com, Inc.",AMZN,total_assets,527854000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),163
+"Amazon.com, Inc.",AMZN,total_liabilities,326107000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),164
+"Amazon.com, Inc.",AMZN,total_debt,58314000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),165
+"Amazon.com, Inc.",AMZN,cash_and_equivalents,73387000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),166
+"Amazon.com, Inc.",AMZN,operating_cash_flow,84946000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),167
+"Amazon.com, Inc.",AMZN,capital_expenditure,52729000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),168
+"Amazon.com, Inc.",AMZN,free_cash_flow,32217000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001018724),169
+"Amazon.com, Inc.",AMZN,total_revenue,637959000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),170
+"Amazon.com, Inc.",AMZN,gross_profit,312500000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),171
+"Amazon.com, Inc.",AMZN,operating_income,68593000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),172
+"Amazon.com, Inc.",AMZN,net_income,59248000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),173
+"Amazon.com, Inc.",AMZN,operating_margin_pct,10.75,%,USD,FY2024,SEC Form 10-K (CIK 0001018724),174
+"Amazon.com, Inc.",AMZN,total_assets,624894000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),175
+"Amazon.com, Inc.",AMZN,total_liabilities,348000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),176
+"Amazon.com, Inc.",AMZN,total_debt,52623000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),177
+"Amazon.com, Inc.",AMZN,cash_and_equivalents,86200000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),178
+"Amazon.com, Inc.",AMZN,operating_cash_flow,115000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),179
+"Amazon.com, Inc.",AMZN,capital_expenditure,62000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),180
+"Amazon.com, Inc.",AMZN,free_cash_flow,53000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001018724),181
+"Tesla, Inc.",TSLA,total_revenue,81462000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),182
+"Tesla, Inc.",TSLA,gross_profit,20853000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),183
+"Tesla, Inc.",TSLA,operating_income,13656000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),184
+"Tesla, Inc.",TSLA,net_income,12556000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),185
+"Tesla, Inc.",TSLA,operating_margin_pct,16.76,%,USD,FY2022,SEC Form 10-K (CIK 0001318605),186
+"Tesla, Inc.",TSLA,total_assets,82338000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),187
+"Tesla, Inc.",TSLA,total_liabilities,36440000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),188
+"Tesla, Inc.",TSLA,total_debt,3099000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),189
+"Tesla, Inc.",TSLA,cash_and_equivalents,22185000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),190
+"Tesla, Inc.",TSLA,operating_cash_flow,14724000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),191
+"Tesla, Inc.",TSLA,capital_expenditure,7158000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),192
+"Tesla, Inc.",TSLA,free_cash_flow,7566000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001318605),193
+"Tesla, Inc.",TSLA,total_revenue,96773000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),194
+"Tesla, Inc.",TSLA,gross_profit,17660000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),195
+"Tesla, Inc.",TSLA,operating_income,8891000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),196
+"Tesla, Inc.",TSLA,net_income,14997000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),197
+"Tesla, Inc.",TSLA,operating_margin_pct,9.19,%,USD,FY2023,SEC Form 10-K (CIK 0001318605),198
+"Tesla, Inc.",TSLA,total_assets,106618000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),199
+"Tesla, Inc.",TSLA,total_liabilities,43009000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),200
+"Tesla, Inc.",TSLA,total_debt,2857000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),201
+"Tesla, Inc.",TSLA,cash_and_equivalents,29094000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),202
+"Tesla, Inc.",TSLA,operating_cash_flow,13256000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),203
+"Tesla, Inc.",TSLA,capital_expenditure,8899000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),204
+"Tesla, Inc.",TSLA,free_cash_flow,4357000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001318605),205
+"Tesla, Inc.",TSLA,total_revenue,97690000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),206
+"Tesla, Inc.",TSLA,gross_profit,17450000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),207
+"Tesla, Inc.",TSLA,operating_income,7076000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),208
+"Tesla, Inc.",TSLA,net_income,7091000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),209
+"Tesla, Inc.",TSLA,operating_margin_pct,7.24,%,USD,FY2024,SEC Form 10-K (CIK 0001318605),210
+"Tesla, Inc.",TSLA,total_assets,122070000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),211
+"Tesla, Inc.",TSLA,total_liabilities,45000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),212
+"Tesla, Inc.",TSLA,total_debt,2343000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),213
+"Tesla, Inc.",TSLA,cash_and_equivalents,33600000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),214
+"Tesla, Inc.",TSLA,operating_cash_flow,14500000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),215
+"Tesla, Inc.",TSLA,capital_expenditure,11000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),216
+"Tesla, Inc.",TSLA,free_cash_flow,3500000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001318605),217
+Alphabet Inc.,GOOGL,total_revenue,282836000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),218
+Alphabet Inc.,GOOGL,gross_profit,156633000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),219
+Alphabet Inc.,GOOGL,operating_income,74842000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),220
+Alphabet Inc.,GOOGL,net_income,59972000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),221
+Alphabet Inc.,GOOGL,operating_margin_pct,26.46,%,USD,FY2022,SEC Form 10-K (CIK 0001652044),222
+Alphabet Inc.,GOOGL,total_assets,365264000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),223
+Alphabet Inc.,GOOGL,total_liabilities,109120000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),224
+Alphabet Inc.,GOOGL,total_debt,14701000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),225
+Alphabet Inc.,GOOGL,cash_and_equivalents,21879000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),226
+Alphabet Inc.,GOOGL,operating_cash_flow,91495000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),227
+Alphabet Inc.,GOOGL,capital_expenditure,31485000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),228
+Alphabet Inc.,GOOGL,free_cash_flow,60010000000,USD,USD,FY2022,SEC Form 10-K (CIK 0001652044),229
+Alphabet Inc.,GOOGL,total_revenue,307394000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),230
+Alphabet Inc.,GOOGL,gross_profit,174312000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),231
+Alphabet Inc.,GOOGL,operating_income,84293000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),232
+Alphabet Inc.,GOOGL,net_income,73795000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),233
+Alphabet Inc.,GOOGL,operating_margin_pct,27.42,%,USD,FY2023,SEC Form 10-K (CIK 0001652044),234
+Alphabet Inc.,GOOGL,total_assets,402392000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),235
+Alphabet Inc.,GOOGL,total_liabilities,119041000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),236
+Alphabet Inc.,GOOGL,total_debt,13253000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),237
+Alphabet Inc.,GOOGL,cash_and_equivalents,24048000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),238
+Alphabet Inc.,GOOGL,operating_cash_flow,101746000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),239
+Alphabet Inc.,GOOGL,capital_expenditure,32251000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),240
+Alphabet Inc.,GOOGL,free_cash_flow,69495000000,USD,USD,FY2023,SEC Form 10-K (CIK 0001652044),241
+Alphabet Inc.,GOOGL,total_revenue,350018000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),242
+Alphabet Inc.,GOOGL,gross_profit,201200000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),243
+Alphabet Inc.,GOOGL,operating_income,112390000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),244
+Alphabet Inc.,GOOGL,net_income,100118000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),245
+Alphabet Inc.,GOOGL,operating_margin_pct,32.11,%,USD,FY2024,SEC Form 10-K (CIK 0001652044),246
+Alphabet Inc.,GOOGL,total_assets,450256000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),247
+Alphabet Inc.,GOOGL,total_liabilities,132000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),248
+Alphabet Inc.,GOOGL,total_debt,10883000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),249
+Alphabet Inc.,GOOGL,cash_and_equivalents,28500000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),250
+Alphabet Inc.,GOOGL,operating_cash_flow,125000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),251
+Alphabet Inc.,GOOGL,capital_expenditure,51000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),252
+Alphabet Inc.,GOOGL,free_cash_flow,74000000000,USD,USD,FY2024,SEC Form 10-K (CIK 0001652044),253
+Reliance Industries Limited,RELIANCE,total_revenue,792756,INR Crores,INR,FY2022,BSE Audited Financials,254
+Reliance Industries Limited,RELIANCE,gross_profit,285000,INR Crores,INR,FY2022,BSE Audited Financials,255
+Reliance Industries Limited,RELIANCE,operating_income,110460,INR Crores,INR,FY2022,BSE Audited Financials,256
+Reliance Industries Limited,RELIANCE,net_income,67845,INR Crores,INR,FY2022,BSE Audited Financials,257
+Reliance Industries Limited,RELIANCE,operating_margin_pct,13.93,%,INR,FY2022,BSE Audited Financials,258
+Reliance Industries Limited,RELIANCE,total_assets,1499665,INR Crores,INR,FY2022,BSE Audited Financials,259
+Reliance Industries Limited,RELIANCE,total_liabilities,720000,INR Crores,INR,FY2022,BSE Audited Financials,260
+Reliance Industries Limited,RELIANCE,total_debt,266305,INR Crores,INR,FY2022,BSE Audited Financials,261
+Reliance Industries Limited,RELIANCE,cash_and_equivalents,36178,INR Crores,INR,FY2022,BSE Audited Financials,262
+Reliance Industries Limited,RELIANCE,operating_cash_flow,110654,INR Crores,INR,FY2022,BSE Audited Financials,263
+Reliance Industries Limited,RELIANCE,capital_expenditure,100145,INR Crores,INR,FY2022,BSE Audited Financials,264
+Reliance Industries Limited,RELIANCE,free_cash_flow,10509,INR Crores,INR,FY2022,BSE Audited Financials,265
+Reliance Industries Limited,RELIANCE,total_revenue,974864,INR Crores,INR,FY2023,BSE Audited Financials,266
+Reliance Industries Limited,RELIANCE,gross_profit,320000,INR Crores,INR,FY2023,BSE Audited Financials,267
+Reliance Industries Limited,RELIANCE,operating_income,142100,INR Crores,INR,FY2023,BSE Audited Financials,268
+Reliance Industries Limited,RELIANCE,net_income,73670,INR Crores,INR,FY2023,BSE Audited Financials,269
+Reliance Industries Limited,RELIANCE,operating_margin_pct,14.58,%,INR,FY2023,BSE Audited Financials,270
+Reliance Industries Limited,RELIANCE,total_assets,1658450,INR Crores,INR,FY2023,BSE Audited Financials,271
+Reliance Industries Limited,RELIANCE,total_liabilities,850000,INR Crores,INR,FY2023,BSE Audited Financials,272
+Reliance Industries Limited,RELIANCE,total_debt,314708,INR Crores,INR,FY2023,BSE Audited Financials,273
+Reliance Industries Limited,RELIANCE,cash_and_equivalents,67840,INR Crores,INR,FY2023,BSE Audited Financials,274
+Reliance Industries Limited,RELIANCE,operating_cash_flow,115000,INR Crores,INR,FY2023,BSE Audited Financials,275
+Reliance Industries Limited,RELIANCE,capital_expenditure,141000,INR Crores,INR,FY2023,BSE Audited Financials,276
+Reliance Industries Limited,RELIANCE,free_cash_flow,-26000,INR Crores,INR,FY2023,BSE Audited Financials,277
+Reliance Industries Limited,RELIANCE,total_revenue,1000122,INR Crores,INR,FY2024,BSE Audited Financials,278
+Reliance Industries Limited,RELIANCE,gross_profit,352400,INR Crores,INR,FY2024,BSE Audited Financials,279
+Reliance Industries Limited,RELIANCE,operating_income,142100,INR Crores,INR,FY2024,BSE Audited Financials,280
+Reliance Industries Limited,RELIANCE,net_income,79020,INR Crores,INR,FY2024,BSE Audited Financials,281
+Reliance Industries Limited,RELIANCE,operating_margin_pct,14.2,%,INR,FY2024,BSE Audited Financials,282
+Reliance Industries Limited,RELIANCE,total_assets,1782000,INR Crores,INR,FY2024,BSE Audited Financials,283
+Reliance Industries Limited,RELIANCE,total_liabilities,948000,INR Crores,INR,FY2024,BSE Audited Financials,284
+Reliance Industries Limited,RELIANCE,total_debt,324622,INR Crores,INR,FY2024,BSE Audited Financials,285
+Reliance Industries Limited,RELIANCE,cash_and_equivalents,88000,INR Crores,INR,FY2024,BSE Audited Financials,286
+Reliance Industries Limited,RELIANCE,operating_cash_flow,124000,INR Crores,INR,FY2024,BSE Audited Financials,287
+Reliance Industries Limited,RELIANCE,capital_expenditure,131769,INR Crores,INR,FY2024,BSE Audited Financials,288
+Reliance Industries Limited,RELIANCE,free_cash_flow,-7769,INR Crores,INR,FY2024,BSE Audited Financials,289
+Tata Consultancy Services Limited,TCS,total_revenue,191754,INR Crores,INR,FY2022,BSE Audited Financials,290
+Tata Consultancy Services Limited,TCS,gross_profit,78500,INR Crores,INR,FY2022,BSE Audited Financials,291
+Tata Consultancy Services Limited,TCS,operating_income,48473,INR Crores,INR,FY2022,BSE Audited Financials,292
+Tata Consultancy Services Limited,TCS,net_income,38327,INR Crores,INR,FY2022,BSE Audited Financials,293
+Tata Consultancy Services Limited,TCS,operating_margin_pct,25.28,%,INR,FY2022,BSE Audited Financials,294
+Tata Consultancy Services Limited,TCS,total_assets,120500,INR Crores,INR,FY2022,BSE Audited Financials,295
+Tata Consultancy Services Limited,TCS,total_liabilities,31300,INR Crores,INR,FY2022,BSE Audited Financials,296
+Tata Consultancy Services Limited,TCS,total_debt,0,INR Crores,INR,FY2022,BSE Audited Financials,297
+Tata Consultancy Services Limited,TCS,cash_and_equivalents,12488,INR Crores,INR,FY2022,BSE Audited Financials,298
+Tata Consultancy Services Limited,TCS,operating_cash_flow,39949,INR Crores,INR,FY2022,BSE Audited Financials,299
+Tata Consultancy Services Limited,TCS,capital_expenditure,2985,INR Crores,INR,FY2022,BSE Audited Financials,300
+Tata Consultancy Services Limited,TCS,free_cash_flow,36964,INR Crores,INR,FY2022,BSE Audited Financials,301
+Tata Consultancy Services Limited,TCS,total_revenue,225458,INR Crores,INR,FY2023,BSE Audited Financials,302
+Tata Consultancy Services Limited,TCS,gross_profit,92000,INR Crores,INR,FY2023,BSE Audited Financials,303
+Tata Consultancy Services Limited,TCS,operating_income,54237,INR Crores,INR,FY2023,BSE Audited Financials,304
+Tata Consultancy Services Limited,TCS,net_income,42147,INR Crores,INR,FY2023,BSE Audited Financials,305
+Tata Consultancy Services Limited,TCS,operating_margin_pct,24.06,%,INR,FY2023,BSE Audited Financials,306
+Tata Consultancy Services Limited,TCS,total_assets,131000,INR Crores,INR,FY2023,BSE Audited Financials,307
+Tata Consultancy Services Limited,TCS,total_liabilities,38500,INR Crores,INR,FY2023,BSE Audited Financials,308
+Tata Consultancy Services Limited,TCS,total_debt,0,INR Crores,INR,FY2023,BSE Audited Financials,309
+Tata Consultancy Services Limited,TCS,cash_and_equivalents,11032,INR Crores,INR,FY2023,BSE Audited Financials,310
+Tata Consultancy Services Limited,TCS,operating_cash_flow,42000,INR Crores,INR,FY2023,BSE Audited Financials,311
+Tata Consultancy Services Limited,TCS,capital_expenditure,3050,INR Crores,INR,FY2023,BSE Audited Financials,312
+Tata Consultancy Services Limited,TCS,free_cash_flow,38950,INR Crores,INR,FY2023,BSE Audited Financials,313
+Tata Consultancy Services Limited,TCS,total_revenue,240893,INR Crores,INR,FY2024,BSE Audited Financials,314
+Tata Consultancy Services Limited,TCS,gross_profit,98200,INR Crores,INR,FY2024,BSE Audited Financials,315
+Tata Consultancy Services Limited,TCS,operating_income,59325,INR Crores,INR,FY2024,BSE Audited Financials,316
+Tata Consultancy Services Limited,TCS,net_income,46099,INR Crores,INR,FY2024,BSE Audited Financials,317
+Tata Consultancy Services Limited,TCS,operating_margin_pct,24.62,%,INR,FY2024,BSE Audited Financials,318
+Tata Consultancy Services Limited,TCS,total_assets,142400,INR Crores,INR,FY2024,BSE Audited Financials,319
+Tata Consultancy Services Limited,TCS,total_liabilities,43200,INR Crores,INR,FY2024,BSE Audited Financials,320
+Tata Consultancy Services Limited,TCS,total_debt,0,INR Crores,INR,FY2024,BSE Audited Financials,321
+Tata Consultancy Services Limited,TCS,cash_and_equivalents,12500,INR Crores,INR,FY2024,BSE Audited Financials,322
+Tata Consultancy Services Limited,TCS,operating_cash_flow,44342,INR Crores,INR,FY2024,BSE Audited Financials,323
+Tata Consultancy Services Limited,TCS,capital_expenditure,3100,INR Crores,INR,FY2024,BSE Audited Financials,324
+Tata Consultancy Services Limited,TCS,free_cash_flow,41242,INR Crores,INR,FY2024,BSE Audited Financials,325
+Infosys Limited,INFY,total_revenue,121641,INR Crores,INR,FY2022,BSE Audited Financials,326
+Infosys Limited,INFY,gross_profit,42500,INR Crores,INR,FY2022,BSE Audited Financials,327
+Infosys Limited,INFY,operating_income,28010,INR Crores,INR,FY2022,BSE Audited Financials,328
+Infosys Limited,INFY,net_income,22110,INR Crores,INR,FY2022,BSE Audited Financials,329
+Infosys Limited,INFY,operating_margin_pct,23.03,%,INR,FY2022,BSE Audited Financials,330
+Infosys Limited,INFY,total_assets,107943,INR Crores,INR,FY2022,BSE Audited Financials,331
+Infosys Limited,INFY,total_liabilities,32600,INR Crores,INR,FY2022,BSE Audited Financials,332
+Infosys Limited,INFY,total_debt,0,INR Crores,INR,FY2022,BSE Audited Financials,333
+Infosys Limited,INFY,cash_and_equivalents,17472,INR Crores,INR,FY2022,BSE Audited Financials,334
+Infosys Limited,INFY,operating_cash_flow,24964,INR Crores,INR,FY2022,BSE Audited Financials,335
+Infosys Limited,INFY,capital_expenditure,2161,INR Crores,INR,FY2022,BSE Audited Financials,336
+Infosys Limited,INFY,free_cash_flow,22803,INR Crores,INR,FY2022,BSE Audited Financials,337
+Infosys Limited,INFY,total_revenue,146767,INR Crores,INR,FY2023,BSE Audited Financials,338
+Infosys Limited,INFY,gross_profit,49000,INR Crores,INR,FY2023,BSE Audited Financials,339
+Infosys Limited,INFY,operating_income,30905,INR Crores,INR,FY2023,BSE Audited Financials,340
+Infosys Limited,INFY,net_income,24095,INR Crores,INR,FY2023,BSE Audited Financials,341
+Infosys Limited,INFY,operating_margin_pct,21.06,%,INR,FY2023,BSE Audited Financials,342
+Infosys Limited,INFY,total_assets,118000,INR Crores,INR,FY2023,BSE Audited Financials,343
+Infosys Limited,INFY,total_liabilities,36000,INR Crores,INR,FY2023,BSE Audited Financials,344
+Infosys Limited,INFY,total_debt,0,INR Crores,INR,FY2023,BSE Audited Financials,345
+Infosys Limited,INFY,cash_and_equivalents,12173,INR Crores,INR,FY2023,BSE Audited Financials,346
+Infosys Limited,INFY,operating_cash_flow,23500,INR Crores,INR,FY2023,BSE Audited Financials,347
+Infosys Limited,INFY,capital_expenditure,2400,INR Crores,INR,FY2023,BSE Audited Financials,348
+Infosys Limited,INFY,free_cash_flow,21100,INR Crores,INR,FY2023,BSE Audited Financials,349
+Infosys Limited,INFY,total_revenue,153670,INR Crores,INR,FY2024,BSE Audited Financials,350
+Infosys Limited,INFY,gross_profit,52100,INR Crores,INR,FY2024,BSE Audited Financials,351
+Infosys Limited,INFY,operating_income,31810,INR Crores,INR,FY2024,BSE Audited Financials,352
+Infosys Limited,INFY,net_income,26248,INR Crores,INR,FY2024,BSE Audited Financials,353
+Infosys Limited,INFY,operating_margin_pct,20.7,%,INR,FY2024,BSE Audited Financials,354
+Infosys Limited,INFY,total_assets,128500,INR Crores,INR,FY2024,BSE Audited Financials,355
+Infosys Limited,INFY,total_liabilities,38900,INR Crores,INR,FY2024,BSE Audited Financials,356
+Infosys Limited,INFY,total_debt,0,INR Crores,INR,FY2024,BSE Audited Financials,357
+Infosys Limited,INFY,cash_and_equivalents,14800,INR Crores,INR,FY2024,BSE Audited Financials,358
+Infosys Limited,INFY,operating_cash_flow,28400,INR Crores,INR,FY2024,BSE Audited Financials,359
+Infosys Limited,INFY,capital_expenditure,2600,INR Crores,INR,FY2024,BSE Audited Financials,360
+Infosys Limited,INFY,free_cash_flow,25800,INR Crores,INR,FY2024,BSE Audited Financials,361
+HDFC Bank Limited,HDFCBANK,total_revenue,157263,INR Crores,INR,FY2022,BSE Audited Financials,362
+HDFC Bank Limited,HDFCBANK,gross_profit,85000,INR Crores,INR,FY2022,BSE Audited Financials,363
+HDFC Bank Limited,HDFCBANK,operating_income,49200,INR Crores,INR,FY2022,BSE Audited Financials,364
+HDFC Bank Limited,HDFCBANK,net_income,36961,INR Crores,INR,FY2022,BSE Audited Financials,365
+HDFC Bank Limited,HDFCBANK,operating_margin_pct,31.29,%,INR,FY2022,BSE Audited Financials,366
+HDFC Bank Limited,HDFCBANK,total_assets,2068535,INR Crores,INR,FY2022,BSE Audited Financials,367
+HDFC Bank Limited,HDFCBANK,total_liabilities,1827580,INR Crores,INR,FY2022,BSE Audited Financials,368
+HDFC Bank Limited,HDFCBANK,total_debt,480000,INR Crores,INR,FY2022,BSE Audited Financials,369
+HDFC Bank Limited,HDFCBANK,cash_and_equivalents,152998,INR Crores,INR,FY2022,BSE Audited Financials,370
+HDFC Bank Limited,HDFCBANK,operating_cash_flow,38000,INR Crores,INR,FY2022,BSE Audited Financials,371
+HDFC Bank Limited,HDFCBANK,capital_expenditure,4200,INR Crores,INR,FY2022,BSE Audited Financials,372
+HDFC Bank Limited,HDFCBANK,free_cash_flow,33800,INR Crores,INR,FY2022,BSE Audited Financials,373
+HDFC Bank Limited,HDFCBANK,total_revenue,192800,INR Crores,INR,FY2023,BSE Audited Financials,374
+HDFC Bank Limited,HDFCBANK,gross_profit,105000,INR Crores,INR,FY2023,BSE Audited Financials,375
+HDFC Bank Limited,HDFCBANK,operating_income,59800,INR Crores,INR,FY2023,BSE Audited Financials,376
+HDFC Bank Limited,HDFCBANK,net_income,44108,INR Crores,INR,FY2023,BSE Audited Financials,377
+HDFC Bank Limited,HDFCBANK,operating_margin_pct,31.02,%,INR,FY2023,BSE Audited Financials,378
+HDFC Bank Limited,HDFCBANK,total_assets,2466081,INR Crores,INR,FY2023,BSE Audited Financials,379
+HDFC Bank Limited,HDFCBANK,total_liabilities,2185000,INR Crores,INR,FY2023,BSE Audited Financials,380
+HDFC Bank Limited,HDFCBANK,total_debt,550000,INR Crores,INR,FY2023,BSE Audited Financials,381
+HDFC Bank Limited,HDFCBANK,cash_and_equivalents,193865,INR Crores,INR,FY2023,BSE Audited Financials,382
+HDFC Bank Limited,HDFCBANK,operating_cash_flow,45000,INR Crores,INR,FY2023,BSE Audited Financials,383
+HDFC Bank Limited,HDFCBANK,capital_expenditure,4800,INR Crores,INR,FY2023,BSE Audited Financials,384
+HDFC Bank Limited,HDFCBANK,free_cash_flow,40200,INR Crores,INR,FY2023,BSE Audited Financials,385
+HDFC Bank Limited,HDFCBANK,total_revenue,285400,INR Crores,INR,FY2024,BSE Audited Financials,386
+HDFC Bank Limited,HDFCBANK,gross_profit,152000,INR Crores,INR,FY2024,BSE Audited Financials,387
+HDFC Bank Limited,HDFCBANK,operating_income,94800,INR Crores,INR,FY2024,BSE Audited Financials,388
+HDFC Bank Limited,HDFCBANK,net_income,60810,INR Crores,INR,FY2024,BSE Audited Financials,389
+HDFC Bank Limited,HDFCBANK,operating_margin_pct,33.22,%,INR,FY2024,BSE Audited Financials,390
+HDFC Bank Limited,HDFCBANK,total_assets,3617623,INR Crores,INR,FY2024,BSE Audited Financials,391
+HDFC Bank Limited,HDFCBANK,total_liabilities,3180000,INR Crores,INR,FY2024,BSE Audited Financials,392
+HDFC Bank Limited,HDFCBANK,total_debt,710000,INR Crores,INR,FY2024,BSE Audited Financials,393
+HDFC Bank Limited,HDFCBANK,cash_and_equivalents,235000,INR Crores,INR,FY2024,BSE Audited Financials,394
+HDFC Bank Limited,HDFCBANK,operating_cash_flow,49500,INR Crores,INR,FY2024,BSE Audited Financials,395
+HDFC Bank Limited,HDFCBANK,capital_expenditure,5800,INR Crores,INR,FY2024,BSE Audited Financials,396
+HDFC Bank Limited,HDFCBANK,free_cash_flow,43700,INR Crores,INR,FY2024,BSE Audited Financials,397

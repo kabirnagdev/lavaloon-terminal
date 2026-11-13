@@ -81,20 +81,39 @@ export const CytoscapeGraph: React.FC = () => {
   const [pathResult, setPathResult] = useState<ShortestPathResponse | null>(null);
   const [pathLoading, setPathLoading] = useState<boolean>(false);
 
+  const [activeDatasetInfo, setActiveDatasetInfo] = useState<{ active_dataset: string; is_default: boolean } | null>(null);
+
   // Fetch graph elements
   const fetchGraph = async () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await api.getCytoscapeGraph({
-        category: selectedCategory === "all" ? undefined : selectedCategory,
-        minLift: debouncedMinLift,
-        maxNodes: 140,
-        search: searchQuery.trim() || undefined
-      });
+      const [data, dsInfo] = await Promise.all([
+        api.getCytoscapeGraph({
+          category: selectedCategory === "all" ? undefined : selectedCategory,
+          minLift: debouncedMinLift,
+          maxNodes: 140,
+          search: searchQuery.trim() || undefined
+        }),
+        api.getActiveDataset().catch(() => null)
+      ]);
       setGraphData(data);
+      if (dsInfo) setActiveDatasetInfo(dsInfo);
     } catch (err: any) {
       setError(err.message || "Failed to load graph data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleResetGraph = async () => {
+    try {
+      setLoading(true);
+      await api.resetGraph();
+      setSelectedCategory("all");
+      await fetchGraph();
+    } catch (e: any) {
+      setError(e.message || "Failed to reset graph");
     } finally {
       setLoading(false);
     }
@@ -383,8 +402,27 @@ export const CytoscapeGraph: React.FC = () => {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-100 uppercase tracking-wider">
               <Share2 className="w-3.5 h-3.5 text-sky-400" />
-              <span>Ontology Relationship Explorer</span>
+              <span>Relationship Graph</span>
             </div>
+
+            {/* Active Dataset Pill */}
+            {activeDatasetInfo && (
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900 border border-slate-700/80 text-[10px]">
+                <span className="text-slate-400">Dataset:</span>
+                <span className="text-sky-300 font-mono font-medium truncate max-w-[140px]" title={activeDatasetInfo.active_dataset}>
+                  {activeDatasetInfo.active_dataset}
+                </span>
+                {!activeDatasetInfo.is_default && (
+                  <button
+                    onClick={handleResetGraph}
+                    className="text-amber-400 hover:text-amber-300 ml-1 underline cursor-pointer"
+                    title="Reset to default financial survey dataset"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+            )}
 
             {/* Filter by Category */}
             <div className="flex items-center gap-1 text-xs text-slate-400">
@@ -394,7 +432,7 @@ export const CytoscapeGraph: React.FC = () => {
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="bg-[#111622] border border-[#1a2234] text-slate-300 px-2 py-0.5 rounded text-[11px] focus:outline-none focus:border-sky-500"
               >
-                <option value="all">All Ontology Categories</option>
+                <option value="all">All Categories</option>
                 {graphData?.categories.map((c) => (
                   <option key={c} value={c}>
                     {c}
