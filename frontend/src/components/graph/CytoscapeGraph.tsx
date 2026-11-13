@@ -394,21 +394,21 @@ export const CytoscapeGraph: React.FC = () => {
   };
 
   return (
-    <div className="flex h-full w-full bg-[#080b11] select-none text-slate-200">
+    <div className="flex h-full w-full bg-transparent select-none text-slate-200">
       {/* Central Visual Graph Canvas */}
-      <div className="flex-1 flex flex-col h-full border-r border-[#1a2234]">
+      <div className="flex-1 flex flex-col h-full border-r border-white/[0.08]">
         {/* Graph Toolbar */}
-        <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-3 flex items-center justify-between shrink-0">
+        <div className="h-10 bg-metallic-header border-b border-white/[0.08] px-3 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-100 uppercase tracking-wider">
+            <div className="flex items-center gap-1.5 text-xs font-bold font-display text-slate-100 tracking-wide uppercase">
               <Share2 className="w-3.5 h-3.5 text-sky-400" />
               <span>Relationship Graph</span>
             </div>
 
             {/* Active Dataset Pill */}
             {activeDatasetInfo && (
-              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900 border border-slate-700/80 text-[10px]">
-                <span className="text-slate-400">Dataset:</span>
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded metallic-card-subtle text-[10px]">
+                <span className="text-slate-400 font-mono">Dataset:</span>
                 <span className="text-sky-300 font-mono font-medium truncate max-w-[140px]" title={activeDatasetInfo.active_dataset}>
                   {activeDatasetInfo.active_dataset}
                 </span>
@@ -430,7 +430,7 @@ export const CytoscapeGraph: React.FC = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-[#111622] border border-[#1a2234] text-slate-300 px-2 py-0.5 rounded text-[11px] focus:outline-none focus:border-sky-500"
+                className="bg-black/40 border border-white/10 text-slate-300 px-2.5 py-1 rounded-md text-[11px] focus:outline-none focus:border-sky-500 font-sans"
               >
                 <option value="all">All Categories</option>
                 {graphData?.categories.map((c) => (
@@ -553,31 +553,31 @@ export const CytoscapeGraph: React.FC = () => {
           <div ref={containerRef} className="w-full h-full" />
 
           {/* Graph Legend Overlay */}
-          <div className="absolute bottom-3 left-3 bg-[#0c1017]/95 border border-[#1a2234] p-2.5 rounded text-[11px] space-y-1.5 z-10 shadow-sm">
-            <div className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Ontology Legend</div>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px]">
+          <div className="absolute bottom-3 left-3 metallic-surface p-3 rounded-xl text-[11px] space-y-1.5 z-10 shadow-2xl">
+            <div className="text-slate-300 font-display font-semibold text-[10px] uppercase tracking-wider">Legend</div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] font-sans">
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded bg-sky-400" />
+                <span className="w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_6px_rgba(56,189,248,0.6)]" />
                 <span className="text-slate-300">Corporate Filer</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded bg-teal-400" />
+                <span className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.6)]" />
                 <span className="text-slate-300">Business Segment</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded bg-slate-400" />
+                <span className="w-2 h-2 rounded-full bg-slate-400" />
                 <span className="text-slate-300">Financial Metric</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded bg-amber-400" />
+                <span className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.6)]" />
                 <span className="text-slate-300">Risk Disclosure</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded bg-indigo-400" />
+                <span className="w-2 h-2 rounded-full bg-indigo-400 shadow-[0_0_6px_rgba(129,140,248,0.6)]" />
                 <span className="text-slate-300">Survey Avenue</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded bg-rose-400" />
+                <span className="w-2 h-2 rounded-full bg-rose-400 shadow-[0_0_6px_rgba(251,113,133,0.6)]" />
                 <span className="text-slate-300">Regulatory Filing</span>
               </div>
             </div>
@@ -586,10 +586,10 @@ export const CytoscapeGraph: React.FC = () => {
       </div>
 
       {/* Right Contextual Intelligence Panel */}
-      <div className="w-80 bg-[#0c1017] flex flex-col h-full overflow-y-auto shrink-0 select-text border-l border-[#1a2234]">
+      <div className="w-80 bg-black/40 backdrop-blur-xl flex flex-col h-full overflow-y-auto shrink-0 select-text border-l border-white/[0.08]">
         {/* Panel Header */}
-        <div className="h-10 bg-[#0c1017] border-b border-[#1a2234] px-3 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 uppercase tracking-wider">
+        <div className="h-10 bg-metallic-header border-b border-white/[0.08] px-3.5 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-1.5 text-xs font-bold font-display text-slate-100 uppercase tracking-wider">
             <Info className="w-3.5 h-3.5 text-sky-400" />
             <span>Entity & Tie Inspector</span>
           </div>

@@ -133,40 +133,43 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
   }));
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-terminal-bg overflow-y-auto p-3.5 space-y-3 font-sans select-text">
+    <div className="flex-1 flex flex-col h-full bg-transparent overflow-y-auto p-4 space-y-4 font-sans select-text">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-terminal-border gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/[0.08] gap-3">
         <div>
-          <h1 className="text-base font-bold text-white tracking-tight">Financials & Compare</h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl font-bold font-display tracking-tight metallic-text">Financials & Compare</h1>
+            <span className="text-[10px] px-2 py-0.5 rounded metallic-pill text-indigo-300 font-mono">MULTI-STATEMENT</span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1">
             Side-by-side statement comparison with currency isolation and stated FX conversion.
           </p>
         </div>
 
         {/* Currency Normalization Selector */}
-        <div className="flex items-center gap-1.5 text-xs">
-          <span className="text-slate-500 text-[11px]">Currency:</span>
-          <div className="flex bg-slate-900 border border-terminal-border rounded p-0.5 text-[11px]">
+        <div className="flex items-center gap-2 text-xs">
+          <span className="text-slate-400 font-display text-[11px] uppercase tracking-wider">Currency:</span>
+          <div className="flex metallic-card-subtle rounded-lg p-1 text-[11px]">
             <button
               onClick={() => setCurrencyMode("native")}
-              className={`px-2 py-0.5 rounded transition-colors ${
-                currencyMode === "native" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-slate-200"
+              className={`px-2.5 py-1 rounded-md transition-all cursor-pointer font-display font-medium ${
+                currencyMode === "native" ? "metallic-pill-active text-white" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               Native
             </button>
             <button
               onClick={() => setCurrencyMode("usd")}
-              className={`px-2 py-0.5 rounded transition-colors ${
-                currencyMode === "usd" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-slate-200"
+              className={`px-2.5 py-1 rounded-md transition-all cursor-pointer font-display font-medium ${
+                currencyMode === "usd" ? "metallic-pill-active text-white" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               USD Normal ($)
             </button>
             <button
               onClick={() => setCurrencyMode("inr")}
-              className={`px-2 py-0.5 rounded transition-colors ${
-                currencyMode === "inr" ? "bg-slate-800 text-white font-semibold" : "text-slate-400 hover:text-slate-200"
+              className={`px-2.5 py-1 rounded-md transition-all cursor-pointer font-display font-medium ${
+                currencyMode === "inr" ? "metallic-pill-active text-white" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               INR Normal (₹ Cr)
@@ -176,15 +179,15 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
       </div>
 
       {/* Selectors Bar */}
-      <div className="bg-terminal-surface terminal-border rounded p-3 flex flex-wrap items-center justify-between gap-3">
+      <div className="metallic-surface rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           {/* Company A Dropdown */}
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-sky-400">Company A:</span>
+            <span className="text-xs font-bold font-display text-sky-400">Company A:</span>
             <select
               value={compAId}
               onChange={(e) => setCompAId(e.target.value)}
-              className="bg-terminal-bg border border-terminal-border rounded px-2.5 py-1 text-xs text-slate-100 font-mono focus:outline-none"
+              className="bg-black/40 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-sky-500/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]"
             >
               {companies.map((c) => (
                 <option key={c.ticker} value={c.ticker}>
@@ -194,15 +197,15 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
             </select>
           </div>
 
-          <span className="text-slate-600 text-xs font-bold">VS</span>
+          <span className="text-slate-500 text-xs font-bold font-mono">VS</span>
 
           {/* Company B Dropdown */}
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-indigo-400">Company B:</span>
+            <span className="text-xs font-bold font-display text-indigo-400">Company B:</span>
             <select
               value={compBId}
               onChange={(e) => setCompBId(e.target.value)}
-              className="bg-terminal-bg border border-terminal-border rounded px-2.5 py-1 text-xs text-slate-100 font-mono focus:outline-none"
+              className="bg-black/40 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-indigo-500/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]"
             >
               {companies.map((c) => (
                 <option key={c.ticker} value={c.ticker}>
@@ -216,7 +219,7 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
         {onNavigateToDiligence && compA && (
           <button
             onClick={() => onNavigateToDiligence(compA.id)}
-            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs text-slate-200 flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 metallic-pill hover:border-white/20 rounded-lg text-xs font-display font-medium text-slate-200 flex items-center gap-1.5 transition-all cursor-pointer"
           >
             <FileText className="w-3.5 h-3.5 text-slate-400" />
             <span>Generate Report for {compA.ticker}</span>
@@ -237,32 +240,32 @@ export const FinancialIntelligenceWorkspace: React.FC<FinancialIntelligenceWorks
       />
 
       {/* Comparative Multi-Statement Table */}
-      <div className="bg-terminal-surface terminal-border rounded overflow-hidden">
-        <div className="p-3 border-b border-terminal-border flex items-center justify-between">
-          <h3 className="text-xs font-semibold text-slate-200">
+      <div className="metallic-surface rounded-xl overflow-hidden">
+        <div className="p-3.5 border-b border-white/[0.08] flex items-center justify-between">
+          <h3 className="text-xs font-bold font-display text-slate-100 tracking-tight">
             Statement Metrics Comparison ({latestPeriodA} vs {latestPeriodB})
           </h3>
-          <span className="text-[10px] text-slate-500 font-mono">
+          <span className="text-[10px] text-slate-400 font-mono metallic-card-subtle px-2 py-0.5 rounded">
             {currencyMode === "native" ? "Native Reported Currencies" : `Converted at 1 USD = ₹${FX_USD_TO_INR.toFixed(2)}`}
           </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0b0e14] text-slate-400 border-b border-terminal-border text-[11px]">
+            <thead className="bg-black/30 text-slate-400 border-b border-white/[0.06] text-[10px] font-display uppercase tracking-wider">
               <tr>
-                <th className="py-2 px-3 font-semibold">Financial Metric</th>
-                <th className="py-2 px-3 font-semibold text-right text-sky-400">
+                <th className="py-2.5 px-3 font-semibold">Financial Metric</th>
+                <th className="py-2.5 px-3 font-semibold text-right text-sky-400">
                   {compA?.ticker} ({latestPeriodA})
                 </th>
-                <th className="py-2 px-3 font-semibold text-right text-indigo-400">
+                <th className="py-2.5 px-3 font-semibold text-right text-indigo-400">
                   {compB?.ticker} ({latestPeriodB})
                 </th>
-                <th className="py-2 px-3 font-semibold text-right">Variance / Delta</th>
-                <th className="py-2 px-3 font-semibold">Source Filings</th>
+                <th className="py-2.5 px-3 font-semibold text-right">Variance / Delta</th>
+                <th className="py-2.5 px-3 font-semibold">Source Filings</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-terminal-border/50">
+            <tbody className="divide-y divide-white/[0.04]">
               {MATRIX_ROWS.map(({ key, label, isPct }) => {
                 const ptA = seriesA[key]?.length ? seriesA[key][seriesA[key].length - 1] : undefined;
                 const ptB = seriesB[key]?.length ? seriesB[key][seriesB[key].length - 1] : undefined;

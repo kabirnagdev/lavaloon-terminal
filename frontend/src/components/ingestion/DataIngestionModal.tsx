@@ -163,19 +163,19 @@ export const DataIngestionModal: React.FC<DataIngestionModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 select-text">
-      <div className="bg-[#0b0f17] border border-sky-500/40 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden text-slate-200">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 select-text font-sans">
+      <div className="metallic-surface rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden text-slate-200 border border-white/10">
         {/* Modal Header */}
-        <div className="p-3.5 px-4 bg-[#0e1420] border-b border-[#1a2234] flex items-center justify-between">
+        <div className="p-3.5 px-4 bg-metallic-header border-b border-white/[0.08] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+            <div className="w-7 h-7 rounded-lg metallic-pill flex items-center justify-center text-sky-400">
               <UploadCloud className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-xs font-semibold text-white uppercase tracking-wider">
+              <h2 className="text-sm font-bold font-display text-white tracking-wide">
                 Ingest New Data & Context
               </h2>
-              <p className="text-[10px] text-slate-400">
+              <p className="text-[11px] text-slate-400">
                 Upload CSV, paste custom company data/context, or test pre-loaded datasets.
               </p>
             </div>
@@ -183,19 +183,19 @@ export const DataIngestionModal: React.FC<DataIngestionModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-white transition-colors"
+            className="p-1.5 hover:bg-white/[0.08] rounded-lg text-slate-400 hover:text-white transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Ingestion Mode Tabs */}
-        <div className="flex border-b border-[#1a2234] bg-[#0c1017] px-4 gap-2 text-xs">
+        <div className="flex border-b border-white/[0.06] bg-black/30 px-4 gap-2 text-xs font-display">
           <button
             onClick={() => setActiveTab("upload")}
-            className={`py-2 px-3 font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`py-2 px-3 font-semibold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "upload"
-                ? "border-sky-400 text-sky-400"
+                ? "border-sky-400 text-sky-300"
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >
@@ -204,9 +204,9 @@ export const DataIngestionModal: React.FC<DataIngestionModalProps> = ({
           </button>
           <button
             onClick={() => setActiveTab("paste")}
-            className={`py-2 px-3 font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`py-2 px-3 font-semibold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "paste"
-                ? "border-sky-400 text-sky-400"
+                ? "border-sky-400 text-sky-300"
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >
@@ -215,9 +215,9 @@ export const DataIngestionModal: React.FC<DataIngestionModalProps> = ({
           </button>
           <button
             onClick={() => setActiveTab("workspace")}
-            className={`py-2 px-3 font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`py-2 px-3 font-semibold border-b-2 transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === "workspace"
-                ? "border-sky-400 text-sky-400"
+                ? "border-sky-400 text-sky-300"
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >

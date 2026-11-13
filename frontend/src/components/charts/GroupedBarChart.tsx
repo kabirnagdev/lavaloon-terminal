@@ -30,7 +30,7 @@ export const GroupedBarChart: React.FC<GroupedBarChartProps> = ({
 
   if ((!seriesA || seriesA.length === 0) && (!seriesB || seriesB.length === 0)) {
     return (
-      <div className="w-full flex flex-col items-center justify-center p-6 bg-terminal-surface terminal-border rounded text-slate-500 text-xs">
+      <div className="w-full flex flex-col items-center justify-center p-6 metallic-surface rounded-xl border border-white/[0.08] text-slate-500 text-xs">
         <span className="font-medium">{title}</span>
         <span className="mt-1 text-[11px] text-slate-600">Not available in provided data</span>
       </div>
@@ -71,11 +71,11 @@ export const GroupedBarChart: React.FC<GroupedBarChartProps> = ({
   const barWidth = Math.min(28, (groupWidth - 16) / 2);
 
   return (
-    <div className="w-full bg-terminal-surface terminal-border rounded p-3 flex flex-col justify-between font-sans select-none">
+    <div className="w-full metallic-surface metallic-surface-hover rounded-xl p-3.5 flex flex-col justify-between font-sans select-none">
       {/* Header & Legend */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-terminal-border/60 pb-2 mb-2 gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/[0.08] pb-2 mb-2 gap-2">
         <div>
-          <h4 className="text-xs font-semibold text-slate-100 tracking-tight">
+          <h4 className="text-xs font-bold font-display text-slate-100 tracking-tight">
             {title}
           </h4>
           {fxRateUsed && (
@@ -84,14 +84,14 @@ export const GroupedBarChart: React.FC<GroupedBarChartProps> = ({
             </div>
           )}
         </div>
-        <div className="flex items-center gap-4 text-xs">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-sm bg-sky-500" />
-            <span className="text-slate-200 font-medium">{companyA}</span>
+        <div className="flex items-center gap-3 text-xs">
+          <div className="flex items-center gap-1.5 metallic-card-subtle px-2 py-0.5 rounded">
+            <span className="w-2.5 h-2.5 rounded-sm bg-sky-500 shadow-[0_0_6px_rgba(56,189,248,0.6)]" />
+            <span className="text-slate-100 font-display font-medium text-[11px]">{companyA}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-sm bg-indigo-500" />
-            <span className="text-slate-200 font-medium">{companyB}</span>
+          <div className="flex items-center gap-1.5 metallic-card-subtle px-2 py-0.5 rounded">
+            <span className="w-2.5 h-2.5 rounded-sm bg-indigo-500 shadow-[0_0_6px_rgba(99,102,241,0.6)]" />
+            <span className="text-slate-100 font-display font-medium text-[11px]">{companyB}</span>
           </div>
         </div>
       </div>

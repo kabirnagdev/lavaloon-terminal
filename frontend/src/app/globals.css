@@ -4,18 +4,22 @@
 
 @layer base {
   :root {
-    --terminal-bg: #0a0d14;
-    --terminal-surface: #0f1420;
-    --terminal-panel: #151b2a;
-    --terminal-border: #212a3e;
+    --terminal-bg: #070a10;
+    --terminal-surface: #0e131d;
+    --terminal-panel: #131926;
+    --terminal-border: rgba(255, 255, 255, 0.08);
     --terminal-cyan: #38bdf8;
   }
 
   body {
-    background-color: #0a0d14;
+    background: radial-gradient(ellipse 90% 60% at 50% -12%, rgba(46, 60, 88, 0.45) 0%, transparent 68%),
+                radial-gradient(circle 750px at 85% 15%, rgba(68, 86, 125, 0.18) 0%, transparent 60%),
+                radial-gradient(circle 600px at 15% 85%, rgba(36, 48, 72, 0.2) 0%, transparent 60%),
+                linear-gradient(180deg, #0d121c 0%, #06080d 50%, #080b12 100%);
+    background-attachment: fixed;
     color: #e2e8f0;
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.01em;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -27,42 +31,105 @@
   }
 }
 
-/* Terminal custom scrollbars */
+/* Metallic Custom Surfaces */
+@layer components {
+  .metallic-canvas {
+    background: radial-gradient(ellipse 90% 60% at 50% -12%, rgba(46, 60, 88, 0.45) 0%, transparent 68%),
+                radial-gradient(circle 750px at 85% 15%, rgba(68, 86, 125, 0.18) 0%, transparent 60%),
+                radial-gradient(circle 600px at 15% 85%, rgba(36, 48, 72, 0.2) 0%, transparent 60%),
+                linear-gradient(180deg, #0d121c 0%, #06080d 50%, #080b12 100%);
+  }
+
+  .metallic-surface {
+    background: linear-gradient(160deg, rgba(23, 30, 43, 0.82) 0%, rgba(11, 15, 23, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 0 rgba(0, 0, 0, 0.6),
+                0 10px 28px -6px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+  }
+
+  .metallic-surface-hover {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .metallic-surface-hover:hover {
+    border-top-color: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18),
+                0 12px 32px -4px rgba(0, 0, 0, 0.65);
+  }
+
+  .metallic-card-subtle {
+    background: linear-gradient(180deg, rgba(20, 26, 38, 0.6) 0%, rgba(10, 14, 21, 0.75) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .metallic-pill {
+    background: linear-gradient(180deg, rgba(46, 56, 78, 0.6) 0%, rgba(18, 23, 34, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+                0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .metallic-pill-active {
+    background: linear-gradient(180deg, rgba(58, 72, 98, 0.88) 0%, rgba(26, 34, 49, 0.96) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-top: 1px solid rgba(255, 255, 255, 0.38);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+                0 4px 14px -2px rgba(0, 0, 0, 0.55);
+  }
+
+  .metallic-text {
+    background: linear-gradient(180deg, #ffffff 20%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .metallic-cyan-text {
+    background: linear-gradient(180deg, #bae6fd 0%, #38bdf8 55%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Terminal custom scrollbars with steel theme */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0d14;
+  background: rgba(7, 10, 16, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #212a3e;
+  background: rgba(45, 58, 82, 0.7);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2d3954;
+  background: rgba(68, 86, 122, 0.9);
 }
 
 /* Micro-borders and subtle surfaces */
 .terminal-border {
-  border: 1px solid #212a3e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .terminal-border-t {
-  border-top: 1px solid #212a3e;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .terminal-border-b {
-  border-bottom: 1px solid #212a3e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .terminal-border-r {
-  border-right: 1px solid #212a3e;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .terminal-border-l {
-  border-left: 1px solid #212a3e;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
 }

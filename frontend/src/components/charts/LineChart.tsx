@@ -29,7 +29,7 @@ export const LineChart: React.FC<LineChartProps> = ({
   if (!series || series.length === 0) {
     return (
       <div
-        className="w-full flex flex-col items-center justify-center p-6 bg-terminal-surface terminal-border rounded text-slate-500 text-xs"
+        className="w-full flex flex-col items-center justify-center p-6 metallic-surface rounded-xl border border-white/[0.08] text-slate-500 text-xs"
         style={{ minHeight: height }}
       >
         <span className="font-medium">{title}</span>
@@ -93,18 +93,20 @@ export const LineChart: React.FC<LineChartProps> = ({
 
   const sourceCitation = source || (series[0] ? `${series[0].source_file} (Row ${series[0].source_row})` : "");
 
+  const gradId = `line-grad-${title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`;
+
   return (
-    <div className="w-full bg-terminal-surface terminal-border rounded p-3 flex flex-col justify-between select-none">
+    <div className="w-full metallic-surface metallic-surface-hover rounded-xl p-3.5 flex flex-col justify-between select-none">
       {/* Header with Title and Unit */}
-      <div className="flex items-center justify-between border-b border-terminal-border/60 pb-2 mb-2">
+      <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-2">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
-          <h4 className="text-xs font-semibold text-slate-100 font-sans tracking-tight">
+          <span className="w-2 h-2 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color }} />
+          <h4 className="text-xs font-bold font-display text-slate-100 tracking-tight">
             {title}
           </h4>
         </div>
-        <div className="text-[10px] text-slate-400 font-mono">
-          Unit: <span className="text-slate-200 font-medium">{unit}</span> ({currency})
+        <div className="text-[10px] text-slate-400 font-mono metallic-card-subtle px-2 py-0.5 rounded">
+          <span className="text-slate-200 font-semibold">{unit}</span> ({currency})
         </div>
       </div>
 
@@ -114,6 +116,13 @@ export const LineChart: React.FC<LineChartProps> = ({
           viewBox={`0 0 ${svgWidth} ${svgHeight}`}
           className="w-full h-auto overflow-visible"
         >
+          <defs>
+            <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={color} stopOpacity="0.22" />
+              <stop offset="100%" stopColor={color} stopOpacity="0.0" />
+            </linearGradient>
+          </defs>
+
           {/* Horizontal Grid Lines */}
           {yTicks.map((tickVal, idx) => {
             const y = getY(tickVal);
@@ -124,7 +133,7 @@ export const LineChart: React.FC<LineChartProps> = ({
                   y1={y}
                   x2={svgWidth - paddingRight}
                   y2={y}
-                  stroke="#1e293b"
+                  stroke="rgba(255, 255, 255, 0.05)"
                   strokeDasharray="2,2"
                   strokeWidth="1"
                 />
@@ -142,12 +151,11 @@ export const LineChart: React.FC<LineChartProps> = ({
             );
           })}
 
-          {/* Area fill */}
+          {/* Area fill with subtle metallic gradient */}
           {series.length > 1 && (
             <polygon
               points={`${getX(0)},${paddingTop + chartHeight} ${points} ${getX(series.length - 1)},${paddingTop + chartHeight}`}
-              fill={color}
-              fillOpacity="0.08"
+              fill={`url(#${gradId})`}
             />
           )}
 
@@ -171,10 +179,10 @@ export const LineChart: React.FC<LineChartProps> = ({
                 <circle
                   cx={cx}
                   cy={cy}
-                  r={isHovered ? 5 : 3.5}
-                  fill={isHovered ? "#ffffff" : color}
-                  stroke="#0b0e14"
-                  strokeWidth="1.5"
+                  r={isHovered ? 5.5 : 3.5}
+                  fill={isHovered ? "#ffffff" : "#0d111a"}
+                  stroke={color}
+                  strokeWidth={isHovered ? 2.5 : 2}
                   className="cursor-pointer transition-all duration-150"
                   onMouseEnter={() => setHoveredIdx(idx)}
                   onMouseLeave={() => setHoveredIdx(null)}
@@ -199,19 +207,19 @@ export const LineChart: React.FC<LineChartProps> = ({
         {/* Floating Tooltip */}
         {hoveredIdx !== null && series[hoveredIdx] && (
           <div
-            className="absolute z-20 pointer-events-none p-2 bg-[#0c1017] border border-slate-700 rounded shadow-lg text-[11px] font-sans"
+            className="absolute z-20 pointer-events-none p-2.5 metallic-surface rounded-lg shadow-2xl text-[11px] font-sans border border-white/20"
             style={{
               left: Math.min(Math.max(10, (getX(hoveredIdx) / svgWidth) * 100 - 15), 70) + "%",
               top: "10%"
             }}
           >
-            <div className="font-semibold text-slate-200">
+            <div className="font-bold font-display text-slate-100">
               {series[hoveredIdx].period} &bull; {series[hoveredIdx].company}
             </div>
-            <div className="text-sky-400 font-bold font-mono mt-0.5">
+            <div className="text-sky-300 font-bold font-mono mt-0.5 text-xs">
               {formatTooltipVal(series[hoveredIdx].value)}
             </div>
-            <div className="text-[9px] text-slate-500 mt-1">
+            <div className="text-[9px] text-slate-400 mt-1 font-mono">
               Source: {series[hoveredIdx].source_file} (Row {series[hoveredIdx].source_row})
             </div>
           </div>
@@ -219,9 +227,9 @@ export const LineChart: React.FC<LineChartProps> = ({
       </div>
 
       {/* Footer Source Attribution */}
-      <div className="flex items-center justify-between border-t border-terminal-border/60 pt-1.5 mt-2 text-[10px] text-slate-500 font-sans">
+      <div className="flex items-center justify-between border-t border-white/[0.06] pt-2 mt-2 text-[10px] text-slate-500 font-mono">
         <span className="truncate">Source: {sourceCitation}</span>
-        <span className="shrink-0 text-slate-600">Audited Filings</span>
+        <span className="shrink-0 text-slate-500 font-sans">Audited Filings</span>
       </div>
     </div>
   );

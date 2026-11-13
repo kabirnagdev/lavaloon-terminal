@@ -41,7 +41,7 @@ export default function TerminalWorkstation() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-terminal-bg font-sans">
+    <div className="flex flex-col h-screen w-screen overflow-hidden metallic-canvas font-sans">
       {/* Top Navigation */}
       <TopNav
         health={health}

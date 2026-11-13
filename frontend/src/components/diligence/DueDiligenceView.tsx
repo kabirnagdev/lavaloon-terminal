@@ -115,11 +115,16 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-terminal-bg p-3.5 space-y-3 font-sans select-text overflow-y-auto">
+    <div className="flex-1 flex flex-col h-full bg-transparent p-4 space-y-4 font-sans select-text overflow-y-auto">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-terminal-border gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/[0.08] gap-2">
         <div>
-          <h1 className="text-base font-bold text-white tracking-tight">Report Export</h1>
+          <h1 className="text-lg font-bold font-display tracking-tight text-white flex items-center gap-2">
+            <span>Report Export</span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20 font-normal">
+              Audited Memo
+            </span>
+          </h1>
           <p className="text-xs text-slate-400 mt-0.5">
             Assemble, review, and export verified diligence memos in Markdown or PDF.
           </p>
@@ -129,14 +134,14 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
         <div className="flex items-center gap-2">
           {/* Target Select */}
           <div className="flex items-center gap-1.5 text-xs">
-            <span className="text-slate-500">Target:</span>
+            <span className="text-slate-400 font-medium">Target:</span>
             <select
               value={selectedTicker}
               onChange={(e) => setSelectedTicker(e.target.value)}
-              className="bg-terminal-surface border border-terminal-border rounded px-2.5 py-1 text-xs text-slate-100 font-mono focus:outline-none"
+              className="metallic-surface border border-white/[0.1] rounded-lg px-3 py-1.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-sky-500 shadow-sm"
             >
               {companies.map((c) => (
-                <option key={c.ticker} value={c.ticker}>
+                <option key={c.ticker} value={c.ticker} className="bg-[#10141d] text-slate-100">
                   {c.ticker} - {c.name}
                 </option>
               ))}
@@ -146,7 +151,7 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
           <button
             onClick={handleExportMarkdown}
             disabled={!activeCompany || loading}
-            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs text-slate-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+            className="metallic-pill px-3 py-1.5 rounded-lg text-xs text-slate-200 flex items-center gap-1.5 transition-all disabled:opacity-40"
           >
             <Download className="w-3.5 h-3.5 text-slate-400" />
             <span>Markdown</span>
@@ -155,9 +160,9 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
           <button
             onClick={handlePrint}
             disabled={!activeCompany || loading}
-            className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs text-slate-200 flex items-center gap-1.5 transition-colors disabled:opacity-50"
+            className="metallic-pill-active px-3 py-1.5 rounded-lg text-xs text-white font-medium flex items-center gap-1.5 transition-all disabled:opacity-40 shadow-sm"
           >
-            <Printer className="w-3.5 h-3.5 text-slate-400" />
+            <Printer className="w-3.5 h-3.5 text-white/80" />
             <span>Print / PDF</span>
           </button>
         </div>
@@ -165,66 +170,66 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
 
       {/* Main Report Container (Printable) */}
       {activeCompany ? (
-        <div className="bg-terminal-surface terminal-border rounded p-5 space-y-4 max-w-4xl mx-auto w-full">
+        <div className="metallic-surface rounded-xl p-6 space-y-5 max-w-4xl mx-auto w-full shadow-metallic-card">
           {/* Report Metadata */}
-          <div className="border-b border-terminal-border pb-3 flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+          <div className="border-b border-white/[0.08] pb-4 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
             <div>
-              <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider block">
+              <span className="text-[10px] text-sky-400 font-mono uppercase tracking-wider font-semibold block">
                 Audited Diligence Memorandum
               </span>
-              <h2 className="text-lg font-bold text-white tracking-tight mt-0.5">
-                {activeCompany.name} ({activeCompany.ticker})
+              <h2 className="text-xl font-bold font-display text-white tracking-tight mt-1">
+                {activeCompany.name} <span className="text-slate-400 font-normal">({activeCompany.ticker})</span>
               </h2>
-              <div className="text-xs text-slate-400 mt-0.5">
+              <div className="text-xs text-slate-400 mt-1">
                 {activeCompany.sector} &bull; {activeCompany.industry} &bull; {activeCompany.country}
               </div>
             </div>
-            <div className="text-right text-xs font-mono text-slate-400">
+            <div className="text-right text-xs font-mono text-slate-400 bg-black/30 p-2.5 rounded-lg border border-white/[0.06]">
               <div>Period: <span className="text-slate-200 font-semibold">{activeCompany.periods[activeCompany.periods.length - 1]}</span></div>
               <div className="text-[10px] text-slate-500 mt-0.5">{activeCompany.source_doc}</div>
             </div>
           </div>
 
           {/* Section 1: Business Overview */}
-          <div className="space-y-1">
-            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+          <div className="space-y-1.5">
+            <h3 className="text-xs font-bold font-display text-slate-200 uppercase tracking-wider">
               1. Business Profile & Operations
             </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-300 leading-relaxed bg-black/20 p-3 rounded-lg border border-white/[0.04]">
               {activeCompany.description}
             </p>
           </div>
 
           {/* Section 2: Audited Financials Table */}
-          <div className="space-y-1.5">
-            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+          <div className="space-y-2">
+            <h3 className="text-xs font-bold font-display text-slate-200 uppercase tracking-wider">
               2. Audited Statement Baseline
             </h3>
-            <div className="overflow-x-auto border border-terminal-border rounded">
+            <div className="overflow-x-auto border border-white/[0.08] rounded-lg">
               <table className="w-full text-left text-xs font-sans">
-                <thead className="bg-[#0b0e14] text-slate-400 border-b border-terminal-border text-[11px]">
+                <thead className="bg-[#0b0e14]/80 text-slate-400 border-b border-white/[0.08] text-[10px]">
                   <tr>
-                    <th className="py-1.5 px-3">Metric</th>
-                    <th className="py-1.5 px-3 text-right">Reported Value</th>
-                    <th className="py-1.5 px-3">Period</th>
-                    <th className="py-1.5 px-3">Regulatory Source</th>
-                    <th className="py-1.5 px-3 text-right">Row</th>
+                    <th className="py-2 px-3">Metric</th>
+                    <th className="py-2 px-3 text-right">Reported Value</th>
+                    <th className="py-2 px-3">Period</th>
+                    <th className="py-2 px-3">Regulatory Source</th>
+                    <th className="py-2 px-3 text-right">Row</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-terminal-border/50 text-[11px]">
+                <tbody className="divide-y divide-white/[0.04] text-[11px]">
                   {Object.entries(metrics).map(([k, pt]) => (
-                    <tr key={k} className="hover:bg-slate-800/20">
-                      <td className="py-1.5 px-3 font-medium text-slate-300">
+                    <tr key={k} className="hover:bg-white/[0.02] transition-colors">
+                      <td className="py-2 px-3 font-medium text-slate-300">
                         {k.replace(/_/g, " ").toUpperCase()}
                       </td>
-                      <td className="py-1.5 px-3 text-right font-mono font-semibold text-slate-100 tabular-nums">
+                      <td className="py-2 px-3 text-right font-mono font-semibold text-slate-100 tabular-nums">
                         {formatCurrency(pt.value, activeCompany.currency, pt.unit === "%")}
                       </td>
-                      <td className="py-1.5 px-3 font-mono text-slate-400">{pt.period}</td>
-                      <td className="py-1.5 px-3 text-slate-500 text-[10px] truncate max-w-[220px]">
+                      <td className="py-2 px-3 font-mono text-slate-400">{pt.period}</td>
+                      <td className="py-2 px-3 text-slate-500 text-[10px] truncate max-w-[220px]">
                         {pt.source_file}
                       </td>
-                      <td className="py-1.5 px-3 text-right font-mono text-slate-500">{pt.source_row}</td>
+                      <td className="py-2 px-3 text-right font-mono text-slate-500">{pt.source_row}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -234,11 +239,11 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
 
           {/* Section 3: Risk Factors */}
           {activeCompany.risks && activeCompany.risks.length > 0 && (
-            <div className="space-y-1.5">
-              <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+            <div className="space-y-2">
+              <h3 className="text-xs font-bold font-display text-slate-200 uppercase tracking-wider">
                 3. Item 1A Risk Factors
               </h3>
-              <ul className="space-y-1 text-xs text-slate-300">
+              <ul className="space-y-1.5 text-xs text-slate-300 bg-black/20 p-3 rounded-lg border border-white/[0.04]">
                 {activeCompany.risks.map((risk, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="text-amber-400 font-bold">•</span>
@@ -250,7 +255,7 @@ export const DueDiligenceView: React.FC<DueDiligenceViewProps> = ({ initialTarge
           )}
 
           {/* Report Footer */}
-          <div className="border-t border-terminal-border pt-3 text-[10px] text-slate-500 flex items-center justify-between font-mono">
+          <div className="border-t border-white/[0.08] pt-3 text-[10px] text-slate-500 flex items-center justify-between font-mono">
             <span>Generated from verified filings data layer</span>
             <span>Lavaloon Terminal &bull; Verified Provenance</span>
           </div>
