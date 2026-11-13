@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900" style="background:#080b11; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <style>
+      .text-title { font-size: 14px; font-weight: 600; fill: #f8fafc; }
+      .text-subtitle { font-size: 12px; fill: #94a3b8; }
+      .text-body { font-size: 12px; fill: #cbd5e1; }
+      .text-muted { font-size: 11px; fill: #64748b; }
+      .text-accent { font-size: 11px; fill: #38bdf8; font-weight: 600; }
+      .text-green { font-size: 11px; fill: #2dd4bf; font-weight: 600; }
+      .text-amber { font-size: 11px; fill: #fbbf24; font-weight: 600; }
+      .panel-bg { fill: #0c1017; stroke: #1a2234; stroke-width: 1; }
+      .card-bg { fill: #111622; stroke: #1a2234; stroke-width: 1; }
+      .border-line { stroke: #1a2234; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- TOP GLOBAL BAR -->
+  <rect x="0" y="0" width="1440" height="44" fill="#0c1017"/>
+  <line x1="0" y1="44" x2="1440" y2="44" stroke="#1a2234" stroke-width="1"/>
+  
+  <!-- Logo / Identity -->
+  <rect x="16" y="10" width="24" height="24" rx="4" fill="#38bdf8" fill-opacity="0.1" stroke="#38bdf8" stroke-opacity="0.3"/>
+  <text x="28" y="26" text-anchor="middle" font-size="12" fill="#38bdf8" font-family="monospace">&gt;</text>
+  <text x="48" y="26" class="text-title" font-size="13">LAVALOON</text>
+  <rect x="122" y="12" width="72" height="20" rx="3" fill="#111622" stroke="#1a2234"/>
+  <text x="158" y="26" text-anchor="middle" font-size="10" fill="#38bdf8" font-family="monospace">TERMINAL</text>
+  <line x1="206" y1="14" x2="206" y2="30" stroke="#1a2234"/>
+  <text x="218" y="26" class="text-subtitle">Workspace: <tspan fill="#f8fafc" font-weight="500">Overview</tspan></text>
+
+  <!-- Center Search Field -->
+  <rect x="520" y="8" width="400" height="28" rx="4" fill="#080b11" stroke="#1a2234"/>
+  <text x="548" y="26" class="text-muted">Search companies, tickers, filings, ontology entities...</text>
+  <rect x="896" y="12" width="16" height="18" rx="3" fill="#111622" stroke="#1a2234"/>
+  <text x="904" y="25" text-anchor="middle" font-size="10" fill="#64748b" font-family="monospace">/</text>
+
+  <!-- Top Right Stats -->
+  <text x="1160" y="26" class="text-muted">COVERAGE: <tspan fill="#cbd5e1" font-weight="500">10 FILERS / 4 SURVEY</tspan></text>
+  <text x="1350" y="26" class="text-muted">23:45:00 UTC</text>
+
+  <!-- LEFT NAVIGATION BAR -->
+  <rect x="0" y="44" width="200" height="832" fill="#0c1017"/>
+  <line x1="200" y1="44" x2="200" y2="876" stroke="#1a2234"/>
+  <text x="16" y="68" font-size="10" font-weight="600" fill="#64748b" letter-spacing="1">WORKSTATION</text>
+
+  <!-- Nav Items -->
+  <g transform="translate(8, 80)">
+    <!-- F1 -->
+    <rect x="0" y="0" width="184" height="32" rx="4" fill="#111622" stroke="#1a2234"/>
+    <text x="12" y="20" font-size="12" fill="#38bdf8" font-weight="600">Overview</text>
+    <rect x="156" y="8" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="20" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F1</text>
+    
+    <!-- F2 -->
+    <rect x="0" y="36" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="56" font-size="12" fill="#94a3b8" font-weight="400">Entity Explorer</text>
+    <rect x="156" y="44" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="56" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F2</text>
+
+    <!-- F3 -->
+    <rect x="0" y="72" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="92" font-size="12" fill="#94a3b8" font-weight="400">Financial Intel</text>
+    <rect x="156" y="80" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="92" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F3</text>
+
+    <!-- F4 -->
+    <rect x="0" y="108" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="128" font-size="12" fill="#94a3b8" font-weight="400">Knowledge Graph</text>
+    <rect x="156" y="116" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="128" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F4</text>
+
+    <!-- F5 -->
+    <rect x="0" y="144" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="164" font-size="12" fill="#94a3b8" font-weight="400">GraphRAG Copilot</text>
+    <rect x="156" y="152" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="164" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F5</text>
+
+    <!-- F6 -->
+    <rect x="0" y="180" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="200" font-size="12" fill="#94a3b8" font-weight="400">Due Diligence</text>
+    <rect x="156" y="188" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="200" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F6</text>
+
+    <!-- F7 -->
+    <rect x="0" y="216" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="236" font-size="12" fill="#94a3b8" font-weight="400">Options Desk</text>
+    <rect x="156" y="224" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="236" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F7</text>
+
+    <!-- F8 -->
+    <rect x="0" y="252" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="272" font-size="12" fill="#94a3b8" font-weight="400">System Config</text>
+    <rect x="156" y="260" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="272" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F8</text>
+  </g>
+
+  <!-- MAIN WORKSPACE CONTENT -->
+  <g transform="translate(200, 44)">
+    
+  <!-- Overview Dashboard Content -->
+  <!-- Top Status Strip -->
+  <rect x="24" y="20" width="1192" height="40" rx="4" class="panel-bg"/>
+  <text x="40" y="44" class="text-subtitle"><tspan fill="#38bdf8" font-weight="600">DATASET COVERAGE:</tspan> 10 Corporate Filers | 4 Empirical Survey Avenues | 134 XBRL Facts | 184 Graph Lift Ties</text>
+  <text x="1080" y="44" class="text-green">ENGINE HEALTHY</text>
+
+  <!-- 4 KPI Metrics -->
+  <g transform="translate(24, 76)">
+    <!-- KPI 1 -->
+    <rect x="0" y="0" width="286" height="88" rx="4" class="card-bg"/>
+    <text x="16" y="24" class="text-muted">CORPORATE FILERS</text>
+    <text x="16" y="58" font-size="28" font-weight="700" fill="#f8fafc">10</text>
+    <text x="16" y="76" class="text-muted">SEC 10-K &amp; MCA Audited Entities</text>
+
+    <!-- KPI 2 -->
+    <rect x="302" y="0" width="286" height="88" rx="4" class="card-bg"/>
+    <text x="318" y="24" class="text-muted">AUDITED XBRL FACTS</text>
+    <text x="318" y="58" font-size="28" font-weight="700" fill="#f8fafc">134</text>
+    <text x="318" y="76" class="text-muted">Balance Sheets &amp; Segment Disclosures</text>
+
+    <!-- KPI 3 -->
+    <rect x="604" y="0" width="286" height="88" rx="4" class="card-bg"/>
+    <text x="620" y="24" class="text-muted">KNOWLEDGE GRAPH TIES</text>
+    <text x="620" y="58" font-size="28" font-weight="700" fill="#f8fafc">184</text>
+    <text x="620" y="76" class="text-muted">Lift &#8805; 1.5x Significant Association</text>
+
+    <!-- KPI 4 -->
+    <rect x="906" y="0" width="286" height="88" rx="4" class="card-bg"/>
+    <text x="922" y="24" class="text-muted">REASONING ENGINE</text>
+    <text x="922" y="54" font-size="18" font-weight="700" fill="#38bdf8">GROQ LLM</text>
+    <text x="922" y="76" class="text-muted">qwen3.8-27b &amp; gpt-oss-120b</text>
+  </g>
+
+  <!-- Verified Filings Table -->
+  <g transform="translate(24, 180)">
+    <rect x="0" y="0" width="780" height="620" rx="4" class="panel-bg"/>
+    <text x="20" y="28" class="text-title">Verified Regulatory Filings Directory</text>
+    <line x1="0" y1="44" x2="780" y2="44" class="border-line"/>
+
+    <!-- Table Header -->
+    <text x="20" y="66" class="text-muted">TICKER</text>
+    <text x="90" y="66" class="text-muted">REPORTING ENTITY</text>
+    <text x="280" y="66" class="text-muted">PERIOD</text>
+    <text x="380" y="66" class="text-muted">STANDARDS</text>
+    <text x="520" y="66" class="text-muted">FILING SOURCE</text>
+    <text x="700" y="66" class="text-muted">STATUS</text>
+    <line x1="20" y1="76" x2="760" y2="76" class="border-line"/>
+
+    <!-- Rows -->
+    <g transform="translate(20, 100)">
+      <text x="0" y="0" font-weight="600" fill="#38bdf8">AAPL</text>
+      <text x="70" y="0" class="text-body">Apple Inc.</text>
+      <text x="260" y="0" class="text-muted">FY2025</text>
+      <text x="360" y="0" class="text-muted">US-GAAP</text>
+      <text x="500" y="0" class="text-body">SEC Form 10-K Annual Report</text>
+      <text x="680" y="0" class="text-green">AUDITED</text>
+    </g>
+    <g transform="translate(20, 140)">
+      <text x="0" y="0" font-weight="600" fill="#38bdf8">MSFT</text>
+      <text x="70" y="0" class="text-body">Microsoft Corporation</text>
+      <text x="260" y="0" class="text-muted">FY2024</text>
+      <text x="360" y="0" class="text-muted">US-GAAP</text>
+      <text x="500" y="0" class="text-body">SEC Form 10-K Annual Report</text>
+      <text x="680" y="0" class="text-green">AUDITED</text>
+    </g>
+    <g transform="translate(20, 180)">
+      <text x="0" y="0" font-weight="600" fill="#38bdf8">NVDA</text>
+      <text x="70" y="0" class="text-body">NVIDIA Corporation</text>
+      <text x="260" y="0" class="text-muted">FY2025</text>
+      <text x="360" y="0" class="text-muted">US-GAAP</text>
+      <text x="500" y="0" class="text-body">SEC Form 10-K Annual Report</text>
+      <text x="680" y="0" class="text-green">AUDITED</text>
+    </g>
+    <g transform="translate(20, 220)">
+      <text x="0" y="0" font-weight="600" fill="#38bdf8">AMZN</text>
+      <text x="70" y="0" class="text-body">Amazon.com Inc.</text>
+      <text x="260" y="0" class="text-muted">FY2024</text>
+      <text x="360" y="0" class="text-muted">US-GAAP</text>
+      <text x="500" y="0" class="text-body">SEC Form 10-K Annual Report</text>
+      <text x="680" y="0" class="text-green">AUDITED</text>
+    </g>
+    <g transform="translate(20, 260)">
+      <text x="0" y="0" font-weight="600" fill="#38bdf8">RELIANCE</text>
+      <text x="70" y="0" class="text-body">Reliance Industries Ltd</text>
+      <text x="260" y="0" class="text-muted">FY2024</text>
+      <text x="360" y="0" class="text-muted">Ind-AS</text>
+      <text x="500" y="0" class="text-body">Audited Consolidated Financials</text>
+      <text x="680" y="0" class="text-green">AUDITED</text>
+    </g>
+    <g transform="translate(20, 300)">
+      <text x="0" y="0" font-weight="600" fill="#38bdf8">TCS</text>
+      <text x="70" y="0" class="text-body">Tata Consultancy Services</text>
+      <text x="260" y="0" class="text-muted">FY2024</text>
+      <text x="360" y="0" class="text-muted">Ind-AS</text>
+      <text x="500" y="0" class="text-body">MCA Annual Filing 2024</text>
+      <text x="680" y="0" class="text-green">AUDITED</text>
+    </g>
+  </g>
+
+  <!-- Right Jump Cards -->
+  <g transform="translate(820, 180)">
+    <rect x="0" y="0" width="396" height="295" rx="4" class="panel-bg"/>
+    <text x="20" y="28" class="text-title">Active Target Profile: Apple Inc.</text>
+    <line x1="0" y1="44" x2="396" y2="44" class="border-line"/>
+    <text x="20" y="70" class="text-subtitle">REVENUE (FY2025): <tspan fill="#f8fafc" font-weight="600">$383.29B</tspan></text>
+    <text x="20" y="96" class="text-subtitle">NET INCOME: <tspan fill="#f8fafc" font-weight="600">$97.00B</tspan> (Margin: 29.82%)</text>
+    <text x="20" y="122" class="text-subtitle">FREE CASH FLOW: <tspan fill="#2dd4bf" font-weight="600">$99.58B</tspan></text>
+    <text x="20" y="148" class="text-subtitle">LIQUIDITY: <tspan fill="#f8fafc">$29.94B Cash</tspan> vs <tspan fill="#f8fafc">$85.75B Debt</tspan></text>
+    <rect x="20" y="175" width="160" height="32" rx="4" fill="#111622" stroke="#38bdf8"/>
+    <text x="100" y="196" text-anchor="middle" class="text-accent">Open Company Dossier</text>
+  </g>
+
+  <g transform="translate(820, 495)">
+    <rect x="0" y="0" width="396" height="305" rx="4" class="panel-bg"/>
+    <text x="20" y="28" class="text-title">Empirical Survey Intelligence</text>
+    <line x1="0" y1="44" x2="396" y2="44" class="border-line"/>
+    <text x="20" y="70" class="text-body">&#8226; Mutual Funds: 184 Ties with Wealth Creation</text>
+    <text x="20" y="100" class="text-body">&#8226; Equity Market: 20-30% Expected Returns Cohort</text>
+    <text x="20" y="130" class="text-body">&#8226; Government Bonds: Risk-Free &amp; Assured Returns</text>
+    <text x="20" y="160" class="text-body">&#8226; Fixed Deposits: Senior &amp; Conservative Profiles</text>
+    <rect x="20" y="190" width="160" height="32" rx="4" fill="#111622" stroke="#1a2234"/>
+    <text x="100" y="211" text-anchor="middle" class="text-body">Explore Graph (F4)</text>
+  </g>
+
+  </g>
+
+  <!-- BOTTOM STATUS BAR -->
+  <rect x="0" y="876" width="1440" height="24" fill="#0c1017"/>
+  <line x1="0" y1="876" x2="1440" y2="876" stroke="#1a2234"/>
+  <circle cx="16" cy="888" r="3" fill="#94a3b8"/>
+  <text x="26" y="891" font-size="10" fill="#cbd5e1" font-family="monospace">CORE:ONLINE</text>
+  <text x="120" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="136" y="891" font-size="10" fill="#64748b" font-family="monospace">GRAPH: <tspan fill="#cbd5e1">NETWORKX/RDF (444N/1448E)</tspan></text>
+  <text x="360" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="376" y="891" font-size="10" fill="#64748b" font-family="monospace">EMBED: <tspan fill="#cbd5e1">all-MiniLM-L6-v2</tspan></text>
+  <text x="560" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="576" y="891" font-size="10" fill="#64748b" font-family="monospace">SEC EDGAR: <tspan fill="#2dd4bf">134 FACTS AUDITED</tspan></text>
+  <text x="780" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="796" y="891" font-size="10" fill="#64748b" font-family="monospace">LLM: <tspan fill="#2dd4bf">GROQ (CONNECTED)</tspan></text>
+  <text x="1350" y="891" font-size="10" fill="#64748b" font-family="monospace">23:45:00 UTC</text>
+</svg>

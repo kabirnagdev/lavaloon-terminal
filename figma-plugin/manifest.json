@@ -1,0 +1,9 @@
+{
+  "name": "Lavaloon Terminal Workstation UI",
+  "id": "lavaloon-terminal-figma-plugin",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"]
+}

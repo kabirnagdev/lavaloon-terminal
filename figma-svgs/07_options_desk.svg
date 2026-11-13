@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900" style="background:#080b11; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <style>
+      .text-title { font-size: 14px; font-weight: 600; fill: #f8fafc; }
+      .text-subtitle { font-size: 12px; fill: #94a3b8; }
+      .text-body { font-size: 12px; fill: #cbd5e1; }
+      .text-muted { font-size: 11px; fill: #64748b; }
+      .text-accent { font-size: 11px; fill: #38bdf8; font-weight: 600; }
+      .text-green { font-size: 11px; fill: #2dd4bf; font-weight: 600; }
+      .text-amber { font-size: 11px; fill: #fbbf24; font-weight: 600; }
+      .panel-bg { fill: #0c1017; stroke: #1a2234; stroke-width: 1; }
+      .card-bg { fill: #111622; stroke: #1a2234; stroke-width: 1; }
+      .border-line { stroke: #1a2234; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- TOP GLOBAL BAR -->
+  <rect x="0" y="0" width="1440" height="44" fill="#0c1017"/>
+  <line x1="0" y1="44" x2="1440" y2="44" stroke="#1a2234" stroke-width="1"/>
+  
+  <!-- Logo / Identity -->
+  <rect x="16" y="10" width="24" height="24" rx="4" fill="#38bdf8" fill-opacity="0.1" stroke="#38bdf8" stroke-opacity="0.3"/>
+  <text x="28" y="26" text-anchor="middle" font-size="12" fill="#38bdf8" font-family="monospace">&gt;</text>
+  <text x="48" y="26" class="text-title" font-size="13">LAVALOON</text>
+  <rect x="122" y="12" width="72" height="20" rx="3" fill="#111622" stroke="#1a2234"/>
+  <text x="158" y="26" text-anchor="middle" font-size="10" fill="#38bdf8" font-family="monospace">TERMINAL</text>
+  <line x1="206" y1="14" x2="206" y2="30" stroke="#1a2234"/>
+  <text x="218" y="26" class="text-subtitle">Workspace: <tspan fill="#f8fafc" font-weight="500">Options Desk</tspan></text>
+
+  <!-- Center Search Field -->
+  <rect x="520" y="8" width="400" height="28" rx="4" fill="#080b11" stroke="#1a2234"/>
+  <text x="548" y="26" class="text-muted">Search companies, tickers, filings, ontology entities...</text>
+  <rect x="896" y="12" width="16" height="18" rx="3" fill="#111622" stroke="#1a2234"/>
+  <text x="904" y="25" text-anchor="middle" font-size="10" fill="#64748b" font-family="monospace">/</text>
+
+  <!-- Top Right Stats -->
+  <text x="1160" y="26" class="text-muted">COVERAGE: <tspan fill="#cbd5e1" font-weight="500">10 FILERS / 4 SURVEY</tspan></text>
+  <text x="1350" y="26" class="text-muted">23:45:00 UTC</text>
+
+  <!-- LEFT NAVIGATION BAR -->
+  <rect x="0" y="44" width="200" height="832" fill="#0c1017"/>
+  <line x1="200" y1="44" x2="200" y2="876" stroke="#1a2234"/>
+  <text x="16" y="68" font-size="10" font-weight="600" fill="#64748b" letter-spacing="1">WORKSTATION</text>
+
+  <!-- Nav Items -->
+  <g transform="translate(8, 80)">
+    <!-- F1 -->
+    <rect x="0" y="0" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="20" font-size="12" fill="#94a3b8" font-weight="400">Overview</text>
+    <rect x="156" y="8" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="20" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F1</text>
+    
+    <!-- F2 -->
+    <rect x="0" y="36" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="56" font-size="12" fill="#94a3b8" font-weight="400">Entity Explorer</text>
+    <rect x="156" y="44" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="56" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F2</text>
+
+    <!-- F3 -->
+    <rect x="0" y="72" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="92" font-size="12" fill="#94a3b8" font-weight="400">Financial Intel</text>
+    <rect x="156" y="80" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="92" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F3</text>
+
+    <!-- F4 -->
+    <rect x="0" y="108" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="128" font-size="12" fill="#94a3b8" font-weight="400">Knowledge Graph</text>
+    <rect x="156" y="116" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="128" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F4</text>
+
+    <!-- F5 -->
+    <rect x="0" y="144" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="164" font-size="12" fill="#94a3b8" font-weight="400">GraphRAG Copilot</text>
+    <rect x="156" y="152" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="164" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F5</text>
+
+    <!-- F6 -->
+    <rect x="0" y="180" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="200" font-size="12" fill="#94a3b8" font-weight="400">Due Diligence</text>
+    <rect x="156" y="188" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="200" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F6</text>
+
+    <!-- F7 -->
+    <rect x="0" y="216" width="184" height="32" rx="4" fill="#111622" stroke="#1a2234"/>
+    <text x="12" y="236" font-size="12" fill="#38bdf8" font-weight="600">Options Desk</text>
+    <rect x="156" y="224" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="236" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F7</text>
+
+    <!-- F8 -->
+    <rect x="0" y="252" width="184" height="32" rx="4" fill="transparent" stroke="transparent"/>
+    <text x="12" y="272" font-size="12" fill="#94a3b8" font-weight="400">System Config</text>
+    <rect x="156" y="260" width="20" height="16" rx="3" fill="#080b11" stroke="#1a2234"/>
+    <text x="166" y="272" text-anchor="middle" font-size="9" fill="#64748b" font-family="monospace">F8</text>
+  </g>
+
+  <!-- MAIN WORKSPACE CONTENT -->
+  <g transform="translate(200, 44)">
+    
+  <!-- Quant Derivatives Desk -->
+  <rect x="24" y="20" width="1192" height="100" rx="4" class="panel-bg"/>
+  <text x="44" y="44" class="text-title">Black-Scholes-Merton Option Pricing Inputs</text>
+
+  <!-- Input fields -->
+  <g transform="translate(44, 56)">
+    <rect x="0" y="0" width="160" height="48" rx="4" class="card-bg"/>
+    <text x="12" y="18" class="text-muted">SPOT PRICE (S)</text>
+    <text x="12" y="38" class="text-title">$100.00</text>
+
+    <rect x="180" y="0" width="160" height="48" rx="4" class="card-bg"/>
+    <text x="192" y="18" class="text-muted">STRIKE (K)</text>
+    <text x="192" y="38" class="text-title">$100.00</text>
+
+    <rect x="360" y="0" width="160" height="48" rx="4" class="card-bg"/>
+    <text x="372" y="18" class="text-muted">EXPIRY (DAYS)</text>
+    <text x="372" y="38" class="text-title">30 Days</text>
+
+    <rect x="540" y="0" width="160" height="48" rx="4" class="card-bg"/>
+    <text x="552" y="18" class="text-muted">RISK-FREE (r)</text>
+    <text x="552" y="38" class="text-title">5.00%</text>
+
+    <rect x="720" y="0" width="160" height="48" rx="4" class="card-bg"/>
+    <text x="732" y="18" class="text-muted">VOLATILITY (&#963;)</text>
+    <text x="732" y="38" class="text-title">25.00%</text>
+
+    <rect x="900" y="0" width="160" height="48" rx="4" class="card-bg"/>
+    <text x="912" y="18" class="text-muted">CONTRACT</text>
+    <text x="912" y="38" class="text-accent">CALL OPTION</text>
+  </g>
+
+  <!-- Valuation & Greeks -->
+  <g transform="translate(24, 140)">
+    <!-- Valuation Card -->
+    <rect x="0" y="0" width="360" height="150" rx="4" class="panel-bg"/>
+    <text x="24" y="32" class="text-muted">THEORETICAL OPTION VALUE</text>
+    <text x="24" y="80" font-size="36" font-weight="700" fill="#38bdf8">$3.2144</text>
+    <text x="24" y="115" class="text-subtitle">Intrinsic: $0.0000 | Time Value: $3.2144</text>
+    <text x="24" y="135" class="text-amber">MONEYNESS: ATM (At the Money)</text>
+
+    <!-- Greeks Matrix -->
+    <rect x="384" y="0" width="808" height="150" rx="4" class="panel-bg"/>
+    <text x="408" y="32" class="text-title">Analytical Greeks Matrix</text>
+    <g transform="translate(408, 50)">
+      <rect x="0" y="0" width="170" height="75" rx="4" class="card-bg"/>
+      <text x="16" y="24" class="text-muted">&Delta; DELTA</text>
+      <text x="16" y="55" font-size="20" font-weight="700" fill="#f8fafc">0.5364</text>
+
+      <rect x="190" y="0" width="170" height="75" rx="4" class="card-bg"/>
+      <text x="206" y="24" class="text-muted">&Gamma; GAMMA</text>
+      <text x="206" y="55" font-size="20" font-weight="700" fill="#f8fafc">0.0543</text>
+
+      <rect x="380" y="0" width="170" height="75" rx="4" class="card-bg"/>
+      <text x="396" y="24" class="text-muted">&nu; VEGA</text>
+      <text x="396" y="55" font-size="20" font-weight="700" fill="#2dd4bf">0.1142</text>
+
+      <rect x="570" y="0" width="170" height="75" rx="4" class="card-bg"/>
+      <text x="586" y="24" class="text-muted">&Theta; THETA</text>
+      <text x="586" y="55" font-size="20" font-weight="700" fill="#f43f5e">-0.0542</text>
+    </g>
+  </g>
+
+  <!-- Options Chain Matrix -->
+  <g transform="translate(24, 310)">
+    <rect x="0" y="0" width="1192" height="490" rx="4" class="panel-bg"/>
+    <text x="24" y="30" class="text-title">Volatility Chain Ladder (S=$100, T=30d, &#963;=25%)</text>
+    
+    <!-- Table Header -->
+    <rect x="0" y="44" width="1192" height="32" fill="#111622"/>
+    <text x="30" y="65" class="text-muted">CALL VALUE</text>
+    <text x="180" y="65" class="text-muted">DELTA (C)</text>
+    <text x="360" y="65" class="text-accent">STRIKE (K)</text>
+    <text x="540" y="65" class="text-muted">DELTA (P)</text>
+    <text x="720" y="65" class="text-muted">PUT VALUE</text>
+    <text x="900" y="65" class="text-muted">GAMMA</text>
+    <text x="1060" y="65" class="text-muted">VEGA</text>
+    <line x1="0" y1="76" x2="1192" y2="76" class="border-line"/>
+
+    <!-- Rows -->
+    <g transform="translate(30, 110)">
+      <text x="0" y="0" class="text-green">$15.41</text>
+      <text x="150" y="0" class="text-body">0.96</text>
+      <text x="330" y="0" font-weight="600" fill="#f8fafc">$85.00</text>
+      <text x="510" y="0" class="text-body">-0.04</text>
+      <text x="690" y="0" class="text-body">$0.06</text>
+      <text x="870" y="0" class="text-muted">0.0120</text>
+      <text x="1030" y="0" class="text-muted">0.02</text>
+    </g>
+    <g transform="translate(30, 155)">
+      <text x="0" y="0" class="text-green">$7.34</text>
+      <text x="150" y="0" class="text-body">0.78</text>
+      <text x="330" y="0" font-weight="600" fill="#f8fafc">$95.00</text>
+      <text x="510" y="0" class="text-body">-0.22</text>
+      <text x="690" y="0" class="text-body">$1.95</text>
+      <text x="870" y="0" class="text-muted">0.0410</text>
+      <text x="1030" y="0" class="text-muted">0.09</text>
+    </g>
+    <!-- ATM Row -->
+    <rect x="0" y="180" width="1192" height="40" fill="#111622" fill-opacity="0.8"/>
+    <g transform="translate(30, 205)">
+      <text x="0" y="0" class="text-green">$3.21</text>
+      <text x="150" y="0" class="text-body">0.54</text>
+      <text x="330" y="0" font-weight="700" fill="#38bdf8">$100.00 (ATM)</text>
+      <text x="510" y="0" class="text-body">-0.46</text>
+      <text x="690" y="0" class="text-body">$2.80</text>
+      <text x="870" y="0" class="text-muted">0.0543</text>
+      <text x="1030" y="0" class="text-muted">0.11</text>
+    </g>
+    <g transform="translate(30, 255)">
+      <text x="0" y="0" class="text-green">$1.12</text>
+      <text x="150" y="0" class="text-body">0.26</text>
+      <text x="330" y="0" font-weight="600" fill="#f8fafc">$105.00</text>
+      <text x="510" y="0" class="text-body">-0.74</text>
+      <text x="690" y="0" class="text-body">$5.72</text>
+      <text x="870" y="0" class="text-muted">0.0380</text>
+      <text x="1030" y="0" class="text-muted">0.08</text>
+    </g>
+  </g>
+
+  </g>
+
+  <!-- BOTTOM STATUS BAR -->
+  <rect x="0" y="876" width="1440" height="24" fill="#0c1017"/>
+  <line x1="0" y1="876" x2="1440" y2="876" stroke="#1a2234"/>
+  <circle cx="16" cy="888" r="3" fill="#94a3b8"/>
+  <text x="26" y="891" font-size="10" fill="#cbd5e1" font-family="monospace">CORE:ONLINE</text>
+  <text x="120" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="136" y="891" font-size="10" fill="#64748b" font-family="monospace">GRAPH: <tspan fill="#cbd5e1">NETWORKX/RDF (444N/1448E)</tspan></text>
+  <text x="360" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="376" y="891" font-size="10" fill="#64748b" font-family="monospace">EMBED: <tspan fill="#cbd5e1">all-MiniLM-L6-v2</tspan></text>
+  <text x="560" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="576" y="891" font-size="10" fill="#64748b" font-family="monospace">SEC EDGAR: <tspan fill="#2dd4bf">134 FACTS AUDITED</tspan></text>
+  <text x="780" y="891" font-size="10" fill="#64748b" font-family="monospace">|</text>
+  <text x="796" y="891" font-size="10" fill="#64748b" font-family="monospace">LLM: <tspan fill="#2dd4bf">GROQ (CONNECTED)</tspan></text>
+  <text x="1350" y="891" font-size="10" fill="#64748b" font-family="monospace">23:45:00 UTC</text>
+</svg>
