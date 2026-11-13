@@ -113,7 +113,6 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-bold font-display tracking-tight metallic-text">Dashboard</h1>
-            <span className="text-[10px] px-2 py-0.5 rounded metallic-pill text-sky-300 font-mono">LIVE INTELLIGENCE</span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
             Cross-sectional performance and verified regulatory filings for monitored corporations.

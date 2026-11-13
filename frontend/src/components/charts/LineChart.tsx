@@ -99,12 +99,9 @@ export const LineChart: React.FC<LineChartProps> = ({
     <div className="w-full metallic-surface metallic-surface-hover rounded-xl p-3.5 flex flex-col justify-between select-none">
       {/* Header with Title and Unit */}
       <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 mb-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color }} />
-          <h4 className="text-xs font-bold font-display text-slate-100 tracking-tight">
-            {title}
-          </h4>
-        </div>
+        <h4 className="text-xs font-bold font-display text-slate-100 tracking-tight">
+          {title}
+        </h4>
         <div className="text-[10px] text-slate-400 font-mono metallic-card-subtle px-2 py-0.5 rounded">
           <span className="text-slate-200 font-semibold">{unit}</span> ({currency})
         </div>

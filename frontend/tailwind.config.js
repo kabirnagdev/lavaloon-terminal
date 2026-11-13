@@ -38,8 +38,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ["'Plus Jakarta Sans'", "Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        display: ["'Space Grotesk'", "'Syne'", "'Plus Jakarta Sans'", "sans-serif"],
+        sans: ["'Poppins'", "'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
+        display: ["'Poppins'", "'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
         mono: ["'JetBrains Mono'", "SF Mono", "Menlo", "Consolas", "monospace"]
       },
       backgroundImage: {
