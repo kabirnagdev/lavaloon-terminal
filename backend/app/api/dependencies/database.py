@@ -42,7 +42,7 @@ class AppGraphState:
         self.embedder = get_embedding_engine(settings.EMBED_MODEL)
         self.llm_client = get_groq_client(settings.GROQ_API_KEY)
         self.retriever = HybridGraphRetriever(
-            self.df, self.G, self.A, self.embedder, self.llm_client
+            self.df, self.G, self.A, self.embedder, self.llm_client, dataset_name=self.active_dataset_name
         )
         self.copilot = ResearchCopilot(self.retriever, self.llm_client)
         self.diligence_pipeline = DueDiligencePipeline(self.retriever, self.llm_client)
@@ -94,7 +94,7 @@ class AppGraphState:
             self.llm_client = get_groq_client(settings.GROQ_API_KEY)
             
         self.retriever = HybridGraphRetriever(
-            self.df, self.G, self.A, self.embedder, self.llm_client
+            self.df, self.G, self.A, self.embedder, self.llm_client, dataset_name=self.active_dataset_name
         )
         self.copilot = ResearchCopilot(self.retriever, self.llm_client)
         self.diligence_pipeline = DueDiligencePipeline(self.retriever, self.llm_client)

@@ -42,7 +42,8 @@ class HybridGraphRetriever:
         embedder: EmbeddingEngine,
         llm_client: GroqLLMClient,
         default_ent_thr: float = 0.40,
-        default_col_thr: float = 0.45
+        default_col_thr: float = 0.45,
+        dataset_name: Optional[str] = None
     ):
         self.df = df
         self.G = G
@@ -51,6 +52,7 @@ class HybridGraphRetriever:
         self.llm_client = llm_client
         self.default_ent_thr = default_ent_thr
         self.default_col_thr = default_col_thr
+        self.dataset_name = dataset_name or "Finance_data.csv"
 
         self.rec_ids = [n for n, d in G.nodes(data=True) if d.get("ntype") == "Record"]
         self.ent_ids = [n for n, d in G.nodes(data=True) if d.get("ntype") != "Record"]
@@ -63,8 +65,8 @@ class HybridGraphRetriever:
         self.col_vecs = self.embedder.embed(self.all_cols)
 
         self.overview = (
-            f"Dataset Universe: {len(df)} survey observation records across "
-            f"{len(self.all_cols)} attributes. (Source: Finance_data.csv)"
+            f"Dataset Universe: {len(df)} observation records across "
+            f"{len(self.all_cols)} attributes. (Source: {self.dataset_name})"
         )
 
     def extract_keywords(self, question: str) -> List[str]:
@@ -263,7 +265,7 @@ class HybridGraphRetriever:
     def profile(self, seeds: List[Dict[str, Any]], cols: List[str], top: int = 5) -> str:
         """Compute exact aggregate statistics with sample size and correlation caveats."""
         lines, N = [], len(self.df)
-        lines.append(f"TOTAL SURVEY POPULATION (N): {N} respondent records.")
+        lines.append(f"TOTAL POPULATION (N): {N} observation records from {self.dataset_name}.")
         lines.append("")
 
         for c in cols:
@@ -318,10 +320,46 @@ class HybridGraphRetriever:
 
         retrieved_records = []
         for i in rec_idx:
+            rec_id = self.rec_ids[i]
+            row_idx = self.G.nodes[rec_id].get("row", i)
+            row_data = self.df.iloc[row_idx] if 0 <= row_idx < len(self.df) else {}
+
+            # Find representative name / entity
+            name_val = None
+            for cand in ["Youtuber", "Title", "Company", "company", "name", "Name", "category", "Ticker", "ticker"]:
+                if cand in self.df.columns and pd.notna(row_data.get(cand)):
+                    name_val = str(row_data[cand])
+                    break
+            if not name_val:
+                name_val = f"Record {row_idx + 1}"
+
+            # Find primary metric
+            metric_val = "-"
+            metric_name = "Observation Record"
+            for cand_m in ["highest_yearly_earnings", "highest_monthly_earnings", "subscribers", "video views", "revenue", "net_income", "Avenue", "Investment_Avenues"]:
+                if cand_m in self.df.columns and pd.notna(row_data.get(cand_m)):
+                    metric_name = cand_m
+                    metric_val = row_data[cand_m]
+                    break
+
+            # Find period
+            period_val = "-"
+            for cand_p in ["created_year", "year", "Year", "Period", "period", "date", "Date", "Age", "age"]:
+                if cand_p in self.df.columns and pd.notna(row_data.get(cand_p)):
+                    period_val = str(row_data[cand_p])
+                    break
+
             retrieved_records.append({
-                "record_id": self.rec_ids[i],
-                "text": self.G.nodes[self.rec_ids[i]]["text"],
-                "similarity": round(float(sims[i]), 4)
+                "record_id": rec_id,
+                "text": self.G.nodes[rec_id]["text"],
+                "similarity": round(float(sims[i]), 4),
+                "ticker": name_val,
+                "metric": metric_name,
+                "period": period_val,
+                "value": metric_val,
+                "unit": "USD" if any(x in metric_name.lower() for x in ["earnings", "revenue", "income", "profit"]) else "Count",
+                "source_file": self.dataset_name,
+                "source_row": row_idx + 1
             })
 
         evidence_confidence = "high"
@@ -355,9 +393,9 @@ class HybridGraphRetriever:
         ctx = (
             f"EXTRACTED INQUIRY KEYWORDS: {r['keywords']}\n\n"
             f"LINKED SEED ENTITIES: {[s['label'] for s in r.get('linked_entities', [])]}\n\n"
-            f"EXACT EMPIRICAL STATISTICS (N=40 respondents):\n{r['profile']}\n\n"
+            f"EXACT EMPIRICAL STATISTICS (N={len(self.df)} records in {self.dataset_name}):\n{r['profile']}\n\n"
             f"KNOWLEDGE GRAPH RELATIONSHIPS (Directed association layer):\n{tri}\n\n"
-            f"CITED SURVEY RECORDS:\n{rec}"
+            f"CITED RECORDS:\n{rec}"
         )
         return ctx[:MAX_CONTEXT_CHARS]
 

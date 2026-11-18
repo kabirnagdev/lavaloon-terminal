@@ -374,7 +374,14 @@ export const DataIngestionModal: React.FC<DataIngestionModalProps> = ({
 
                   {onNavigateToCopilot && (
                     <button
-                      onClick={() => {
+                      onClick={async () => {
+                        if (selectedResult) {
+                          try {
+                            await api.activateDatasetGraph(selectedResult.filepath);
+                          } catch (e) {
+                            console.error("Auto-activation error:", e);
+                          }
+                        }
                         onClose();
                         onNavigateToCopilot();
                       }}

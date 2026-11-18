@@ -103,7 +103,10 @@ def list_available_datasets() -> List[Dict[str, Any]]:
     return datasets
 
 @router.post("/upload", response_model=DatasetSummary)
-async def upload_csv_dataset(file: UploadFile = File(...)) -> DatasetSummary:
+async def upload_csv_dataset(
+    file: UploadFile = File(...),
+    graph_state: AppGraphState = Depends(get_graph_state)
+) -> DatasetSummary:
     """
     Accept an uploaded CSV or Excel dataset, validate integrity,
     and return structured analytical preview.
@@ -146,6 +149,12 @@ async def upload_csv_dataset(file: UploadFile = File(...)) -> DatasetSummary:
                 
         sample = df.head(10).replace({np.nan: None}).to_dict(orient="records")
         preview = compute_chart_preview(df)
+
+        # Auto-activate into live knowledge graph and copilot
+        try:
+            graph_state.load_dataset(save_path)
+        except Exception:
+            pass
         
         return DatasetSummary(
             filename=filename,
@@ -223,7 +232,10 @@ class RawContextPayload(BaseModel):
     content: str
 
 @router.post("/raw-context", response_model=DatasetSummary)
-def ingest_raw_context(payload: RawContextPayload) -> DatasetSummary:
+def ingest_raw_context(
+    payload: RawContextPayload,
+    graph_state: AppGraphState = Depends(get_graph_state)
+) -> DatasetSummary:
     """Accept pasted tabular CSV text or raw context statements."""
     content = payload.content.strip()
     if not content:
@@ -262,6 +274,13 @@ def ingest_raw_context(payload: RawContextPayload) -> DatasetSummary:
             
     sample = df.head(10).replace({np.nan: None}).to_dict(orient="records")
     preview = compute_chart_preview(df)
+
+    # Auto-activate into live knowledge graph and copilot
+    try:
+        graph_state.load_dataset(save_path)
+    except Exception:
+        pass
+
     return DatasetSummary(
         filename=title,
         filepath=save_path,
